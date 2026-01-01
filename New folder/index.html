@@ -1463,11 +1463,32 @@
             margin-right: auto;
         }
         
-        /* Mobile: Compact grid */
+        /* Mobile: Ultra compact grid - Fast performance */
         @media (max-width: 768px) {
             .stats-grid {
-                gap: 10px !important;
-                margin-bottom: 20px !important;
+                gap: 8px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            /* Performance: Reduce backdrop blur on mobile */
+            .stat-card {
+                backdrop-filter: blur(8px) !important;
+            }
+            
+            /* Remove expensive effects */
+            .stat-card-wrapper {
+                transform: none !important;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .stats-grid {
+                gap: 6px !important;
+                margin-bottom: 14px !important;
+            }
+            
+            .stat-card {
+                backdrop-filter: blur(6px) !important;
             }
         }
         
@@ -1518,13 +1539,45 @@
             margin-bottom: 8px;
         }
         
-        /* Mobile: Compact labels */
+        /* Mobile: Compact labels - Optimized */
         @media (max-width: 768px) {
             .stat-card-label {
-                font-size: 13px !important;
-                padding: 6px 8px !important;
-                letter-spacing: 1px !important;
+                font-size: 11px !important;
+                padding: 4px 6px !important;
+                letter-spacing: 0.8px !important;
                 border-radius: 6px;
+                margin-bottom: 4px !important;
+            }
+            
+            /* Optimize full-label overlay for mobile */
+            .full-label {
+                font-size: 14px !important;
+                padding: 12px !important;
+                letter-spacing: 0.4px !important;
+                border-radius: 12px !important;
+                border: 2px solid rgba(212, 175, 55, 0.5) !important;
+            }
+            
+            .full-label::before {
+                font-size: 28px !important;
+                margin-bottom: 4px !important;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .stat-card-label {
+                font-size: 10px !important;
+                padding: 3px 5px !important;
+                letter-spacing: 0.6px !important;
+            }
+            
+            .full-label {
+                font-size: 12px !important;
+                padding: 10px !important;
+            }
+            
+            .full-label::before {
+                font-size: 24px !important;
             }
         }
         
@@ -1545,13 +1598,77 @@
             width: 100%;
         }
         
-        /* Mobile: More compact cards */
+        /* Mobile: Ultra compact and fast group boxes */
         @media (max-width: 768px) {
             .stat-card {
-                padding: 14px 10px !important;
-                border-radius: 12px !important;
+                padding: 10px 8px !important;
+                border-radius: 10px !important;
                 border-top: 2px solid var(--sky-blue);
-                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+                min-height: 60px !important;
+                backdrop-filter: blur(8px) !important;
+            }
+            
+            .stat-card b {
+                font-size: 20px !important;
+                font-weight: 700;
+                line-height: 1.1;
+                margin: 4px 0;
+            }
+            
+            .stat-card-label {
+                font-size: 11px !important;
+                padding: 4px 6px !important;
+                letter-spacing: 0.8px !important;
+                margin-bottom: 4px !important;
+                border-radius: 6px;
+            }
+            
+            .stats-grid {
+                gap: 8px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            /* Remove heavy effects for performance */
+            .stat-card::before,
+            .stat-card::after {
+                display: none !important;
+            }
+            
+            .stat-card:hover {
+                transform: none !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+            }
+            
+            .stat-card.selected-group {
+                border-top: 3px solid var(--sky-blue-light) !important;
+                box-shadow: 0 3px 10px rgba(212, 175, 55, 0.4) !important;
+            }
+        }
+        
+        /* Small mobile: Even more compact */
+        @media (max-width: 500px) {
+            .stat-card {
+                padding: 8px 6px !important;
+                border-radius: 8px !important;
+                min-height: 55px !important;
+            }
+            
+            .stat-card b {
+                font-size: 18px !important;
+                margin: 2px 0;
+            }
+            
+            .stat-card-label {
+                font-size: 10px !important;
+                padding: 3px 5px !important;
+                letter-spacing: 0.6px !important;
+                margin-bottom: 3px !important;
+            }
+            
+            .stats-grid {
+                gap: 6px !important;
+                margin-bottom: 14px !important;
             }
         }
         
@@ -1630,8 +1747,9 @@
         .stat-card b { 
             display: block; 
             color: var(--sky-blue); 
-            font-size: 32px;
-            line-height: 1.2; 
+            font-size: 28px;
+            line-height: 1.2;
+            font-weight: 700; 
             margin-bottom: 8px;
             font-weight: 800;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
@@ -2409,12 +2527,12 @@
                 -moz-osx-font-smoothing: grayscale;
             }
             
-            /* Compact group boxes on mobile */
+            /* Ultra compact group boxes on mobile - Fast & Beautiful */
             .stats-grid { 
                 grid-template-columns: repeat(2, 1fr) !important; 
-                gap: 10px !important;
+                gap: 8px !important;
                 max-width: 100% !important;
-                margin-bottom: 20px !important;
+                margin-bottom: 16px !important;
             }
             
             .stats-grid.grid-1,
@@ -2423,28 +2541,46 @@
             .stats-grid.grid-4 {
                 grid-template-columns: repeat(2, 1fr) !important;
                 max-width: 100% !important;
-                gap: 10px !important;
+                gap: 8px !important;
             }
             
-            /* Compact stat cards */
+            /* Ultra compact stat cards */
             .stat-card {
-                padding: 12px 10px !important;
-                border-radius: 12px !important;
-                min-height: auto !important;
-                border-top: 3px solid var(--sky-blue);
+                padding: 10px 8px !important;
+                border-radius: 10px !important;
+                min-height: 60px !important;
+                border-top: 2px solid var(--sky-blue);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
             }
             
             .stat-card b {
-                font-size: 24px !important;
+                font-size: 20px !important;
                 font-weight: 700;
-                line-height: 1.2;
+                line-height: 1.1;
+                margin: 4px 0;
             }
             
             .stat-card-label {
-                font-size: 12px !important;
-                padding: 6px 8px !important;
-                letter-spacing: 1px !important;
-                margin-bottom: 6px;
+                font-size: 11px !important;
+                padding: 4px 6px !important;
+                letter-spacing: 0.8px !important;
+                margin-bottom: 4px !important;
+                border-radius: 6px;
+            }
+            
+            /* Remove animations for performance */
+            .stat-card,
+            .stat-card * {
+                animation: none !important;
+                transition: all 0.15s ease !important;
+            }
+            
+            .stat-card:hover {
+                transform: none !important;
+            }
+            
+            .stat-card:active {
+                transform: scale(0.97) !important;
             }
             
             .full-label {
@@ -2654,12 +2790,12 @@
                 -moz-osx-font-smoothing: grayscale;
             }
             
-            /* Ultra compact group boxes on small mobile */
+            /* Ultra compact group boxes on small mobile - Maximum optimization */
             .stats-grid { 
                 grid-template-columns: repeat(2, 1fr) !important; 
-                gap: 8px !important;
+                gap: 6px !important;
                 max-width: 100% !important;
-                margin-bottom: 18px !important;
+                margin-bottom: 14px !important;
             }
             
             .stats-grid.grid-1,
@@ -2668,29 +2804,47 @@
             .stats-grid.grid-4 {
                 grid-template-columns: repeat(2, 1fr) !important;
                 max-width: 100% !important;
-                gap: 8px !important;
+                gap: 6px !important;
             }
             
-            /* Ultra compact stat cards */
+            /* Ultra compact stat cards - Smallest size */
             .stat-card {
-                padding: 10px 8px !important;
-                border-radius: 10px !important;
-                min-height: auto !important;
+                padding: 8px 6px !important;
+                border-radius: 8px !important;
+                min-height: 55px !important;
                 border-top: 2px solid var(--sky-blue);
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
             }
             
             .stat-card b {
-                font-size: 22px !important;
+                font-size: 18px !important;
                 font-weight: 700;
                 line-height: 1.1;
+                margin: 2px 0;
             }
             
             .stat-card-label {
-                font-size: 11px !important;
-                padding: 5px 6px !important;
-                letter-spacing: 0.8px !important;
-                margin-bottom: 4px;
-                border-radius: 8px;
+                font-size: 10px !important;
+                padding: 3px 5px !important;
+                letter-spacing: 0.6px !important;
+                margin-bottom: 3px !important;
+                border-radius: 5px;
+            }
+            
+            /* Maximum performance - remove all heavy effects */
+            .stat-card::before,
+            .stat-card::after {
+                display: none !important;
+            }
+            
+            .stat-card:hover,
+            .stat-card:focus {
+                transform: none !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+            }
+            
+            .stat-card:active {
+                transform: scale(0.96) !important;
             }
             
             .full-label {
@@ -3165,29 +3319,36 @@
                 margin-bottom: 22px;
             }
             
-            /* Compact beautiful stat cards on mobile */
+            /* Ultra compact stat cards on mobile - Fast & Beautiful */
             .stat-card {
-                padding: 14px 12px !important;
-                min-height: 70px !important;
-                background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(20, 20, 20, 0.9));
-                border: 1px solid rgba(212, 175, 55, 0.2);
-                transition: all 0.2s ease;
-                border-radius: 12px;
+                padding: 10px 8px !important;
+                min-height: 60px !important;
+                background: linear-gradient(135deg, rgba(26, 26, 26, 0.85), rgba(20, 20, 20, 0.9)) !important;
+                border: 1px solid rgba(212, 175, 55, 0.25) !important;
+                transition: all 0.15s ease !important;
+                border-radius: 10px !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
             }
             
             .stat-card b {
-                font-size: 26px !important;
+                font-size: 20px !important;
                 font-weight: 700;
+                line-height: 1.1;
             }
             
             .stat-card-label {
-                font-size: 13px !important;
-                padding: 7px 10px !important;
-                letter-spacing: 1.2px !important;
+                font-size: 11px !important;
+                padding: 4px 6px !important;
+                letter-spacing: 0.8px !important;
             }
             
             .stat-card:active {
-                transform: scale(0.97);
+                transform: scale(0.97) !important;
+            }
+            
+            /* Performance optimization */
+            .stat-card * {
+                will-change: auto !important;
             }
             
             /* Beautiful navigation */
