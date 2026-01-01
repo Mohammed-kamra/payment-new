@@ -2,7 +2,10 @@
 <html lang="ku" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Elite Premium | Halal Market Portal</title>
     <link rel="stylesheet" href="Untitled-1.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -1001,24 +1004,80 @@
         }
         
         @media (max-width: 850px) {
+            #adminPanel {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            .admin-tabs {
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+            
+            .admin-tab-btn {
+                padding: 12px 10px;
+                font-size: 13px;
+                min-height: 44px;
+            }
+            
             .admin-table-wrap {
-                max-height: 500px;
+                max-height: none;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 12px;
+            }
+            
+            .admin-table {
+                min-width: 800px;
+                table-layout: auto;
             }
             
             .admin-table thead th {
-                padding: 10px 6px;
-                font-size: 10px;
+                padding: 12px 8px;
+                font-size: 11px;
+                position: sticky;
+                top: 0;
+                z-index: 10;
             }
             
             .admin-table tbody td {
-                padding: 10px 6px;
-                font-size: 10px;
+                padding: 12px 8px;
+                font-size: 11px;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            
+            .admin-table tbody td:nth-child(1) {
+                font-size: 12px;
+                padding: 12px 8px;
+            }
+            
+            .admin-table tbody td:nth-child(8) {
+                padding: 8px 6px;
             }
             
             .admin-table tbody td:nth-child(8) button {
-                padding: 4px 6px;
-                font-size: 9px;
-                min-width: 25px;
+                padding: 8px 12px;
+                font-size: 11px;
+                min-width: 50px;
+                min-height: 36px;
+            }
+            
+            .admin-edit-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 15px;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                padding: 10px 14px;
+                font-size: 12px;
+                min-height: 40px;
             }
         }
         
@@ -2481,6 +2540,75 @@
                 border-radius: 15px;
             }
             
+            /* Admin panel optimizations for small mobile */
+            #adminPanel {
+                padding: 12px;
+                border-radius: 12px;
+            }
+            
+            .admin-tabs {
+                gap: 6px;
+                margin-bottom: 12px;
+            }
+            
+            .admin-tab-btn {
+                padding: 10px 8px;
+                font-size: 12px;
+                min-height: 44px;
+            }
+            
+            .admin-table-wrap {
+                border-radius: 10px;
+                margin-top: 15px;
+            }
+            
+            .admin-table {
+                min-width: 700px;
+            }
+            
+            .admin-table thead th {
+                font-size: 9px;
+                padding: 10px 6px;
+            }
+            
+            .admin-table tbody td {
+                font-size: 10px;
+                padding: 10px 6px;
+            }
+            
+            .admin-table tbody td:nth-child(1) {
+                font-size: 11px;
+            }
+            
+            .admin-table tbody td:nth-child(8) button {
+                padding: 6px 10px;
+                font-size: 10px;
+                min-width: 45px;
+                min-height: 32px;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            
+            .filter-btn {
+                padding: 10px 12px;
+                font-size: 11px;
+                min-height: 40px;
+            }
+            
+            .admin-edit-grid {
+                padding: 12px;
+                gap: 12px;
+            }
+            
+            .admin-edit-grid input,
+            .admin-edit-grid select {
+                min-height: 48px;
+                font-size: 16px;
+            }
+            
             .stat-card b {
                 font-size: 32px;
                 margin-bottom: 8px;
@@ -2652,29 +2780,42 @@
         /* Mobile-specific touch optimizations */
         @media (max-width: 768px) {
             /* Prevent text selection on buttons for better touch experience */
-            button, .btn-nav, .btn-submit, .lang-btn {
+            button, .btn-nav, .btn-submit, .lang-btn, .admin-tab-btn, .filter-btn {
                 -webkit-tap-highlight-color: rgba(212, 175, 55, 0.3);
                 -webkit-touch-callout: none;
                 user-select: none;
+                touch-action: manipulation;
             }
             
             /* Better scrolling */
-            .table-wrap {
+            .table-wrap, .admin-table-wrap {
                 -webkit-overflow-scrolling: touch;
                 overflow-x: auto;
+                scrollbar-width: thin;
+            }
+            
+            .table-wrap::-webkit-scrollbar,
+            .admin-table-wrap::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .table-wrap::-webkit-scrollbar-thumb,
+            .admin-table-wrap::-webkit-scrollbar-thumb {
+                background: rgba(212, 175, 55, 0.5);
+                border-radius: 3px;
             }
             
             .disabled-overlay {
-                font-size: 20px;
-                padding: 30px 20px;
+                font-size: 18px;
+                padding: 25px 15px;
             }
             
             .disabled-overlay .lock-icon {
-                font-size: 60px;
+                font-size: 50px;
             }
             
             .disabled-overlay span {
-                font-size: 24px;
+                font-size: 20px;
             }
             
             /* Prevent zoom on input focus (iOS) */
@@ -2686,6 +2827,8 @@
             select,
             textarea {
                 font-size: 16px !important;
+                -webkit-appearance: none;
+                appearance: none;
             }
             
             /* Smooth scrolling */
@@ -2694,15 +2837,32 @@
                 -webkit-overflow-scrolling: touch;
             }
             
-            /* Better form spacing */
-            .form-box {
-                margin-bottom: 25px;
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
             
-            /* Optimize animations for mobile */
+            /* Better form spacing */
+            .form-box {
+                margin-bottom: 20px;
+                padding: 20px 15px;
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            /* Optimize animations for mobile - reduce heavy effects */
             * {
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
+            }
+            
+            /* Reduce animation duration for faster feel */
+            .container,
+            .form-container,
+            .card,
+            .stat-card {
+                animation-duration: 0.3s !important;
+                transition-duration: 0.2s !important;
             }
             
             /* Reduce motion for better performance */
@@ -2715,11 +2875,59 @@
             .footer {
                 will-change: auto;
             }
+            
+            /* Optimize backdrop filters on mobile */
+            .form-box,
+            .admin-table-wrap,
+            .card {
+                backdrop-filter: blur(8px);
+            }
+            
+            /* Better touch targets */
+            .btn-submit,
+            .btn-nav,
+            .admin-tab-btn,
+            .filter-btn {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 18px;
+            }
+            
+            /* Improve table readability on mobile */
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+            }
+            
+            /* Optimize container padding */
+            .container {
+                padding: 10px;
+            }
+            
+            /* Better header on mobile */
+            .header {
+                padding: 12px 10px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            /* Stats grid on mobile */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .stat-card {
+                padding: 15px 10px;
+            }
         }
         
         /* Touch-friendly on mobile */
         @media (hover: none) and (pointer: coarse) {
-            .btn-nav, .btn-submit, .lang-btn {
+            .btn-nav, .btn-submit, .lang-btn, .admin-tab-btn, .filter-btn {
                 min-height: 44px;
                 min-width: 44px;
             }
@@ -2731,6 +2939,71 @@
             
             tr:hover td {
                 transform: none;
+            }
+            
+            .admin-table tbody tr:hover {
+                background: transparent;
+            }
+            
+            .admin-table tbody tr:hover td {
+                background: transparent;
+            }
+        }
+        
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            /* Reduce expensive effects */
+            * {
+                text-rendering: optimizeSpeed;
+            }
+            
+            /* Optimize rendering */
+            .container,
+            .form-box,
+            .admin-table-wrap,
+            .table-wrap {
+                contain: layout style paint;
+            }
+            
+            /* GPU acceleration for smooth scrolling */
+            .admin-table-wrap,
+            .table-wrap {
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+            }
+        }
+        
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            /* Reduce expensive effects */
+            * {
+                text-rendering: optimizeSpeed;
+            }
+            
+            /* Optimize rendering */
+            .container,
+            .form-box,
+            .admin-table-wrap,
+            .table-wrap {
+                contain: layout style paint;
+            }
+            
+            /* GPU acceleration for smooth scrolling */
+            .admin-table-wrap,
+            .table-wrap {
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+            }
+        }
+        
+        /* Disable heavy animations on low-end devices */
+        @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
