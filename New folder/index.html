@@ -1,0 +1,5016 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <title>Elite Premium | Halal Market Portal</title>
+    <link rel="stylesheet" href="Untitled-1.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        :root { 
+            --sky-blue: #d4af37; 
+            --sky-blue-light: #f4e87c;
+            --sky-blue-dark: #b8860b; 
+            --smoke-dark: #4A4A4A;
+            --smoke-medium: #6A6A6A;
+            --smoke-light: #8A8A8A;
+            --bg: #000000; 
+            --card-bg: rgba(26, 26, 26, 0.95); 
+            --success: #27ae60; 
+            --admin-blue: #1a3a4a; 
+            --danger: #8B0000;
+            --charcoal: #1a1a1a;
+            --glass: rgba(255, 255, 255, 0.08);
+            --white: #FFFFFF;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        /* Smooth scroll reveal animation */
+        @media (prefers-reduced-motion: no-preference) {
+            .container,
+            .top-banner,
+            .header,
+            .form-container,
+            .stats-grid,
+            .public-list-area,
+            .footer {
+                will-change: transform, opacity;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.7);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.9), 0 0 30px rgba(212, 175, 55, 0.5);
+            }
+        }
+        
+        @keyframes shimmer-cell {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes smoothFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-8px) rotate(1deg);
+            }
+            66% {
+                transform: translateY(-4px) rotate(-1deg);
+            }
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif; 
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            background-attachment: fixed;
+            color: var(--white); 
+            min-height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            padding: 15px; 
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .container { 
+            width: 100%; 
+            max-width: 1000px; 
+            background: var(--card-bg);
+            backdrop-filter: blur(20px) saturate(1.2);
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            border-radius: 25px; 
+            padding: 30px; 
+            box-shadow: 
+                0 30px 100px rgba(0,0,0,0.6),
+                0 0 0 1px rgba(212, 175, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin: 10px 0; 
+            display: flex; 
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            animation: fadeInScale 0.8s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 40px 120px rgba(0,0,0,0.7),
+                0 0 0 1px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--sky-blue), transparent);
+            border-radius: 25px 25px 0 0;
+        }
+        
+        .top-line {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin-bottom: 20px;
+            border-radius: 2px;
+            animation: slideInLeft 0.8s ease-out 0.1s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .top-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+        
+        .logo-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+            gap: 20px;
+        }
+        
+        .banner-title-inline {
+            color: var(--sky-blue);
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glow 3s ease-in-out infinite;
+            letter-spacing: 0.5px;
+            flex: 1;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .logo-img {
+            max-width: 140px;
+            max-height: 90px;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 3px 6px rgba(212, 175, 55, 0.5));
+        }
+        
+        .logo-1 {
+            animation: fadeInLeft 0.8s ease-out 0.2s both;
+        }
+        
+        .logo-2 {
+            animation: fadeInRight 0.8s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .top-banner { 
+            text-align: center; 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3); 
+            padding-bottom: 25px; 
+            margin-bottom: 25px;
+            position: relative;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+            transition: transform 0.3s ease;
+        }
+        
+        .top-banner:hover {
+            transform: translateY(-3px);
+        }
+        
+        .top-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--sky-blue), transparent);
+        }
+        
+        .top-banner h2 { 
+            color: var(--sky-blue); 
+            margin: 5px 0; 
+            font-size: 22px; 
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glow 3s ease-in-out infinite;
+            letter-spacing: 0.5px;
+        }
+
+        .header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 25px; 
+            flex-wrap: wrap; 
+            gap: 15px;
+            padding: 20px;
+            background: rgba(26, 26, 26, 0.4);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            animation: slideInLeft 0.8s ease-out 0.3s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .header:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+        
+        .lang-switch { 
+            display: flex; 
+            gap: 5px; 
+            background: rgba(26, 26, 26, 0.6); 
+            padding: 5px; 
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .lang-btn { 
+            background: transparent; 
+            border: none; 
+            color: #888; 
+            padding: 8px 16px; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .lang-btn:hover::before {
+            left: 100%;
+        }
+        
+        .lang-btn:hover {
+            color: var(--sky-blue-light);
+            transform: translateY(-2px);
+        }
+        
+        .lang-btn.active { 
+            background: linear-gradient(135deg, var(--sky-blue), var(--sky-blue-dark)) !important; 
+            color: var(--white) !important;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+            font-weight: 700;
+        }
+
+        .btn-nav { 
+            background: rgba(26, 26, 26, 0.6); 
+            border: 1px solid rgba(212, 175, 55, 0.4); 
+            color: var(--sky-blue-light); 
+            padding: 10px 20px; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-nav:hover::before {
+            left: 100%;
+        }
+        
+        .btn-nav:hover {
+            background: rgba(212, 175, 55, 0.25);
+            border-color: var(--sky-blue);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        .btn-nav:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+        
+        /* Professional Admin Button Styling */
+        .admin-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.1));
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            color: var(--sky-blue-light);
+            padding: 12px 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .admin-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.1));
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .admin-btn:hover::after {
+            opacity: 1;
+        }
+        
+        .admin-icon {
+            font-size: 18px;
+            display: inline-block;
+            animation: rotate 3s linear infinite;
+            filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.6));
+        }
+        
+        .admin-btn:hover .admin-icon {
+            animation: rotate 1s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.9));
+        }
+        
+        .admin-text {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .admin-btn:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.2));
+            border-color: var(--sky-blue);
+            box-shadow: 
+                0 8px 25px rgba(212, 175, 55, 0.5),
+                0 0 20px rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px) scale(1.05);
+        }
+        
+        .admin-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+        
+        /* Professional Logout Button Styling */
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 2px solid rgba(139, 0, 0, 0.5);
+            padding: 12px 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .logout-icon {
+            font-size: 16px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .logout-btn:hover .logout-icon {
+            transform: translateX(-3px);
+        }
+        
+        .logout-text {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        .logout-btn:hover {
+            background: #A00000 !important;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
+            transform: translateY(-3px) scale(1.05);
+        }
+        
+        .logout-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+        
+        /* Mobile optimizations for admin button */
+        @media (max-width: 500px) {
+            .admin-btn, .logout-btn {
+                padding: 10px 16px;
+                gap: 6px;
+            }
+            
+            .admin-icon {
+                font-size: 16px;
+            }
+            
+            .admin-text, .logout-text {
+                font-size: 13px;
+            }
+            
+            .logout-icon {
+                font-size: 14px;
+            }
+        }
+
+        #adminPanel { 
+            display: none; 
+            background: var(--admin-blue); 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 2px solid rgba(0, 89, 179, 0.5); 
+            margin-bottom: 30px; 
+            box-shadow: 0 0 40px rgba(0, 89, 179, 0.3);
+            animation: fadeInUp 0.4s ease-out;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .admin-tab-btn {
+            flex: 1;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border: 2px solid transparent;
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+            color: #aaa;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .admin-tab-btn:hover {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--sky-blue);
+        }
+        
+        .admin-tab-btn.active {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.4);
+            color: var(--sky-blue);
+            font-weight: 700;
+        }
+        
+        .admin-tab-content {
+            animation: fadeInUp 0.4s ease-out;
+        }
+        
+        @media (max-width: 850px) {
+            .admin-tabs {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .admin-tab-btn {
+                border-radius: 10px;
+                border: 2px solid rgba(212, 175, 55, 0.2);
+                border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            }
+            
+            .admin-tab-btn.active {
+                border-color: rgba(212, 175, 55, 0.6);
+            }
+        }
+        
+        /* Admin table specific styling */
+        .admin-table-wrap {
+            margin-top: 20px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: fixed;
+        }
+        
+        .admin-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .admin-table thead th {
+            background: linear-gradient(135deg, rgba(0, 43, 128, 0.95), rgba(0, 89, 179, 0.95));
+            color: #fff;
+            padding: 10px 6px;
+            font-weight: 700;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            border-bottom: 3px solid rgba(212, 175, 55, 0.5);
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .admin-table thead th:nth-child(1) { 
+            width: 13%; 
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.4)) !important;
+            color: #000 !important;
+            font-weight: 900;
+        } /* Name */
+        .admin-table thead th:nth-child(2) { width: 14%; } /* Company */
+        .admin-table thead th:nth-child(3) { width: 10%; } /* Phone */
+        .admin-table thead th:nth-child(4) { width: 7%; }  /* Group */
+        .admin-table thead th:nth-child(5) { width: 10%; } /* Day */
+        .admin-table thead th:nth-child(6) { width: 11%; } /* Date */
+        .admin-table thead th:nth-child(7) { width: 14%; } /* Time */
+        .admin-table thead th:nth-child(8) { width: 12%; }  /* Paid */
+        
+        /* Accountant table - 7 columns (no Paid column) */
+        #accountantPanel .admin-table thead th:nth-child(1) { 
+            width: 13%; 
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.4)) !important;
+            color: #000 !important;
+            font-weight: 900;
+        } /* Name */
+        #accountantPanel .admin-table thead th:nth-child(2) { width: 14%; } /* Company */
+        #accountantPanel .admin-table thead th:nth-child(3) { width: 10%; } /* Phone */
+        #accountantPanel .admin-table thead th:nth-child(4) { width: 7%; }  /* Group */
+        #accountantPanel .admin-table thead th:nth-child(5) { width: 10%; } /* Day */
+        #accountantPanel .admin-table thead th:nth-child(6) { width: 11%; } /* Date */
+        #accountantPanel .admin-table thead th:nth-child(7) { width: 14%; } /* Time */
+        #accountantPanel .admin-table thead th:nth-child(8) { width: 12%; }  /* Paid */
+        
+        .admin-table tbody td {
+            padding: 10px 6px;
+            text-align: center;
+            font-size: 11px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+            vertical-align: middle;
+            transition: all 0.2s ease;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .admin-table tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        .admin-table tbody tr:hover {
+            background: rgba(212, 175, 55, 0.08);
+        }
+        
+        .admin-table tbody tr:hover td {
+            background: rgba(212, 175, 55, 0.08);
+        }
+        
+        .admin-table tbody tr[style*="background:rgba(0,0,0,0.3)"] {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .admin-table tbody td:nth-child(1) {
+            font-weight: 600;
+            color: #fff;
+            font-size: 12px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 1px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.3px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 8px;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+        
+        .admin-table tbody td:nth-child(2) {
+            color: var(--sky-blue-light);
+            font-weight: 600;
+        }
+        
+        .admin-table tbody td:nth-child(3) {
+            color: var(--sky-blue);
+        }
+        
+        .admin-table tbody td:nth-child(1),
+        .admin-table tbody td:nth-child(2) {
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+        
+        .admin-table tbody td:nth-child(4) {
+            color: var(--primary-gold);
+            font-weight: 700;
+            font-size: 11px;
+        }
+        
+        .admin-table tbody td:nth-child(5) {
+            color: #aaa;
+            font-size: 11px;
+        }
+        
+        .admin-table tbody td:nth-child(6) {
+            color: #ccc;
+            font-size: 11px;
+        }
+        
+        .admin-table tbody td:nth-child(7) {
+            color: #bbb;
+            font-size: 11px;
+            direction: ltr;
+        }
+        
+        /* Accountant table cell styling - match admin table exactly */
+        #accountantPanel .admin-table tbody td:nth-child(1) {
+            font-weight: 600;
+            color: #fff;
+            font-size: 12px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 1px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.3px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 8px;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(2) {
+            color: var(--sky-blue-light);
+            font-weight: 600;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(3) {
+            color: var(--sky-blue);
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(4) {
+            color: var(--primary-gold);
+            font-weight: 700;
+            font-size: 11px;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(5) {
+            color: #aaa;
+            font-size: 11px;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(6) {
+            color: #ccc;
+            font-size: 11px;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(7) {
+            color: #bbb;
+            font-size: 11px;
+            direction: ltr;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(8) {
+            padding: 8px 4px;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(8) button {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.3));
+            border: 2px solid rgba(212, 175, 55, 0.7);
+            color: var(--primary-gold);
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 11px;
+            transition: all 0.3s ease;
+            min-width: 60px;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(8) button:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.5));
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), 0 0 15px rgba(212,175,55,0.6);
+        }
+        
+        #accountantPanel .admin-table tbody td .paid-badge {
+            background: linear-gradient(135deg, rgba(39,174,96,0.5), rgba(39,174,96,0.3));
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            border: 1px solid rgba(39,174,96,0.7);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            text-shadow: 0 0 5px rgba(255,255,255,0.4);
+        }
+        
+        .admin-table tbody td:nth-child(8) {
+            padding: 8px 4px;
+        }
+        
+        .admin-table tbody td:nth-child(8) {
+            padding: 8px 4px;
+        }
+        
+        .admin-table tbody td:nth-child(8) button {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.3));
+            border: 2px solid rgba(212, 175, 55, 0.7);
+            color: var(--primary-gold);
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 11px;
+            transition: all 0.3s ease;
+            min-width: 60px;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .admin-table tbody td:nth-child(8) button:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.5));
+            border-color: rgba(212, 175, 55, 0.9);
+            color: var(--primary-gold);
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
+        }
+        
+        .admin-table tbody td:nth-child(8) span {
+            display: inline-block;
+        }
+        
+        @media (max-width: 850px) {
+            #adminPanel {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            .admin-tabs {
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+            
+            .admin-tab-btn {
+                padding: 12px 10px;
+                font-size: 13px;
+                min-height: 44px;
+            }
+            
+            .admin-table-wrap {
+                max-height: none;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 12px;
+            }
+            
+            .admin-table {
+                min-width: 800px;
+                table-layout: auto;
+            }
+            
+            .admin-table thead th {
+                padding: 12px 8px;
+                font-size: 11px;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+            
+            .admin-table tbody td {
+                padding: 12px 8px;
+                font-size: 11px;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            
+            .admin-table tbody td:nth-child(1) {
+                font-size: 12px;
+                padding: 12px 8px;
+            }
+            
+            .admin-table tbody td:nth-child(8) {
+                padding: 8px 6px;
+            }
+            
+            .admin-table tbody td:nth-child(8) button {
+                padding: 8px 12px;
+                font-size: 11px;
+                min-width: 50px;
+                min-height: 36px;
+            }
+            
+            .admin-edit-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 15px;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                padding: 10px 14px;
+                font-size: 12px;
+                min-height: 40px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .admin-table thead th {
+                padding: 11px 7px;
+                font-size: 10px;
+            }
+            
+            .admin-table tbody td {
+                padding: 11px 7px;
+                font-size: 11px;
+            }
+        }
+        
+        .admin-edit-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            margin-bottom: 20px; 
+            padding: 20px; 
+            border: 1px solid rgba(0, 89, 179, 0.3); 
+            border-radius: 15px; 
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 { 
+            text-align: center; 
+            color: var(--sky-blue); 
+            font-size: 28px; 
+            margin: 15px 0 25px 0;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        .form-container { 
+            position: relative;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+            transition: transform 0.3s ease;
+        }
+        
+        .form-container:hover {
+            transform: translateY(-2px);
+        }
+        
+        .disabled-overlay { 
+            position: absolute; 
+            inset: 0; 
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.92) 0%, rgba(15, 15, 25, 0.95) 50%, rgba(0, 0, 0, 0.92) 100%),
+                radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(212, 175, 55, 0.03) 2px,
+                    rgba(212, 175, 55, 0.03) 4px
+                );
+            backdrop-filter: blur(25px);
+            z-index: 100; 
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            border-radius: 25px; 
+            font-size: 28px; 
+            font-weight: 800; 
+            color: var(--sky-blue-light);
+            border: 3px solid rgba(212, 175, 55, 0.4);
+            text-align: center;
+            animation: fadeInScale 0.6s ease-out, systemClosedPulse 3s ease-in-out infinite;
+            box-shadow: 
+                0 0 50px rgba(212, 175, 55, 0.4),
+                0 0 100px rgba(212, 175, 55, 0.2),
+                inset 0 0 80px rgba(0, 0, 0, 0.6),
+                inset 0 0 40px rgba(212, 175, 55, 0.1);
+            padding: 50px;
+            flex-direction: column;
+            gap: 20px;
+            overflow: hidden;
+        }
+        
+        .disabled-overlay::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(212, 175, 55, 0.05) 90deg, transparent 180deg, rgba(212, 175, 55, 0.05) 270deg, transparent 360deg);
+            animation: rotate 25s linear infinite;
+            opacity: 0.6;
+        }
+        
+        .disabled-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at top left, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at bottom right, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
+            border-radius: 25px;
+            pointer-events: none;
+        }
+        
+        .disabled-overlay .lock-icon {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+            animation: lockPulse 2s ease-in-out infinite;
+            line-height: 1;
+        }
+        
+        @keyframes systemClosedPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 40px rgba(212, 175, 55, 0.3),
+                    inset 0 0 60px rgba(0, 0, 0, 0.5);
+                border-color: rgba(212, 175, 55, 0.5);
+            }
+            50% {
+                box-shadow: 
+                    0 0 60px rgba(212, 175, 55, 0.6),
+                    inset 0 0 80px rgba(0, 0, 0, 0.7);
+                border-color: rgba(212, 175, 55, 0.8);
+            }
+        }
+        
+        @keyframes lockPulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+            }
+            50% {
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9));
+            }
+        }
+        
+        .disabled-overlay span {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--sky-blue-light), var(--sky-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 32px;
+            font-weight: 900;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            letter-spacing: 2px;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+        
+        .form-box { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(15px);
+            padding: 25px; 
+            border-radius: 20px; 
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            margin-bottom: 30px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            animation: scaleIn 0.6s ease-out 0.5s both;
+        }
+        
+        .form-box:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(-3px) scale(1.01);
+        }
+        
+        .form-box input,
+        .form-box select {
+            animation: slideInRight 0.5s ease-out both;
+        }
+        
+        .form-box input:nth-child(1) { animation-delay: 0.6s; }
+        .form-box input:nth-child(2) { animation-delay: 0.65s; }
+        .form-box input:nth-child(3) { animation-delay: 0.7s; }
+        .form-box select:nth-child(4) { animation-delay: 0.75s; }
+        .form-box button { animation-delay: 0.8s; }
+        
+        input, textarea { 
+            width: 100%; 
+            padding: 16px 18px; 
+            background: rgba(26, 26, 26, 0.7);
+            border: 2px solid rgba(212, 175, 55, 0.3); 
+            color: var(--white); 
+            border-radius: 12px; 
+            font-size: 15px; 
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+        
+        select { 
+            width: 100%; 
+            padding: 16px 18px; 
+            background: rgba(26, 26, 26, 0.7);
+            border: 2px solid rgba(212, 175, 55, 0.3); 
+            color: var(--white); 
+            border-radius: 12px; 
+            font-size: 15px; 
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 12px;
+            padding-right: 45px;
+        }
+        
+        /* Mobile: Beautiful typography and readability */
+        @media (max-width: 768px) {
+            /* Beautiful text rendering */
+            body {
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            
+            /* Better line heights for readability */
+            p, span, div {
+                line-height: 1.7;
+            }
+            
+            /* Beautiful headings */
+            h1, h2, h3 {
+                letter-spacing: -0.3px;
+                line-height: 1.3;
+            }
+            
+            /* Enhanced input styling */
+            input, textarea, select {
+                font-size: 18px !important;
+                padding: 20px 18px !important;
+                min-height: 58px !important;
+                line-height: 1.5;
+            }
+            
+            select {
+                padding-right: 48px !important;
+            }
+            
+            /* Ensure inputs don't zoom on iOS */
+            input[type="text"],
+            input[type="tel"],
+            input[type="number"],
+            input[type="date"],
+            input[type="time"],
+            select,
+            textarea {
+                font-size: 18px !important;
+            }
+            
+            /* Beautiful button styling */
+            button, .btn-submit, .btn-nav {
+                letter-spacing: 0.4px;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            }
+            
+            /* Enhanced card styling */
+            .card, .stat-card {
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+                border-radius: 16px;
+            }
+            
+            /* Better table readability */
+            table {
+                border-collapse: separate;
+                border-spacing: 0;
+            }
+            
+            th {
+                font-weight: 700;
+                letter-spacing: 0.3px;
+                text-transform: uppercase;
+                font-size: 12px;
+            }
+            
+            td {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        }
+        
+        select option {
+            background: rgba(26, 26, 26, 0.95);
+            color: var(--white);
+            padding: 12px;
+            font-weight: 500;
+        }
+        
+        select option:checked {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--sky-blue-light);
+            font-weight: 600;
+        }
+        
+        input::placeholder, select::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        input:focus, select:focus, textarea:focus { 
+            border-color: var(--sky-blue);
+            background: rgba(26, 26, 26, 0.9);
+            box-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .full { 
+            grid-column: span 2; 
+        }
+        
+        .btn-submit { 
+            grid-column: span 2; 
+            padding: 18px; 
+            background: linear-gradient(135deg, var(--sky-blue), var(--sky-blue-dark));
+            color: var(--white); 
+            border: none; 
+            border-radius: 15px; 
+            font-weight: 700; 
+            font-size: 18px; 
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+        
+        .btn-submit:hover {
+            background: linear-gradient(135deg, var(--sky-blue-light), var(--sky-blue));
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.7);
+            animation: bounce 0.6s ease;
+        }
+        
+        .btn-submit:active {
+            transform: translateY(-2px) scale(1.02);
+            animation: none;
+        }
+
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px; 
+            margin-bottom: 40px;
+            justify-items: stretch;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Dynamic grid adjustments for fewer visible groups */
+        .stats-grid.grid-1 {
+            grid-template-columns: 1fr !important;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats-grid.grid-2 {
+            grid-template-columns: repeat(2, 1fr) !important;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats-grid.grid-3 {
+            grid-template-columns: repeat(3, 1fr) !important;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats-grid.grid-4 {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+        
+        .stat-card-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .stat-card-label {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--sky-blue-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            padding: 8px 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.1));
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .stat-card { 
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.7), rgba(40, 40, 40, 0.7));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            border-radius: 20px; 
+            padding: 25px 15px; 
+            text-align: center; 
+            border-top: 4px solid var(--sky-blue);
+            position: relative; 
+            overflow: hidden;
+            transition: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            animation: none;
+            width: 100%;
+        }
+        
+        .stat-card::before {
+            display: none;
+        }
+        
+        .stat-card:hover::before {
+            display: none;
+        }
+        
+        .stat-card:hover {
+            transform: none;
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            animation: none;
+        }
+        
+        .stat-card:active {
+            transform: none;
+        }
+        
+        /* Selected group card styling */
+        .stat-card.selected-group {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.15));
+            border-color: rgba(212, 175, 55, 0.6);
+            border-top: 4px solid var(--sky-blue-light);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        .stat-card.selected-group .stat-card-label {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.2));
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+        
+        .full-label { 
+            position: absolute; 
+            inset: 0; 
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(15px);
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px;
+            color: var(--primary-gold);
+            font-weight: 900; 
+            font-size: 20px; 
+            text-transform: uppercase; 
+            z-index: 5; 
+            text-align: center; 
+            padding: 20px;
+            animation: pulse 2s ease-in-out infinite;
+            border-radius: 20px;
+            border: 3px solid rgba(212, 175, 55, 0.6);
+            box-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.9),
+                inset 0 0 30px rgba(212, 175, 55, 0.2),
+                0 0 60px rgba(212, 175, 55, 0.4);
+            text-shadow: 
+                0 0 15px rgba(212, 175, 55, 0.8),
+                0 0 30px rgba(212, 175, 55, 0.6),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+        }
+        
+        .full-label::before {
+            content: "🔒";
+            font-size: 48px;
+            display: block;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8));
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .stat-card b { 
+            display: block; 
+            color: var(--sky-blue); 
+            font-size: 36px; 
+            margin-bottom: 8px;
+            font-weight: 800;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover b {
+            transform: scale(1.1);
+        }
+        
+        .info-box { 
+            margin-top: 18px; 
+            border-top: 1px solid rgba(212, 175, 55, 0.3); 
+            padding-top: 18px; 
+        }
+        
+        .day-label { 
+            color: var(--sky-blue-light); 
+            font-size: 14px; 
+            font-weight: 600; 
+            margin-bottom: 6px; 
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .date-label { 
+            color: var(--white); 
+            font-size: 18px; 
+            font-weight: 700; 
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .time-label { 
+            color: var(--sky-blue); 
+            font-size: 13px; 
+            margin-top: 10px; 
+            font-weight: 700; 
+            background: rgba(212, 175, 55, 0.2); 
+            padding: 10px 8px; 
+            border-radius: 10px; 
+            display: block;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Remaining label styling - gold with beautiful background */
+        .remaining-label {
+            font-size: 13px;
+            color: var(--primary-gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.15));
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            display: inline-block;
+            margin-left: 8px;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .public-list-area { 
+            margin-top: 40px; 
+            border-top: 2px solid rgba(212, 175, 55, 0.3); 
+            padding-top: 25px;
+            animation: slideInUp 0.8s ease-out 0.6s both;
+            transition: transform 0.3s ease;
+        }
+        
+        .public-list-area:hover {
+            transform: translateY(-3px);
+        }
+        
+        .public-list-area .table-wrap {
+            animation: fadeInScale 0.6s ease-out 0.8s both;
+        }
+        
+        .controls { 
+            display: grid; 
+            grid-template-columns: 2fr 1fr; 
+            gap: 12px; 
+            margin-bottom: 20px; 
+        }
+        
+        .table-wrap { 
+            overflow-x: auto; 
+            border-radius: 15px; 
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            min-width: 700px;
+            table-layout: fixed;
+        }
+        
+        th { 
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.2));
+            color: var(--sky-blue-light); 
+            padding: 18px 15px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        td { 
+            padding: 16px 15px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+            text-align: center; 
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+            vertical-align: middle;
+            line-height: 1.6;
+        }
+        
+        /* Name column - centered */
+        td.name-col {
+            text-align: center;
+            padding: 16px 15px;
+            vertical-align: middle;
+            font-weight: 600;
+            color: var(--white);
+        }
+        
+        /* Company column - centered with icon */
+        td.company-name {
+            text-align: center;
+            padding: 16px 15px;
+            vertical-align: middle;
+            font-weight: 600;
+            color: var(--sky-blue-light);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+        
+        td.company-name::before {
+            content: '🏢 ';
+            margin-right: 6px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Column width adjustments for 6 columns */
+        table thead th:nth-child(1),
+        table tbody td:nth-child(1) { 
+            width: 18%; 
+            min-width: 150px;
+        } /* Name */
+        
+        table thead th:nth-child(2),
+        table tbody td:nth-child(2) { 
+            width: 18%; 
+            min-width: 150px;
+        } /* Company */
+        
+        table thead th:nth-child(3),
+        table tbody td:nth-child(3) { 
+            width: 12%; 
+            min-width: 100px;
+        } /* Group */
+        
+        table thead th:nth-child(4),
+        table tbody td:nth-child(4) { 
+            width: 15%; 
+            min-width: 110px;
+        } /* Day */
+        
+        table thead th:nth-child(5),
+        table tbody td:nth-child(5) { 
+            width: 18%; 
+            min-width: 120px;
+        } /* Date */
+        
+        table thead th:nth-child(6),
+        table tbody td:nth-child(6) { 
+            width: 19%; 
+            min-width: 140px;
+        } /* Time */
+        
+        /* Ensure all cells align properly */
+        td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        td.name-col,
+        td.company-name {
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        
+        td::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        }
+        
+        tr {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.5s ease-out both;
+        }
+        
+        tr:nth-child(1) { animation-delay: 0.1s; }
+        tr:nth-child(2) { animation-delay: 0.15s; }
+        tr:nth-child(3) { animation-delay: 0.2s; }
+        tr:nth-child(4) { animation-delay: 0.25s; }
+        tr:nth-child(5) { animation-delay: 0.3s; }
+        tr:nth-child(n+6) { animation-delay: 0.35s; }
+        
+        tr:hover td {
+            background: rgba(212, 175, 55, 0.2);
+            transform: scale(1.02) translateX(3px);
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        tr:hover td::before {
+            left: 100%;
+        }
+        
+        tr:hover {
+            border-left: 3px solid var(--sky-blue);
+        }
+
+        .new-registration { 
+            background: linear-gradient(90deg, rgba(39, 174, 96, 0.2), rgba(39, 174, 96, 0.1)) !important;
+            border-left: 4px solid #27ae60 !important;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .new-registration td { 
+            color: #4ade80 !important;
+            font-weight: 700 !important;
+        }
+
+        .footer { 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 2px solid rgba(212, 175, 55, 0.5); 
+            text-align: center;
+            animation: slideInUp 0.8s ease-out 0.7s both;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer:hover {
+            transform: translateY(-3px);
+        }
+        
+        
+        .footer-left {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .footer-right {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .footer-market-info {
+            color: var(--sky-blue);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .footer-market-info strong {
+            color: var(--sky-blue-light);
+            font-size: 16px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-logo { 
+            width: 60px; 
+            height: auto; 
+            border-radius: 12px; 
+            filter: grayscale(100%) brightness(0.9);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .footer-logo:hover {
+            filter: grayscale(0%) brightness(1.3);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Footer Contacts Styling */
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            flex-wrap: wrap;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(40, 40, 40, 0.8));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 8px 15px;
+            padding-top: 18px;
+            text-align: left;
+            min-width: 280px;
+            max-width: 320px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            position: relative;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .contact-label {
+            color: var(--sky-blue);
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+            opacity: 0.9;
+            position: absolute;
+            top: 4px;
+            left: 10px;
+        }
+        
+        .contact-card-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            margin-top: 12px;
+        }
+        
+        .contact-name {
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            text-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
+            white-space: nowrap;
+        }
+        
+        .contact-phone {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sky-blue-light);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .contact-phone:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.6);
+            color: var(--sky-blue-light);
+            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+        }
+        
+        .phone-number {
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+        
+        /* Beautiful Company Name Styling - for non-table elements */
+        .company-name:not(td) {
+            font-weight: 600;
+            color: var(--sky-blue-light);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+            position: relative;
+            padding: 4px 0;
+            display: inline-block;
+        }
+        
+        .company-name:not(td)::before {
+            content: '🏢';
+            margin-right: 6px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Table cell company name styling */
+        td.company-name {
+            font-weight: 600;
+            color: var(--sky-blue-light);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+        
+        td.company-name::before {
+            content: '🏢 ';
+            margin-right: 6px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Beautiful Group Badge Styling */
+        .group-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.15));
+            color: var(--sky-blue);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .group-badge::before {
+            content: '📋';
+            margin-right: 4px;
+            font-size: 12px;
+        }
+        
+        .group-badge:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.25));
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px) scale(1.05);
+        }
+        
+        /* Table cell styling for company and group */
+        td.company-name {
+            font-weight: 600;
+            color: var(--sky-blue-light);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+        
+        td.group-badge {
+            text-align: center;
+            background: none !important;
+            border: none !important;
+            padding: 16px 15px !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            display: inline-block;
+            font-weight: 600;
+            color: var(--white);
+            font-size: 14px;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+        
+        td.group-badge::before {
+            content: none !important;
+        }
+        
+        td.group-badge:hover {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        /* Enhanced select dropdown styling */
+        select:focus {
+            border-color: var(--sky-blue);
+            background: rgba(26, 26, 26, 0.9);
+            box-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        select:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(26, 26, 26, 0.8);
+        }
+        
+        /* Mobile optimizations for company and group styling */
+        @media (max-width: 500px) {
+            .company-name {
+                font-size: 14px;
+            }
+            
+            .company-name::before {
+                font-size: 12px;
+                margin-right: 4px;
+            }
+            
+            .group-badge {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+            
+            .group-badge::before {
+                font-size: 10px;
+                margin-right: 3px;
+            }
+        }
+
+        .footer-credit { 
+            font-size: 12px; 
+            color: var(--sky-blue-light); 
+            font-weight: 600;
+            margin-top: 20px;
+            padding-top: 20px; 
+            line-height: 1.6; 
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+        
+        .footer-credit span {
+            font-weight: 700;
+            color: var(--sky-blue);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+        
+        /* WhatsApp link styling for admin table */
+        #adminTableBody a {
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 1px dotted rgba(212, 175, 55, 0.5);
+        }
+        
+        #adminTableBody a:hover {
+            color: var(--sky-blue-light);
+            border-bottom-color: var(--sky-blue);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+        }
+
+        #successModal { 
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,0,0,0.95); 
+            backdrop-filter: blur(10px);
+            z-index: 3000; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        #loginModal { 
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,0,0,0.95); 
+            backdrop-filter: blur(10px);
+            z-index: 3000; 
+            justify-content: center; 
+            align-items: flex-start; 
+            padding: 20px;
+            padding-top: 100px;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        .modal-content, .success-content { 
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px; 
+            border-radius: 25px; 
+            border: 2px solid var(--sky-blue); 
+            width: 100%; 
+            max-width: 380px; 
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 175, 55, 0.4);
+            animation: fadeInUp 0.4s ease-out;
+        }
+        
+        #loginModal .modal-content {
+            margin-bottom: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(212, 175, 55, 0.5);
+        }
+        
+        #loginModal .modal-content h3 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+        
+        .admin-login-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .admin-title-icon {
+            font-size: 28px;
+            display: inline-block;
+            animation: rotate 4s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
+        }
+        
+        .admin-login-title span:not(.admin-title-icon) {
+            background: linear-gradient(135deg, var(--sky-blue-light), var(--sky-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        #loginModal .modal-content input {
+            width: 100%;
+            padding: 16px 18px;
+            background: rgba(26, 26, 26, 0.7);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            color: var(--white);
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        
+        #loginModal .modal-content input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        #loginModal .modal-content input:focus {
+            border-color: var(--sky-blue);
+            background: rgba(26, 26, 26, 0.9);
+            box-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        #loginModal .modal-content .btn-submit {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        
+        #loginModal .modal-content .cancel-btn {
+            background: none;
+            border: none;
+            color: var(--sky-blue-light);
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        #loginModal .modal-content .cancel-btn:hover {
+            color: var(--sky-blue);
+            background: rgba(212, 175, 55, 0.1);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            #loginModal {
+                padding-top: 60px;
+                align-items: flex-start;
+            }
+            
+            #loginModal .modal-content {
+                max-width: 90%;
+                padding: 30px 25px;
+                border-radius: 20px;
+            }
+            
+            #loginModal .modal-content input {
+                min-height: 50px;
+                font-size: 16px;
+                padding: 16px;
+            }
+            
+            #loginModal .modal-content .btn-submit {
+                min-height: 52px;
+                padding: 16px;
+            }
+            
+            #adminPanel {
+                padding: 20px 15px;
+                border-radius: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .admin-edit-grid {
+                padding: 15px;
+                gap: 12px;
+            }
+            
+            .admin-edit-grid label {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .admin-edit-grid input,
+            .admin-edit-grid select,
+            .admin-edit-grid textarea {
+                min-height: 48px;
+                font-size: 16px;
+            }
+        }
+        
+        #timerDisplay {
+            text-align: center;
+            color: var(--success);
+            font-size: 24px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(39, 174, 96, 0.5);
+            padding: 15px;
+            background: rgba(39, 174, 96, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Mobile Responsive - Beautiful & Easy to Read */
+        @media (max-width: 850px) { 
+            body {
+                padding: 10px;
+                font-size: 17px;
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            
+            .stats-grid { 
+                grid-template-columns: repeat(2, 1fr) !important; 
+                gap: 14px;
+                max-width: 100% !important;
+            }
+            
+            .stats-grid.grid-1,
+            .stats-grid.grid-2,
+            .stats-grid.grid-3,
+            .stats-grid.grid-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                max-width: 100% !important;
+            }
+            
+            .full-label {
+                font-size: 16px;
+                padding: 16px;
+                letter-spacing: 0.5px;
+                line-height: 1.5;
+            }
+            
+            .full-label::before {
+                font-size: 36px;
+            }
+            
+            .container { 
+                padding: 16px; 
+                border-radius: 20px;
+                margin: 0;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            }
+            
+            .logo-section {
+                padding: 8px 0;
+                margin-bottom: 16px;
+                gap: 12px;
+            }
+            
+            .logo-img {
+                max-width: 80px;
+                max-height: 60px;
+                filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+            }
+            
+            .banner-title-inline {
+                font-size: 15px;
+                line-height: 1.5;
+                font-weight: 600;
+                color: var(--sky-blue-light);
+            }
+            
+            .top-banner { 
+                padding-bottom: 18px;
+                margin-bottom: 18px;
+                border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            }
+            
+            .top-banner h2 { 
+                font-size: 17px; 
+                line-height: 1.6;
+                padding: 0 8px;
+                font-weight: 600;
+                color: var(--sky-blue);
+            }
+            
+            h1 { 
+                font-size: 24px; 
+                margin: 12px 0 20px 0;
+                font-weight: 700;
+                line-height: 1.3;
+                text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            }
+            
+            #timerDisplay {
+                font-size: 18px;
+                padding: 16px;
+                margin-bottom: 16px;
+                line-height: 1.5;
+                border-radius: 14px;
+            }
+            
+            .header {
+                padding: 16px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+                gap: 12px;
+                border-radius: 16px;
+                background: rgba(26, 26, 26, 0.6);
+                backdrop-filter: blur(10px);
+            }
+            
+            /* Beautiful Form - Easy to fill on mobile */
+            .form-box {
+                padding: 24px 20px;
+                gap: 22px;
+                grid-template-columns: 1fr !important;
+                border-radius: 18px;
+                background: linear-gradient(135deg, rgba(26, 26, 26, 0.7), rgba(20, 20, 20, 0.8));
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+            }
+            
+            .form-group {
+                margin-bottom: 0;
+            }
+            
+            .form-group label {
+                font-size: 16px;
+                margin-bottom: 12px;
+                display: block;
+                font-weight: 600;
+                color: var(--sky-blue-light);
+                letter-spacing: 0.3px;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+            
+            input, select, textarea {
+                padding: 20px 18px !important;
+                font-size: 18px !important;
+                min-height: 58px !important;
+                border-radius: 14px;
+                width: 100%;
+                border: 2px solid rgba(212, 175, 55, 0.3);
+                background: rgba(30, 30, 30, 0.9);
+                color: #fff;
+                -webkit-appearance: none;
+                appearance: none;
+                transition: all 0.3s ease;
+                font-weight: 500;
+                letter-spacing: 0.2px;
+            }
+            
+            input:focus, select:focus, textarea:focus {
+                border-color: var(--sky-blue);
+                outline: none;
+                box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25), 0 4px 12px rgba(212, 175, 55, 0.2);
+                background: rgba(35, 35, 35, 0.95);
+                transform: translateY(-1px);
+            }
+            
+            input::placeholder, textarea::placeholder {
+                color: rgba(255, 255, 255, 0.5);
+                font-weight: 400;
+            }
+            
+            select {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%23d4af37' d='M7 10L2 5h10z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 18px center;
+                padding-left: 48px !important;
+                cursor: pointer;
+            }
+            
+            .btn-submit, .btn-nav {
+                min-height: 58px !important;
+                padding: 18px 28px !important;
+                font-size: 18px !important;
+                font-weight: 700;
+                border-radius: 14px;
+                width: 100%;
+                margin-top: 12px;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+                transition: all 0.3s ease;
+            }
+            
+            .btn-submit {
+                background: linear-gradient(135deg, var(--sky-blue), var(--sky-blue-dark));
+                border: 2px solid rgba(212, 175, 55, 0.5);
+            }
+            
+            .btn-submit:active {
+                transform: translateY(1px);
+                box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+            }
+            
+            .btn-nav {
+                background: rgba(26, 26, 26, 0.8);
+                border: 2px solid rgba(212, 175, 55, 0.4);
+            }
+            
+            .lang-btn {
+                min-height: 52px;
+                padding: 14px 20px;
+                font-size: 16px;
+                font-weight: 600;
+                border-radius: 12px;
+            }
+            
+            /* Beautiful table styling */
+            .table-wrap {
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            }
+            
+            th, td {
+                font-size: 14px;
+                padding: 14px 12px;
+                line-height: 1.5;
+            }
+            
+            /* Beautiful stat cards */
+            .stat-card {
+                border-radius: 16px;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transition: transform 0.2s ease;
+            }
+        }
+        
+        @media (max-width: 500px) { 
+            body {
+                padding: 8px;
+                font-size: 17px;
+                line-height: 1.65;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            
+            .stats-grid { 
+                grid-template-columns: 1fr !important; 
+                gap: 14px;
+                max-width: 100% !important;
+            }
+            
+            .stats-grid.grid-1,
+            .stats-grid.grid-2,
+            .stats-grid.grid-3,
+            .stats-grid.grid-4 {
+                grid-template-columns: 1fr !important;
+                max-width: 100% !important;
+            }
+            
+            .full-label {
+                font-size: 15px;
+                padding: 14px;
+                letter-spacing: 0.4px;
+                line-height: 1.5;
+            }
+            
+            .full-label::before {
+                font-size: 32px;
+            }
+            
+            .form-box, .controls, .admin-edit-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px;
+                padding: 22px 18px !important;
+                border-radius: 18px;
+            }
+            
+            .container { 
+                padding: 14px; 
+                max-width: 100%;
+                border-radius: 18px;
+                margin: 0;
+                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+            }
+            
+            .top-banner { 
+                padding-bottom: 16px;
+                margin-bottom: 16px;
+                border-bottom: 2px solid rgba(212, 175, 55, 0.15);
+            }
+            
+            .top-banner h2 { 
+                font-size: 15px;
+                line-height: 1.5;
+                padding: 0 8px;
+                font-weight: 600;
+            }
+            
+            h1 { 
+                font-size: 22px; 
+                margin: 10px 0 18px 0;
+                font-weight: 700;
+                line-height: 1.3;
+            }
+            
+            #timerDisplay { 
+                font-size: 17px;
+                padding: 16px;
+                margin-bottom: 14px;
+                line-height: 1.5;
+                border-radius: 14px;
+            }
+            
+            /* Beautiful large inputs for easy tapping */
+            input, select, textarea { 
+                font-size: 19px !important; 
+                padding: 20px 18px !important; 
+                min-height: 60px !important;
+                border-radius: 14px;
+                -webkit-appearance: none;
+                appearance: none;
+                border: 2px solid rgba(212, 175, 55, 0.35);
+                background: rgba(30, 30, 30, 0.95);
+                font-weight: 500;
+                letter-spacing: 0.2px;
+            }
+            
+            input:focus, select:focus, textarea:focus {
+                transform: translateY(-1px);
+                border-color: var(--sky-blue);
+                box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25), 0 4px 14px rgba(212, 175, 55, 0.2);
+                background: rgba(35, 35, 35, 1);
+            }
+            
+            .form-group label {
+                font-size: 16px;
+                margin-bottom: 10px;
+                font-weight: 600;
+                color: var(--sky-blue-light);
+                letter-spacing: 0.3px;
+            }
+            
+            .btn-submit { 
+                font-size: 19px !important; 
+                padding: 20px 28px !important; 
+                min-height: 62px !important;
+                border-radius: 14px;
+                font-weight: 700;
+                width: 100%;
+                letter-spacing: 0.6px;
+                text-transform: uppercase;
+                box-shadow: 0 5px 20px rgba(212, 175, 55, 0.35);
+            }
+            
+            .btn-nav {
+                min-height: 56px !important;
+                padding: 18px 24px !important;
+                font-size: 17px !important;
+                border-radius: 14px;
+                font-weight: 600;
+            }
+            
+            .lang-btn {
+                min-height: 50px;
+                padding: 14px 18px;
+                font-size: 16px;
+                font-weight: 600;
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 14px;
+                flex-direction: column;
+                gap: 12px;
+                border-radius: 16px;
+                background: rgba(26, 26, 26, 0.7);
+            }
+            
+            .nav-btns {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btns .btn-nav {
+                width: 100%;
+                flex: 1;
+            }
+            
+            th, td { 
+                font-size: 13px; 
+                padding: 14px 10px; 
+                line-height: 1.5;
+            }
+            
+            .table-wrap {
+                border-radius: 14px;
+                margin: 0;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            }
+            
+            table {
+                min-width: 680px;
+            }
+            
+            .footer-credit { 
+                font-size: 13px; 
+                line-height: 1.7;
+            }
+            
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                margin-top: 35px;
+                padding-top: 25px;
+            }
+            
+            .footer-left, .footer-right {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .disabled-overlay { 
+                font-size: 16px;
+                padding: 20px 16px;
+                border-radius: 14px;
+            }
+            
+            .stat-card {
+                padding: 18px 14px;
+                border-radius: 14px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+            
+            .stat-card b {
+                font-size: 32px;
+                font-weight: 700;
+            }
+            
+            /* Admin panel optimizations for small mobile - Easy to use */
+            #adminPanel {
+                padding: 12px;
+                border-radius: 12px;
+            }
+            
+            .admin-tabs {
+                gap: 8px;
+                margin-bottom: 15px;
+                flex-direction: column;
+            }
+            
+            .admin-tab-btn {
+                padding: 16px 12px !important;
+                font-size: 16px !important;
+                min-height: 52px !important;
+                width: 100%;
+                border-radius: 12px;
+            }
+            
+            .admin-table-wrap {
+                border-radius: 10px;
+                margin-top: 15px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .admin-table {
+                min-width: 750px;
+            }
+            
+            .admin-table thead th {
+                font-size: 11px;
+                padding: 12px 8px;
+            }
+            
+            .admin-table tbody td {
+                font-size: 12px;
+                padding: 12px 8px;
+            }
+            
+            .admin-table tbody td:nth-child(1) {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            
+            .admin-table tbody td:nth-child(8) button {
+                padding: 10px 14px !important;
+                font-size: 13px !important;
+                min-width: 60px !important;
+                min-height: 44px !important;
+                border-radius: 8px;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+            
+            .filter-btn {
+                padding: 14px 16px !important;
+                font-size: 14px !important;
+                min-height: 48px !important;
+                border-radius: 10px;
+                flex: 1;
+                min-width: 80px;
+            }
+            
+            .admin-edit-grid {
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .admin-edit-grid label {
+                font-size: 15px;
+                margin-bottom: 8px;
+            }
+            
+            .admin-edit-grid input,
+            .admin-edit-grid select {
+                min-height: 52px !important;
+                font-size: 17px !important;
+                padding: 16px !important;
+            }
+            
+            .admin-edit-grid button {
+                min-height: 52px !important;
+                font-size: 16px !important;
+                padding: 16px 20px !important;
+            }
+            
+            .stat-card b {
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 15px;
+            }
+            
+            .lang-switch {
+                justify-content: center;
+                width: 100%;
+                padding: 4px;
+            }
+            
+            .nav-btns {
+                display: flex;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .btn-nav {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .form-container {
+                margin-bottom: 20px;
+            }
+            
+            .public-list-area {
+                margin-top: 30px;
+                padding-top: 20px;
+            }
+            
+            .public-list-area h3 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+            
+            .controls {
+                margin-bottom: 15px;
+            }
+            
+            /* Reduce animations on mobile for better performance */
+            .container:hover,
+            .top-banner:hover,
+            .header:hover,
+            .form-container:hover,
+            .public-list-area:hover,
+            .footer:hover {
+                transform: none;
+            }
+            
+            .stat-card:hover {
+                transform: none;
+                animation: none;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            body {
+                padding: 5px;
+                font-size: 14px;
+            }
+            
+            .container {
+                padding: 12px;
+                border-radius: 12px;
+            }
+            
+            .top-banner {
+                padding-bottom: 12px;
+                margin-bottom: 12px;
+            }
+            
+            .top-banner h2 {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            
+            h1 {
+                font-size: 18px;
+                margin: 5px 0 12px 0;
+            }
+            
+            .header {
+                padding: 12px;
+            }
+            
+            .form-box {
+                padding: 15px;
+                gap: 12px;
+            }
+            
+            input, select, textarea {
+                padding: 14px 12px;
+                font-size: 16px;
+                min-height: 48px;
+            }
+            
+            .btn-submit {
+                padding: 16px 18px;
+                min-height: 50px;
+                font-size: 15px;
+            }
+            
+            .btn-nav {
+                min-height: 46px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .stat-card {
+                padding: 18px 12px;
+            }
+            
+            .stat-card b {
+                font-size: 28px;
+            }
+            
+            th, td {
+                font-size: 11px;
+                padding: 12px 8px;
+            }
+            
+            table {
+                min-width: 550px;
+            }
+            
+            #timerDisplay {
+                font-size: 14px;
+                padding: 10px 8px;
+            }
+            
+            .footer {
+                margin-top: 30px;
+                padding-top: 20px;
+            }
+            
+            .footer-credit {
+                font-size: 11px;
+            }
+            
+            .footer-contacts {
+                gap: 15px;
+                margin-top: 20px;
+                flex-direction: column;
+            }
+            
+            .contact-card {
+                min-width: 100%;
+                padding: 15px 20px;
+            }
+            
+            .contact-name {
+                font-size: 16px;
+            }
+            
+            .contact-phone {
+                font-size: 13px;
+                padding: 8px 15px;
+            }
+        }
+        
+        /* Mobile-specific touch optimizations - Make everything easy */
+        @media (max-width: 768px) {
+            /* Prevent text selection on buttons for better touch experience */
+            button, .btn-nav, .btn-submit, .lang-btn, .admin-tab-btn, .filter-btn {
+                -webkit-tap-highlight-color: rgba(212, 175, 55, 0.4);
+                -webkit-touch-callout: none;
+                user-select: none;
+                touch-action: manipulation;
+                cursor: pointer;
+            }
+            
+            /* Make all interactive elements larger and easier to tap */
+            a, button, input[type="button"], input[type="submit"], select {
+                min-height: 48px;
+                min-width: 48px;
+            }
+            
+            /* Beautiful spacing between form elements */
+            .form-group {
+                margin-bottom: 22px;
+            }
+            
+            /* Beautiful stat cards */
+            .stat-card {
+                padding: 20px;
+                min-height: 90px;
+                background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(20, 20, 20, 0.9));
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .stat-card:active {
+                transform: scale(0.98);
+            }
+            
+            /* Beautiful navigation */
+            .nav-btns {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+            
+            .nav-btns .btn-nav {
+                width: 100%;
+                flex: 1;
+                background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(20, 20, 20, 0.95));
+                border: 2px solid rgba(212, 175, 55, 0.4);
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+            }
+            
+            /* Beautiful table scrolling */
+            .table-wrap, .admin-table-wrap {
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(212, 175, 55, 0.6) rgba(0, 0, 0, 0.2);
+            }
+            
+            .table-wrap::-webkit-scrollbar,
+            .admin-table-wrap::-webkit-scrollbar {
+                height: 8px;
+            }
+            
+            .table-wrap::-webkit-scrollbar-thumb,
+            .admin-table-wrap::-webkit-scrollbar-thumb {
+                background: rgba(212, 175, 55, 0.6);
+                border-radius: 4px;
+            }
+            
+            .table-wrap::-webkit-scrollbar-track,
+            .admin-table-wrap::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 4px;
+            }
+            
+            /* Perfect text sizing for readability */
+            body {
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+                font-weight: 400;
+            }
+            
+            /* Beautiful active states instead of hover */
+            .card:active,
+            .stat-card:active,
+            .btn-nav:active {
+                transform: scale(0.97);
+                opacity: 0.9;
+            }
+            
+            /* Beautiful form container */
+            .form-container {
+                margin-bottom: 28px;
+            }
+            
+            /* Beautiful logo */
+            .logo-img {
+                max-width: 85px;
+                max-height: 65px;
+                filter: drop-shadow(0 3px 10px rgba(212, 175, 55, 0.4));
+                transition: transform 0.3s ease;
+            }
+            
+            /* Beautiful section spacing */
+            .section {
+                margin-bottom: 25px;
+            }
+            
+            /* Beautiful text colors for better contrast */
+            .banner-title-inline,
+            .top-banner h2 {
+                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            }
+            
+            /* Beautiful focus states */
+            *:focus {
+                outline: none;
+            }
+            
+            /* Beautiful transitions */
+            * {
+                transition: all 0.2s ease;
+            }
+            
+            /* Better scrolling */
+            .table-wrap, .admin-table-wrap {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: auto;
+                scrollbar-width: thin;
+            }
+            
+            .table-wrap::-webkit-scrollbar,
+            .admin-table-wrap::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .table-wrap::-webkit-scrollbar-thumb,
+            .admin-table-wrap::-webkit-scrollbar-thumb {
+                background: rgba(212, 175, 55, 0.5);
+                border-radius: 3px;
+            }
+            
+            .disabled-overlay {
+                font-size: 18px;
+                padding: 25px 15px;
+            }
+            
+            .disabled-overlay .lock-icon {
+                font-size: 50px;
+            }
+            
+            .disabled-overlay span {
+                font-size: 20px;
+            }
+            
+            /* Prevent zoom on input focus (iOS) */
+            input[type="text"],
+            input[type="tel"],
+            input[type="number"],
+            input[type="date"],
+            input[type="time"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+            
+            /* Smooth scrolling */
+            html {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            
+            /* Better form spacing - Easy to fill */
+            .form-box {
+                margin-bottom: 25px;
+                padding: 20px 16px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            /* Make labels more visible */
+            .form-group label {
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--sky-blue-light);
+                margin-bottom: 10px;
+                display: block;
+            }
+            
+            /* Larger input fields */
+            .form-box input,
+            .form-box select,
+            .form-box textarea {
+                font-size: 18px !important;
+                padding: 18px 16px !important;
+                min-height: 56px !important;
+                border: 2px solid rgba(212, 175, 55, 0.3);
+                border-radius: 12px;
+            }
+            
+            /* Submit button stands out */
+            .btn-submit {
+                background: linear-gradient(135deg, var(--sky-blue), var(--sky-blue-dark));
+                font-size: 18px !important;
+                font-weight: 700;
+                padding: 18px 24px !important;
+                min-height: 58px !important;
+                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            }
+            
+            /* Optimize animations for mobile - reduce heavy effects */
+            * {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+            
+            /* Reduce animation duration for faster feel */
+            .container,
+            .form-container,
+            .card,
+            .stat-card {
+                animation-duration: 0.3s !important;
+                transition-duration: 0.2s !important;
+            }
+            
+            /* Reduce motion for better performance */
+            .container,
+            .top-banner,
+            .header,
+            .form-container,
+            .stats-grid,
+            .public-list-area,
+            .footer {
+                will-change: auto;
+            }
+            
+            /* Optimize backdrop filters on mobile */
+            .form-box,
+            .admin-table-wrap,
+            .card {
+                backdrop-filter: blur(8px);
+            }
+            
+            /* Better touch targets */
+            .btn-submit,
+            .btn-nav,
+            .admin-tab-btn,
+            .filter-btn {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 18px;
+            }
+            
+            /* Improve table readability on mobile */
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+            }
+            
+            /* Optimize container padding */
+            .container {
+                padding: 10px;
+            }
+            
+            /* Better header on mobile */
+            .header {
+                padding: 12px 10px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            /* Stats grid on mobile */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .stat-card {
+                padding: 15px 10px;
+            }
+        }
+        
+        /* Touch-friendly on mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .btn-nav, .btn-submit, .lang-btn, .admin-tab-btn, .filter-btn {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .stat-card:hover {
+                transform: none;
+                animation: none;
+            }
+            
+            tr:hover td {
+                transform: none;
+            }
+            
+            .admin-table tbody tr:hover {
+                background: transparent;
+            }
+            
+            .admin-table tbody tr:hover td {
+                background: transparent;
+            }
+        }
+        
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            /* Reduce expensive effects */
+            * {
+                text-rendering: optimizeSpeed;
+            }
+            
+            /* Optimize rendering */
+            .container,
+            .form-box,
+            .admin-table-wrap,
+            .table-wrap {
+                contain: layout style paint;
+            }
+            
+            /* GPU acceleration for smooth scrolling */
+            .admin-table-wrap,
+            .table-wrap {
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+            }
+        }
+        
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            /* Reduce expensive effects */
+            * {
+                text-rendering: optimizeSpeed;
+            }
+            
+            /* Optimize rendering */
+            .container,
+            .form-box,
+            .admin-table-wrap,
+            .table-wrap {
+                contain: layout style paint;
+            }
+            
+            /* GPU acceleration for smooth scrolling */
+            .admin-table-wrap,
+            .table-wrap {
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+            }
+        }
+        
+        /* Disable heavy animations on low-end devices */
+        @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body id="bodyTag">
+
+<div class="container">
+    <div class="top-line"></div>
+    <div class="logo-section">
+        <img src="1.png" alt="Logo 1" class="logo-img logo-1" onerror="this.style.display='none'">
+        <h2 id="b-title" class="banner-title-inline">پارەدانی بازاڕی ناوەند حلال و حلال مارکێت ١ و حلال مارکێت ٢</h2>
+        <img src="2.png" alt="Logo 2" class="logo-img logo-2" onerror="this.style.display='none'">
+    </div>
+
+    <div class="header">
+        <div class="lang-switch">
+            <button class="lang-btn" id="l-ku" onclick="setLang('ku')">Kurdish</button>
+            <button class="lang-btn" id="l-ar" onclick="setLang('ar')">Arabic</button>
+            <button class="lang-btn" id="l-en" onclick="setLang('en')">English</button>
+        </div>
+        <div class="nav-btns">
+            <button class="btn-nav admin-btn" id="loginTrigger" onclick="showLogin()">
+                <span class="admin-icon">⚙️</span>
+                <span class="admin-text">Admin</span>
+            </button>
+            <button class="btn-nav logout-btn" id="logoutBtn" style="display:none; background:#8B0000; color:white;" onclick="logout()">
+                <span class="logout-icon">🚪</span>
+                <span class="logout-text">Logout</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="timerDisplay"></div>
+
+    <div id="adminPanel">
+        <div class="admin-tabs" style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid rgba(212, 175, 55, 0.3);">
+            <button class="admin-tab-btn active" onclick="showAdminTab('settings')" style="flex: 1; padding: 15px; background: rgba(212, 175, 55, 0.2); border: 2px solid rgba(212, 175, 55, 0.4); border-bottom: none; border-radius: 10px 10px 0 0; color: var(--sky-blue); font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                ⚙️ Settings
+            </button>
+            <button class="admin-tab-btn" onclick="showAdminTab('users')" style="flex: 1; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-bottom: none; border-radius: 10px 10px 0 0; color: #aaa; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                👥 Users
+            </button>
+            <button class="admin-tab-btn" onclick="showAdminTab('registrations')" style="flex: 1; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-bottom: none; border-radius: 10px 10px 0 0; color: #aaa; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                📋 Registrations
+            </button>
+        </div>
+        
+        <div id="adminTabSettings" class="admin-tab-content">
+            <div class="admin-edit-grid">
+                <div style="grid-column: 1 / -1;"><h3 style="color:#0080ff; margin:0;">💎 ڕێکخستنی پێشکەوتووی ئەدمین</h3></div>
+                
+                <div style="grid-column: 1 / -1; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; text-align: center;">
+                    <label style="display: block; margin-bottom: 5px;">دۆخی سیستم:</label>
+                    <button id="toggleSystemBtn" class="btn-nav" style="width: 100%; font-size: 18px;" onclick="toggleSystemStatus()"></button>
+                </div>
+
+                <div><label>گروپ</label><select id="setGroup" onchange="loadGroupSettings()"><option value="A">Group A</option><option value="B">Group B</option><option value="C">Group C</option><option value="D">Group D</option></select></div>
+                <div><label>نیشاندان</label><input type="checkbox" id="setVisible" style="width:20px; height:20px;"></div>
+                <div><label>بەروار</label><input type="date" id="setDate"></div>
+                <div><label>کات</label><div style="display:flex; gap:5px; align-items:center;"><input type="time" id="setTimeStart"> <span class="to-text">بۆ</span> <input type="time" id="setTimeEnd"></div></div>
+                <div><label>سنوور</label><input type="number" id="setLimit"></div>
+                <div><label>Activate at (time)</label><input type="time" id="activateAtTime"></div>
+                <div><label>Activate for (minutes)</label><input type="number" id="disableMinutes" min="1"></div>
+                <div style="grid-column: 1 / -1;"><label>Company List (one per line)</label><textarea id="setCompanies" rows="4" style="width:100%; background:#000; border:1px solid #333; color:white; padding:10px; border-radius:8px;"></textarea></div>
+                <button class="btn-nav" style="background:#8B0000; color:white; grid-column: 1 / -1;" onclick="startDisableTimer()">Start Activation Timer</button>
+            </div>
+        </div>
+        
+        <div id="adminTabUsers" class="admin-tab-content" style="display: none;">
+            <div class="admin-edit-grid">
+                <div style="grid-column: 1 / -1;"><h3 style="color:#0080ff; margin:0 0 15px 0;">👥 User Management</h3></div>
+                <div><label>Username</label><input type="text" id="newUsername" placeholder="Enter username"></div>
+                <div><label>Password</label><input type="password" id="newPassword" placeholder="Enter password"></div>
+                <div><label>Role</label><select id="newUserRole"><option value="admin">Admin</option><option value="accountant">Accountant</option></select></div>
+                <button class="btn-nav" style="background:#0059b3; color:white; grid-column: 1 / -1;" onclick="addUser()">Add User</button>
+                <div style="grid-column: 1 / -1; margin-top: 20px;">
+                    <label style="display: block; margin-bottom: 10px;">Users List:</label>
+                    <div id="usersList" style="background:#000; border:1px solid #333; border-radius:8px; padding:10px; max-height:200px; overflow-y:auto;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="adminTabRegistrations" class="admin-tab-content" style="display: none;">
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 8px; flex: 1;">
+                        <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Paid Status:</label>
+                        <button class="btn-nav" id="filterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:2px solid rgba(0,89,179,0.8); color:#fff; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All</button>
+                        <button class="btn-nav" id="filterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Unpaid</button>
+                        <button class="btn-nav" id="filterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:2px solid rgba(39,174,96,0.5); color:#27ae60; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Paid</button>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex: 1;">
+                        <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Group:</label>
+                        <button class="btn-nav" id="filterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:2px solid rgba(212,175,55,0.8); color:#000; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All Groups</button>
+                        <button class="btn-nav" id="filterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group A</button>
+                        <button class="btn-nav" id="filterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group B</button>
+                        <button class="btn-nav" id="filterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group C</button>
+                        <button class="btn-nav" id="filterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group D</button>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-nav" style="background:#1d6f42; color:white; flex: 1;" onclick="exportExcel()">📥 Export Excel</button>
+                    <button class="btn-nav" style="background:#8B0000; color:white; flex: 1;" onclick="clearAllRegistrations()">🗑️ Clear All</button>
+                </div>
+            </div>
+            <div class="table-wrap admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Company</th><th>Phone</th><th>Group</th><th>Day</th><th>Date</th><th>Time</th><th>Paid</th></tr></thead><tbody id="adminTableBody"></tbody></table></div>
+        </div>
+    </div>
+
+    <div id="accountantPanel" style="display:none;">
+        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid rgba(212, 175, 55, 0.3);">
+            <h3 style="color:#0080ff; margin:0 0 10px 0;">📊 Accountant View</h3>
+            <p id="accountantViewDescription" style="color:#aaa; margin:0; font-size: 14px;">You can view the registration list only. No editing permissions.</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 8px; flex: 1;">
+                    <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Paid Status:</label>
+                    <button class="btn-nav" id="accountantFilterAll" onclick="setAccountantPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:2px solid rgba(0,89,179,0.8); color:#fff; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All</button>
+                    <button class="btn-nav" id="accountantFilterUnpaid" onclick="setAccountantPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Unpaid</button>
+                    <button class="btn-nav" id="accountantFilterPaid" onclick="setAccountantPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:2px solid rgba(39,174,96,0.5); color:#27ae60; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Paid</button>
+                </div>
+                <div style="display: flex; gap: 8px; flex: 1;">
+                    <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Group:</label>
+                    <button class="btn-nav" id="accountantFilterGroupAll" onclick="setAccountantGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:2px solid rgba(212,175,55,0.8); color:#000; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All Groups</button>
+                    <button class="btn-nav" id="accountantFilterGroupA" onclick="setAccountantGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group A</button>
+                    <button class="btn-nav" id="accountantFilterGroupB" onclick="setAccountantGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group B</button>
+                    <button class="btn-nav" id="accountantFilterGroupC" onclick="setAccountantGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group C</button>
+                    <button class="btn-nav" id="accountantFilterGroupD" onclick="setAccountantGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group D</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-wrap admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Company</th><th>Phone</th><th>Group</th><th>Day</th><th>Date</th><th>Time</th><th>Paid</th></tr></thead><tbody id="accountantTableBody"></tbody></table></div>
+    </div>
+
+    <div id="mainContent">
+        <h1 id="m-title">ناونووسین بۆ پارەدان</h1>
+
+        <div class="form-container">
+            <div id="formOverlay" class="disabled-overlay">سیستم دەبڕدرێتەوە لە <span id="countdown"></span> / النظام سيغلق في <span id="countdown"></span> / System will close in <span id="countdown"></span></div>
+            
+            <form id="regForm" class="form-box">
+                <input type="text" id="uName" class="full" required placeholder="ناوی تەواو">
+                <input type="tel" id="uPhone" required placeholder="07501234567" pattern="[0-9]*" inputmode="numeric" maxlength="11" autocomplete="tel">
+                <select id="uComp" class="full" required><option value="">Select Company</option></select>
+                <select id="uGroup" style="display: none;"></select>
+                <button type="submit" class="btn-submit" id="btn-sub">تۆمارکردن</button>
+            </form>
+        </div>
+
+        <div class="stats-grid" id="statsArea"></div>
+
+        <div class="public-list-area" id="publicListSection">
+            <h3 id="l-list-title" style="color:#d4af37; margin-bottom:15px;">👥 دواین کەسە تۆمارکراوەکان</h3>
+            <div class="controls">
+                <input type="text" id="publicSearch" onkeyup="refreshPublicList()">
+                <select id="publicFilter" onchange="refreshPublicList()"></select>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="th-p-name">ناو</th>
+                            <th id="th-p-comp">کۆمپانیا</th>
+                            <th id="th-p-group">گروپ</th>
+                            <th id="th-p-day">ڕۆژ</th>
+                            <th id="th-p-date">بەروار</th>
+                            <th id="th-p-time">کات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publicTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-contacts">
+            <div class="contact-card">
+                <div class="contact-label" id="contact-accountant-label">Accountant</div>
+                <div class="contact-card-content">
+                    <div class="contact-name">Omar Khattab</div>
+                    <a href="https://wa.me/9647501257107" target="_blank" rel="noopener noreferrer" class="contact-phone">
+                        <span class="phone-number">+9647501257107</span>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-label" id="contact-payer-label">Payer</div>
+                <div class="contact-card-content">
+                    <div class="contact-name">Hassan Shuker</div>
+                    <a href="https://wa.me/9647507123366" target="_blank" rel="noopener noreferrer" class="contact-phone">
+                        <span class="phone-number">+9647507123366</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-credit">Developed by Mohammed Kamaran</div>
+    </div>
+
+    <div id="successModal"><div class="success-content" style="border-color: var(--success);"><div style="font-size:60px; color:var(--success);">✔</div><h2 id="res-msg">سەرکەوتوو بوو!</h2><button class="btn-submit" onclick="closeSuccess()">باشە</button></div></div>
+    <div id="loginModal">
+        <div class="modal-content">
+            <h3 class="admin-login-title">
+                <span class="admin-title-icon">⚙️</span>
+                <span>Admin Login</span>
+            </h3>
+            <input type="text" id="admUser" placeholder="Username" autocomplete="username">
+            <input type="password" id="admPass" placeholder="Password" autocomplete="current-password" onkeypress="if(event.key==='Enter')attemptLogin()">
+            <button class="btn-submit" onclick="attemptLogin()">Login</button>
+            <button onclick="hideLogin()" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ADMIN_CREDENTIALS = { username: "admin", password: "777" };
+    let db = JSON.parse(localStorage.getItem('v34_db')) || [];
+    
+    // Initialize users storage
+    if (!localStorage.getItem('v34_users')) {
+        localStorage.setItem('v34_users', JSON.stringify([
+            { username: "admin", password: "777", role: "admin" }
+        ]));
+    }
+    let users = JSON.parse(localStorage.getItem('v34_users')) || [
+        { username: "admin", password: "777", role: "admin" }
+    ];
+    let currentUser = null;
+    
+    // زیادکردنی systemActive بۆ سێتینگ
+    let settings = JSON.parse(localStorage.getItem('v34_settings')) || {
+        systemActive: false,
+        companies: ["Company A", "Company B", "Company C"], // Default companies
+        A: { date: "2025-12-28", t1: "09:00", t2: "11:00", limit: 40, visible: true },
+        B: { date: "2025-12-28", t1: "11:00", t2: "13:00", limit: 40, visible: true },
+        C: { date: "2025-12-29", t1: "09:00", t2: "11:00", limit: 40, visible: true },
+        D: { date: "2025-12-29", t1: "11:00", t2: "13:00", limit: 40, visible: true }
+    };
+
+    let isTimerDisabled = localStorage.getItem('isTimerDisabled') === 'true';
+    let disableEndTime = parseInt(localStorage.getItem('disableEndTime')) || null;
+    let activateAtTime = parseInt(localStorage.getItem('activateAtTime')) || null;
+    let totalTimerMins = parseInt(localStorage.getItem('totalTimerMins')) || 0;
+    let countdownInterval = null;
+
+    const daysTranslation = { ku: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "هەینی", "شەممە"], ar: ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"], en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] };
+    const trans = {
+        ku: { banner: "پارەدانی بازاڕی ناوەند حلال و حلال مارکێت ١ و حلال مارکێت ٢", title: "ناونووسین بۆ پارەدان", sub: "تۆمارکردن", comp: "ماوە", list: "👥 دواین کەسە تۆمارکراوەکان", n: "ناو", c: "کۆمپانیا", g: "گروپ", d: "ڕۆژ", dt: "بەروار", tm: "کات", to: "بۆ", search: "گەڕان...", filter: "هەموو", credit: "پەرەی پێدراوە لەلایەن <span>محمد کامران</span>", market_info: "بازاڕی ناوەندی حلال - ١٢٠ مەتر لە شەقامەکە لای شاری کامرانی", phone_placeholder: "07501234567", err_dup: "ئەم کۆمپانیایە پێشتر تۆمار کراوە!", full: "جێگا نەماوە", accountant: "حسابدار", payer: "پارەدان", dir: "rtl" },
+        ar: { banner: "دفع سوق حلال المركزي و حلال ماركت ١ و حلال ماركت ٢", title: "التسجيل للدفع", sub: "تسجيل", comp: "متبقي", list: "👥 آخر المسجلين", n: "الاسم", c: "الشركة", g: "المجموعة", d: "اليوم", dt: "التاريخ", tm: "الوقت", to: "إلى", search: "ابحث...", filter: "الكل", credit: "تم التطوير بواسطة <span>محمد کامران</span>", market_info: "سوق حلال المركزي - ١٢٠ متر في الشارع بجانب مدينة كمراني", phone_placeholder: "07501234567", err_dup: "مسجلة بالفعل!", full: "لا يوجد مكان", accountant: "المحاسب", payer: "المدفوع", dir: "rtl" },
+        en: { banner: "Central Halal Market, Halal Market 1 & Halal Market 2 Payment", title: "Registration", sub: "Register", comp: "Left", list: "👥 Recently Registered", n: "Name", c: "Company", g: "Group", d: "Day", dt: "Date", tm: "Time", to: "to", search: "Search...", filter: "All", credit: "Developed by <span>Mohammed Kamaran</span>", market_info: "Halal Central Market - 120 meters street next to Kamrani city", phone_placeholder: "07501234567", err_dup: "Already registered!", full: "No Space Left", accountant: "Accountant", payer: "Payer", dir: "ltr" }
+    };
+
+    let currentLang = 'ku';
+    function setLang(l) {
+        currentLang = l;
+        const t = trans[l];
+        document.getElementById('bodyTag').dir = t.dir;
+        document.getElementById('b-title').innerText = t.banner;
+        document.getElementById('m-title').innerText = t.title;
+        document.getElementById('btn-sub').innerText = t.sub;
+        document.getElementById('l-list-title').innerText = t.list;
+        document.getElementById('th-p-name').innerText = t.n;
+        document.getElementById('th-p-comp').innerText = t.c;
+        document.getElementById('th-p-group').innerText = t.g;
+        document.getElementById('th-p-day').innerText = t.d;
+        document.getElementById('th-p-date').innerText = t.dt;
+        document.getElementById('th-p-time').innerText = t.tm;
+        document.querySelectorAll('.to-text').forEach(el => el.innerText = t.to);
+        document.getElementById('publicSearch').placeholder = t.search;
+        if (document.getElementById('uPhone')) {
+            document.getElementById('uPhone').placeholder = t.phone_placeholder;
+        }
+        if (document.getElementById('contact-accountant-label')) {
+            document.getElementById('contact-accountant-label').innerText = 'Accountant';
+        }
+        if (document.getElementById('contact-payer-label')) {
+            document.getElementById('contact-payer-label').innerText = 'Payer';
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('l-' + l).classList.add('active');
+        if (countdownInterval) updateCountdown();
+        refresh();
+    }
+
+    function refresh() {
+        // Load activation time from storage
+        activateAtTime = parseInt(localStorage.getItem('activateAtTime')) || null;
+        
+        // Check if timer should activate system
+        if (activateAtTime && Date.now() >= activateAtTime && !settings.systemActive) {
+            settings.systemActive = true;
+            localStorage.setItem('v34_settings', JSON.stringify(settings));
+        }
+        
+        // Check if timer has expired
+        if (isTimerDisabled && disableEndTime && disableEndTime <= Date.now()) {
+            settings.systemActive = false;
+            isTimerDisabled = false;
+            disableEndTime = null;
+            activateAtTime = null;
+            totalTimerMins = 0;
+            localStorage.removeItem('isTimerDisabled');
+            localStorage.removeItem('disableEndTime');
+            localStorage.removeItem('activateAtTime');
+            localStorage.removeItem('totalTimerMins');
+            localStorage.setItem('v34_settings', JSON.stringify(settings));
+        }
+
+        const statsArea = document.getElementById('statsArea');
+        const uGroupSelect = document.getElementById('uGroup');
+        const publicFilter = document.getElementById('publicFilter');
+        
+        // نوێکردنەوەی دۆخی بینینی فۆرم
+        const overlay = document.getElementById('formOverlay');
+        const form = document.getElementById('regForm');
+        const toggleBtn = document.getElementById('toggleSystemBtn');
+        const timerDisplay = document.getElementById('timerDisplay');
+
+        if (isTimerDisabled) {
+            if (!countdownInterval) {
+                countdownInterval = setInterval(updateCountdown, 1000);
+            }
+        } else {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+            timerDisplay.innerHTML = '';
+        }
+
+        if (settings.systemActive && isTimerDisabled) {
+            overlay.style.display = 'none';
+            form.style.opacity = '1';
+            toggleBtn.innerText = "سیستم چالاکە (کلیک بکە بۆ ڕاگرتن)";
+            toggleBtn.style.background = "#27ae60";
+            document.getElementById('statsArea').style.display = 'grid';
+            document.getElementById('publicListSection').style.display = 'block';
+        } else if (settings.systemActive) {
+            overlay.style.display = 'none';
+            form.style.opacity = '1';
+            toggleBtn.innerText = "سیستم چالاکە (کلیک بکە بۆ ڕاگرتن)";
+            toggleBtn.style.background = "#27ae60";
+            document.getElementById('statsArea').style.display = 'grid';
+            document.getElementById('publicListSection').style.display = 'block';
+        } else {
+            overlay.style.display = 'flex';
+            form.style.opacity = '0.2';
+            toggleBtn.innerText = "سیستم ناچالاکە (کلیک بکە بۆ دەسپێکردن)";
+            toggleBtn.style.background = "#8B0000";
+            let closedText = '';
+            
+            // Show activation time if timer is set
+            if (activateAtTime && Date.now() < activateAtTime) {
+                const activateDate = new Date(activateAtTime);
+                const hours = activateDate.getHours().toString().padStart(2, '0');
+                const minutes = activateDate.getMinutes().toString().padStart(2, '0');
+                const timeStr = `${hours}:${minutes}`;
+                
+                if (currentLang === 'ku') {
+                    closedText = `<div class="lock-icon">🔒</div><span>سیستم دەبێت چالاک بێت لە ${timeStr}</span>`;
+                } else if (currentLang === 'ar') {
+                    closedText = `<div class="lock-icon">🔒</div><span>سيتم النشاط في ${timeStr}</span>`;
+                } else {
+                    closedText = `<div class="lock-icon">🔒</div><span>System will be active at ${timeStr}</span>`;
+                }
+            } else {
+                if (currentLang === 'ku') {
+                    closedText = '<div class="lock-icon">🔒</div><span>سیستم داخراوە</span>';
+                } else if (currentLang === 'ar') {
+                    closedText = '<div class="lock-icon">🔒</div><span>النظام مغلق</span>';
+                } else {
+                    closedText = '<div class="lock-icon">🔒</div><span>System Closed</span>';
+                }
+            }
+            overlay.innerHTML = closedText;
+            document.getElementById('statsArea').style.display = 'none';
+            document.getElementById('publicListSection').style.display = 'none';
+        }
+
+        statsArea.innerHTML = ''; uGroupSelect.innerHTML = '';
+        const uCompSelect = document.getElementById('uComp');
+        uCompSelect.innerHTML = '<option value="">🏢 Select Company</option>';
+        settings.companies.forEach(comp => uCompSelect.innerHTML += `<option value="${comp}">🏢 ${comp}</option>`);
+        const currentFilterVal = publicFilter.value;
+        publicFilter.innerHTML = `<option value="all">📋 ${trans[currentLang].filter}</option>`;
+
+        // Count visible groups
+        let visibleGroupsCount = 0;
+        ['A', 'B', 'C', 'D'].forEach(g => {
+            if (settings[g].visible) visibleGroupsCount++;
+        });
+
+        // Set dynamic grid columns based on visible groups count
+        // Remove existing grid classes
+        statsArea.classList.remove('grid-1', 'grid-2', 'grid-3', 'grid-4');
+        
+        // Add appropriate class based on visible groups count
+        if (visibleGroupsCount === 1) {
+            statsArea.classList.add('grid-1');
+        } else if (visibleGroupsCount === 2) {
+            statsArea.classList.add('grid-2');
+        } else if (visibleGroupsCount === 3) {
+            statsArea.classList.add('grid-3');
+        } else {
+            statsArea.classList.add('grid-4');
+        }
+
+        ['A', 'B', 'C', 'D'].forEach(g => {
+            const s = settings[g];
+            if (s.visible) {
+                const count = s.limit - db.filter(p => p.Group === g).length;
+                const dateObj = new Date(s.date);
+                const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+                const isFull = count <= 0;
+
+                const currentGroupSelect = document.getElementById('uGroup');
+                const isSelected = currentGroupSelect && currentGroupSelect.value === g;
+                statsArea.innerHTML += `
+                    <div class="stat-card-wrapper">
+                        <div class="stat-card-label">Group ${g}</div>
+                        <div class="stat-card ${isSelected ? 'selected-group' : ''}" onclick="selectGroup('${g}')" style="cursor: pointer;" title="Click to select Group ${g}" data-group="${g}">
+                            ${isFull ? `<div class="full-label">${trans[currentLang].full}</div>` : ''}
+                            <b>${g}</b> <span class="remaining-label">${count} ${trans[currentLang].comp}</span>
+                            <div class="info-box">
+                                <span class="day-label">${dayName}</span>
+                                <div class="date-label">${s.date}</div>
+                                <div class="time-label">${s.t1} ${trans[currentLang].to} ${s.t2}</div>
+                            </div>
+                        </div>
+                    </div>`;
+                
+                if (!isFull) {
+                    uGroupSelect.innerHTML += `<option value="${g}">📋 Group ${g}</option>`;
+                }
+                publicFilter.innerHTML += `<option value="${g}">📋 Group ${g}</option>`;
+            }
+        });
+        publicFilter.value = currentFilterVal;
+        refreshPublicList(); refreshAdminList();
+        
+        // Refresh accountant list if accountant is logged in
+        const currentUser = getCurrentUser();
+        if (currentUser && currentUser.role === 'accountant') {
+            refreshAccountantList();
+        }
+        localStorage.setItem('v34_db', JSON.stringify(db));
+        localStorage.setItem('v34_settings', JSON.stringify(settings));
+        
+        // Update selected group visual after refresh
+        if (uGroupSelect && uGroupSelect.value) {
+            updateSelectedGroup(uGroupSelect.value);
+        }
+    }
+
+    // فەنکشنی گۆڕینی دۆخی سیستم
+    function toggleSystemStatus() {
+        settings.systemActive = !settings.systemActive;
+        refresh();
+    }
+    
+    // Function to select group when clicking on stat card
+    function selectGroup(group) {
+        const uGroupSelect = document.getElementById('uGroup');
+        if (uGroupSelect && uGroupSelect.querySelector(`option[value="${group}"]`)) {
+            uGroupSelect.value = group;
+            // Update selected group visual
+            updateSelectedGroup(group);
+            // Trigger change event to update form
+            uGroupSelect.dispatchEvent(new Event('change'));
+            // Scroll to form if needed
+            const form = document.getElementById('regForm');
+            if (form) {
+                setTimeout(() => {
+                    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        }
+    }
+    
+    // Function to update selected group visual
+    function updateSelectedGroup(selectedGroup) {
+        // Remove selected class from all cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.classList.remove('selected-group');
+        });
+        // Add selected class to the selected group card
+        const selectedCard = document.querySelector(`.stat-card[data-group="${selectedGroup}"]`);
+        if (selectedCard) {
+            selectedCard.classList.add('selected-group');
+        }
+    }
+
+    function refreshPublicList() {
+        const query = document.getElementById('publicSearch').value.toLowerCase();
+        const filter = document.getElementById('publicFilter').value;
+        const tbody = document.getElementById('publicTableBody');
+        tbody.innerHTML = '';
+        [...db].reverse().filter(p => settings[p.Group].visible).forEach((p, index) => {
+            if (filter === "all" || p.Group === filter) {
+                const isMatch = query !== "" && (p.Name.toLowerCase().includes(query) || p.Comp.toLowerCase().includes(query));
+                const s = settings[p.Group];
+                const dateObj = new Date(s.date);
+                const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+                const isNew = index === 0 && db.length > 0 && p === db[db.length - 1]; // Assuming last added is new
+                const compId = `comp-${p.Comp.replace(/\s+/g, '-').toLowerCase()}`;
+                tbody.innerHTML += `<tr class="${isMatch ? 'highlight-row' : ''} ${isNew ? 'new-registration' : ''}" data-company="${p.Comp}" data-group="${p.Group}" id="${compId}"><td class="name-col">${p.Name}</td><td class="company-name">${p.Comp}</td><td class="group-badge">Group ${p.Group}</td><td>${dayName}</td><td>${s.date}</td><td dir="ltr">${s.t1} - ${s.t2}</td></tr>`;
+            }
+        });
+    }
+
+    function isAdminLoggedIn() {
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (!logoutBtn || logoutBtn.style.display === 'none') return false;
+        
+        // Check if current user is admin or accountant (both have editing permissions)
+        const storedUser = localStorage.getItem('currentUser');
+        if (storedUser) {
+            const user = JSON.parse(storedUser);
+            return user.role === 'admin' || user.role === 'accountant';
+        }
+        return false;
+    }
+    
+    function getCurrentUser() {
+        const storedUser = localStorage.getItem('currentUser');
+        if (storedUser) {
+            return JSON.parse(storedUser);
+        }
+        return null;
+    }
+    
+    function getWhatsAppLink(phone) {
+        if (!phone) return '#';
+        // Convert to string and remove all non-digit characters
+        let cleanPhone = phone.toString().replace(/[^\d]/g, '');
+        
+        // Remove leading zeros
+        cleanPhone = cleanPhone.replace(/^0+/, '');
+        
+        // If the number is too short, it might be missing country code
+        // For Iraq/Kurdistan, country code is 964
+        // If number starts with 0 or is less than 10 digits, it might be local format
+        // But we'll use the number as provided - user should enter full international number
+        
+        // WhatsApp requires: https://wa.me/COUNTRYCODE+NUMBER (digits only, no + sign)
+        // Example: https://wa.me/9647501234567
+        if (cleanPhone.length >= 7) { // Minimum valid phone number length
+            return `https://wa.me/${cleanPhone}`;
+        }
+        return '#';
+    }
+    
+    async function sendRegistrationWhatsAppMessage(name, comp, phone, group) {
+        // Get group settings for date, time, and day
+        const s = settings[group] || {};
+        const dateObj = new Date(s.date);
+        const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+        const dateStr = s.date || '';
+        const timeStr = s.t1 ? (s.t1 + (s.t2 ? ' ' + trans[currentLang].to + ' ' + s.t2 : '')) : '';
+        
+        // Create the message in multiple languages
+        // WhatsApp message limit is 4096 characters, so we keep it concise
+        let message = '';
+        if (currentLang === 'ku') {
+            message = `✅ ناوی تۆ بە سەرکەوتوویی تۆمار کرا\n\n`;
+            message += `ناو: ${name}\n`;
+            message += `ناوی کۆمپانیا: ${comp}\n`;
+            message += `ژمارەی مۆبایل: ${phone}\n`;
+            message += `گروپ: ${group}\n`;
+            if (dayName) message += `ڕۆژ: ${dayName}\n`;
+            if (dateStr) message += `بەروار: ${dateStr}\n`;
+            if (timeStr) message += `کات: ${timeStr}\n`;
+            message += `\n⚠️ هەر کۆمپانیایەک دوای تۆمارکردنی ناوەکەی ئەگەر نەهات بۆ وەرگرتنی پارەکە، سزای ٢٥,٠٠٠ هەزار دینار دەدرێت بۆی.`;
+        } else if (currentLang === 'ar') {
+            message = `✅ تم تسجيل اسمك بنجاح\n\n`;
+            message += `الاسم: ${name}\n`;
+            message += `اسم الشركة: ${comp}\n`;
+            message += `رقم الهاتف: ${phone}\n`;
+            message += `المجموعة: ${group}\n`;
+            if (dayName) message += `اليوم: ${dayName}\n`;
+            if (dateStr) message += `التاريخ: ${dateStr}\n`;
+            if (timeStr) message += `الوقت: ${timeStr}\n`;
+            message += `\n⚠️ أي شركة بعد تسجيل اسمها إذا لم تأت لاستلام المال، سيتم تغريمها 25,000 ألف دينار.`;
+        } else {
+            message = `✅ Your name was successfully registered\n\n`;
+            message += `Name: ${name}\n`;
+            message += `Company Name: ${comp}\n`;
+            message += `Mobile Number: ${phone}\n`;
+            message += `Group: ${group}\n`;
+            if (dayName) message += `Day: ${dayName}\n`;
+            if (dateStr) message += `Date: ${dateStr}\n`;
+            if (timeStr) message += `Time: ${timeStr}\n`;
+            message += `\n⚠️ Each company after filling out its name, if it does not come to receive the money, will be fined 25,000 thousand dinars.`;
+        }
+        
+        // Ensure message is not too long (WhatsApp limit is 4096 characters)
+        if (message.length > 4000) {
+            console.warn('Message is very long, may be truncated:', message.length);
+            message = message.substring(0, 4000) + '...';
+        }
+        
+        console.log('WhatsApp message prepared, length:', message.length);
+        
+        // Clean and format the phone number for WhatsApp
+        let cleanPhone = phone.toString().replace(/[^\d]/g, '');
+        // Remove leading zeros
+        cleanPhone = cleanPhone.replace(/^0+/, '');
+        // If it doesn't start with country code, assume it's Iraqi number and add 964
+        if (!cleanPhone.startsWith('964') && cleanPhone.length > 0) {
+            cleanPhone = '964' + cleanPhone;
+        }
+        
+        // Automatically send WhatsApp message from +9647505543003 to the registered person
+        // Backend service must be running (see whatsapp-sender.js)
+        const BACKEND_URL = 'http://localhost:3000/send-whatsapp';
+        
+        try {
+            console.log('Attempting to send WhatsApp message to:', cleanPhone);
+            const response = await fetch(BACKEND_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    phone: cleanPhone,
+                    message: message
+                }),
+                // Add timeout to prevent hanging
+                signal: AbortSignal.timeout(10000) // 10 second timeout
+            });
+            
+            if (response.ok) {
+                const result = await response.json();
+                if (result.success) {
+                    console.log('✅ WhatsApp message sent automatically via backend to', cleanPhone);
+                    // Show success message to user (optional, can be removed if too intrusive)
+                    // alert(currentLang === 'ku' ? 'پەیام بە سەرکەوتوویی نێردرا' : 
+                    //       currentLang === 'ar' ? 'تم إرسال الرسالة بنجاح' : 
+                    //       'Message sent successfully');
+                    return; // Message sent successfully, exit function
+                } else {
+                    console.error('Backend returned error:', result.error);
+                    throw new Error(result.error || 'Failed to send message');
+                }
+            } else {
+                const errorText = await response.text();
+                console.error('Backend returned status:', response.status, errorText);
+                throw new Error(`Backend error: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('❌ Failed to send via backend:', error.message);
+            console.log('Backend API not available or not configured. Please:');
+            console.log('1. Make sure whatsapp-sender.js is running (node whatsapp-sender.js)');
+            console.log('2. Configure Green API credentials in whatsapp-sender.js');
+            console.log('3. See README-WHATSAPP-SETUP.md for instructions');
+            
+            // Fallback: Open WhatsApp with pre-filled message in a new tab
+            // This allows the user to manually send if backend is not available
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
+            
+            // Open in new tab so user doesn't lose their place
+            const whatsappWindow = window.open(whatsappUrl, '_blank');
+            
+            // If popup was blocked, try direct navigation as last resort
+            if (!whatsappWindow) {
+                console.log('Popup blocked, opening WhatsApp in current window');
+                // Only navigate if user confirms (optional)
+                // window.location.href = whatsappUrl;
+            }
+        }
+    }
+    
+    let paidFilter = 'all'; // 'all', 'paid', or 'unpaid'
+    let groupFilter = 'all'; // 'all', 'A', 'B', 'C', or 'D'
+    
+    function setGroupFilter(filter) {
+        groupFilter = filter;
+        
+        // Update button styles for all group buttons
+        const groupButtons = ['All', 'A', 'B', 'C', 'D'];
+        groupButtons.forEach(group => {
+            const btn = document.getElementById(`filterGroup${group === 'All' ? 'All' : group}`);
+            if (btn) {
+                if (group === 'All') {
+                    btn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
+                    btn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
+                    btn.style.color = filter === 'all' ? '#000' : 'var(--primary-gold)';
+                } else {
+                    btn.style.background = filter === group ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
+                    btn.style.borderColor = filter === group ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
+                    btn.style.color = filter === group ? '#000' : 'var(--primary-gold)';
+                }
+            }
+        });
+        
+        refreshAdminList();
+    }
+    
+    function setPaidFilter(filter) {
+        paidFilter = filter;
+        
+        // Update button styles
+        const allBtn = document.getElementById('filterAll');
+        const unpaidBtn = document.getElementById('filterUnpaid');
+        const paidBtn = document.getElementById('filterPaid');
+        
+        if (allBtn) {
+            allBtn.style.background = filter === 'all' ? 'rgba(0,89,179,0.6)' : 'rgba(0,89,179,0.4)';
+            allBtn.style.borderColor = filter === 'all' ? 'rgba(0,89,179,0.8)' : 'rgba(0,89,179,0.6)';
+        }
+        if (unpaidBtn) {
+            unpaidBtn.style.background = filter === 'unpaid' ? 'rgba(212,175,55,0.5)' : 'rgba(212,175,55,0.3)';
+            unpaidBtn.style.borderColor = filter === 'unpaid' ? 'rgba(212,175,55,0.7)' : 'rgba(212,175,55,0.5)';
+        }
+        if (paidBtn) {
+            paidBtn.style.background = filter === 'paid' ? 'rgba(39,174,96,0.5)' : 'rgba(39,174,96,0.3)';
+            paidBtn.style.borderColor = filter === 'paid' ? 'rgba(39,174,96,0.7)' : 'rgba(39,174,96,0.5)';
+        }
+        
+        refreshAdminList();
+    }
+    
+    function refreshAdminList() {
+        const adminTbody = document.getElementById('adminTableBody'); 
+        if (adminTbody) {
+            adminTbody.innerHTML = '';
+            const isAdmin = isAdminLoggedIn();
+            
+            // Filter based on paid status and group
+            let filteredDb = [...db];
+            
+            // Apply paid filter
+            if (paidFilter === 'paid') {
+                filteredDb = filteredDb.filter(p => p.Paid === true);
+            } else if (paidFilter === 'unpaid') {
+                filteredDb = filteredDb.filter(p => !p.Paid || p.Paid !== true);
+            }
+            
+            // Apply group filter
+            if (groupFilter !== 'all') {
+                filteredDb = filteredDb.filter(p => p.Group === groupFilter);
+            }
+            
+            // Sort: unpaid entries first, then paid entries at the bottom
+            const sortedDb = filteredDb.sort((a, b) => {
+                const aPaid = a.Paid === true ? 1 : 0;
+                const bPaid = b.Paid === true ? 1 : 0;
+                return aPaid - bPaid; // Unpaid (0) comes before paid (1)
+            });
+            
+            sortedDb.forEach((p, sortedIndex) => {
+                // Find original index in db for markAsPaid function
+                const originalIndex = db.findIndex((item, idx) => 
+                    item.Name === p.Name && item.Comp === p.Comp && item.Phone === p.Phone && item.Group === p.Group
+                );
+                const actualIndex = originalIndex !== -1 ? originalIndex : sortedIndex;
+                
+                let phoneCell = p.Phone;
+                if (isAdmin && p.Phone) {
+                    const whatsappLink = getWhatsAppLink(p.Phone);
+                    // Create clickable WhatsApp link
+                    phoneCell = `<a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="whatsapp-link" style="color: var(--sky-blue); text-decoration: none; font-weight: 600; cursor: pointer; display: inline-block;" title="Click to open WhatsApp">${p.Phone}</a>`;
+                }
+                // Get group settings for date, time, and day
+                const s = settings[p.Group] || {};
+                const dateObj = new Date(s.date);
+                const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+                const dateStr = s.date || '';
+                const timeStr = s.t1 ? (s.t1 + (s.t2 ? ' ' + trans[currentLang].to + ' ' + s.t2 : '')) : '';
+                
+                const isPaid = p.Paid === true;
+                const paidButton = isPaid 
+                    ? '<span style="background:linear-gradient(135deg, rgba(39,174,96,0.5), rgba(39,174,96,0.4)); color:#fff; padding:8px 14px; border-radius:8px; font-size:10px; font-weight:800; display:inline-block; box-shadow:0 2px 8px rgba(39,174,96,0.4); text-shadow:0 1px 2px rgba(0,0,0,0.3); letter-spacing:0.5px; border:1px solid rgba(39,174,96,0.6);">✓ PAID</span>'
+                    : `<button onclick="markAsPaid(${actualIndex})" style="background:linear-gradient(135deg, rgba(212,175,55,0.4), rgba(212,175,55,0.3)); border:2px solid rgba(212,175,55,0.7); color:var(--primary-gold); padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:800; font-size:11px; transition:all 0.3s ease; box-shadow:0 2px 6px rgba(212,175,55,0.3); text-shadow:0 1px 2px rgba(0,0,0,0.3);">Paid</button>`;
+                
+                // Red strikethrough style for paid entries (names and companies)
+                const nameStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
+                const companyStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
+                const strikeStyle = isPaid ? 'text-decoration:line-through; opacity:0.6;' : '';
+                
+                adminTbody.innerHTML += `<tr ${isPaid ? 'style="background:rgba(0,0,0,0.4);"' : ''}>
+                    <td style="font-weight:600; font-size:12px; color:#fff; text-shadow:0 0 8px rgba(255,255,255,0.4), 0 1px 4px rgba(0,0,0,0.5); letter-spacing:0.3px; background:rgba(255,255,255,0.05); padding:12px 8px; line-height:1.4; ${nameStrikeStyle}">${p.Name || '-'}</td>
+                    <td style="font-size:11px; ${companyStrikeStyle}">${p.Comp || '-'}</td>
+                    <td style="font-size:11px; ${strikeStyle}">${phoneCell || '-'}</td>
+                    <td style="font-size:11px; ${strikeStyle}">${p.Group || '-'}</td>
+                    <td style="font-size:11px; ${strikeStyle}">${dayName || '-'}</td>
+                    <td style="font-size:11px; ${strikeStyle}">${dateStr || '-'}</td>
+                    <td style="font-size:11px; ${strikeStyle}">${timeStr || '-'}</td>
+                    <td>${paidButton}</td>
+                </tr>`;
+            });
+        }
+        
+        // Also refresh accountant list if accountant is logged in
+        const currentUser = getCurrentUser();
+        if (currentUser && currentUser.role === 'accountant') {
+            refreshAccountantList();
+        }
+    }
+
+    function loadGroupSettings() {
+        const g = document.getElementById('setGroup').value; const s = settings[g];
+        document.getElementById('setVisible').checked = s.visible;
+        document.getElementById('setDate').value = s.date;
+        document.getElementById('setLimit').value = s.limit;
+        document.getElementById('setTimeStart').value = s.t1;
+        document.getElementById('setTimeEnd').value = s.t2;
+    }
+
+    function loadCompanies() {
+        document.getElementById('setCompanies').value = settings.companies.join('\n');
+    }
+
+    function updateSettings() {
+        const g = document.getElementById('setGroup').value;
+        settings[g].visible = document.getElementById('setVisible').checked;
+        settings[g].date = document.getElementById('setDate').value;
+        settings[g].limit = document.getElementById('setLimit').value;
+        settings[g].t1 = document.getElementById('setTimeStart').value;
+        settings[g].t2 = document.getElementById('setTimeEnd').value;
+        settings.companies = document.getElementById('setCompanies').value.split('\n').map(c => c.trim()).filter(c => c);
+        localStorage.setItem('v34_settings', JSON.stringify(settings));
+        refresh();
+    }
+    
+    // Debounce function to avoid too many updates
+    let updateTimeout;
+    function debouncedUpdate() {
+        clearTimeout(updateTimeout);
+        updateTimeout = setTimeout(() => {
+            updateSettings();
+        }, 500); // Wait 500ms after last change
+    }
+
+    function startDisableTimer() {
+        const activateTime = document.getElementById('activateAtTime').value;
+        const mins = parseInt(document.getElementById('disableMinutes').value);
+        
+        if (!activateTime) return alert("Please set activation time");
+        if (isNaN(mins) || mins <= 0) return alert("Invalid minutes");
+        
+        // Parse the activation time
+        const [hours, minutes] = activateTime.split(':').map(Number);
+        const now = new Date();
+        const activateDate = new Date();
+        activateDate.setHours(hours, minutes, 0, 0);
+        
+        // If the time has passed today, set it for tomorrow
+        if (activateDate <= now) {
+            activateDate.setDate(activateDate.getDate() + 1);
+        }
+        
+        const activateTimestamp = activateDate.getTime();
+        const endTimestamp = activateTimestamp + (mins * 60000);
+        
+        isTimerDisabled = true;
+        disableEndTime = endTimestamp;
+        totalTimerMins = mins;
+        
+        // Store activation time
+        localStorage.setItem('activateAtTime', activateTimestamp.toString());
+        localStorage.setItem('isTimerDisabled', 'true');
+        localStorage.setItem('disableEndTime', disableEndTime.toString());
+        localStorage.setItem('totalTimerMins', mins.toString());
+        
+        refresh();
+        updateCountdown();
+    }
+
+    function updateCountdown() {
+        const now = Date.now();
+        let timerText = '';
+        
+        // Show remaining minutes countdown when system is active
+        if (settings.systemActive && isTimerDisabled && disableEndTime) {
+            const remaining = Math.max(0, disableEndTime - now);
+            const mins = Math.floor(remaining / 60000);
+            
+            if (currentLang === 'ku') {
+                timerText = `⏱️ چالاکە | ${mins} خولەک ماوە`;
+            } else if (currentLang === 'ar') {
+                timerText = `⏱️ نشط | متبقي ${mins} دقيقة`;
+            } else {
+                timerText = `⏱️ Active | ${mins} minutes remaining`;
+            }
+        } else if (activateAtTime && now < activateAtTime) {
+            // Show time until activation
+            const untilActivate = Math.max(0, activateAtTime - now);
+            const activateMins = Math.floor(untilActivate / 60000);
+            const activateSecs = Math.floor((untilActivate % 60000) / 1000);
+            const activateTimeStr = `${activateMins.toString().padStart(2,'0')}:${activateSecs.toString().padStart(2,'0')}`;
+            
+            if (currentLang === 'ku') {
+                timerText = `⏱️ سیستم دەبێت چالاک بێت لە: <span style="font-size:1.2em; font-weight:800;">${activateTimeStr}</span>`;
+            } else if (currentLang === 'ar') {
+                timerText = `⏱️ سيتم النشاط في: <span style="font-size:1.2em; font-weight:800;">${activateTimeStr}</span>`;
+            } else {
+                timerText = `⏱️ System will be active in: <span style="font-size:1.2em; font-weight:800;">${activateTimeStr}</span>`;
+            }
+        }
+        
+        if (timerText) {
+            document.getElementById('timerDisplay').innerHTML = timerText;
+        } else {
+            document.getElementById('timerDisplay').innerHTML = '';
+        }
+        
+        if (disableEndTime && disableEndTime <= now) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+        }
+    }
+
+    // Load current user on page load and initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load current user if exists
+        const storedUser = localStorage.getItem('currentUser');
+        if (storedUser) {
+            currentUser = JSON.parse(storedUser);
+            if (currentUser.role === 'admin') {
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('accountantPanel').style.display = 'block';
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginTrigger').style.display = 'none';
+                // Update accountant view description for admin
+                const accountantDesc = document.getElementById('accountantViewDescription');
+                if (accountantDesc) {
+                    accountantDesc.textContent = 'Admin view of accountant section - Full access to all features.';
+                    accountantDesc.style.color = '#0080ff';
+                }
+                loadGroupSettings(); loadCompanies();
+                refreshAdminList();
+                refreshUsersList();
+                // Initialize accountant filter states for admin
+                if (!accountantPaidFilter) accountantPaidFilter = 'all';
+                if (!accountantGroupFilter) accountantGroupFilter = 'all';
+                setAccountantPaidFilter(accountantPaidFilter);
+                setAccountantGroupFilter(accountantGroupFilter);
+            } else if (currentUser.role === 'accountant') {
+                document.getElementById('accountantPanel').style.display = 'block';
+                document.getElementById('adminPanel').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginTrigger').style.display = 'none';
+                // Update accountant view description for accountant
+                const accountantDesc = document.getElementById('accountantViewDescription');
+                if (accountantDesc) {
+                    accountantDesc.textContent = 'You can view the registration list only. No editing permissions.';
+                    accountantDesc.style.color = '#aaa';
+                }
+                // Initialize accountant filter states
+                if (!accountantPaidFilter) accountantPaidFilter = 'all';
+                if (!accountantGroupFilter) accountantGroupFilter = 'all';
+                setAccountantPaidFilter(accountantPaidFilter);
+                setAccountantGroupFilter(accountantGroupFilter);
+            }
+        }
+        
+        // Add event listener to group dropdown to update selected visual
+        const uGroupSelectEl = document.getElementById('uGroup');
+        if (uGroupSelectEl) {
+            uGroupSelectEl.addEventListener('change', function() {
+                updateSelectedGroup(this.value);
+            });
+        }
+        
+        // Auto-update admin settings when fields change
+        const setVisible = document.getElementById('setVisible');
+        const setDate = document.getElementById('setDate');
+        const setTimeStart = document.getElementById('setTimeStart');
+        const setTimeEnd = document.getElementById('setTimeEnd');
+        const setLimit = document.getElementById('setLimit');
+        const setCompanies = document.getElementById('setCompanies');
+        
+        if (setVisible) {
+            setVisible.addEventListener('change', debouncedUpdate);
+        }
+        if (setDate) {
+            setDate.addEventListener('change', debouncedUpdate);
+        }
+        if (setTimeStart) {
+            setTimeStart.addEventListener('change', debouncedUpdate);
+        }
+        if (setTimeEnd) {
+            setTimeEnd.addEventListener('change', debouncedUpdate);
+        }
+        if (setLimit) {
+            setLimit.addEventListener('input', debouncedUpdate);
+        }
+        if (setCompanies) {
+            setCompanies.addEventListener('input', debouncedUpdate);
+        }
+    });
+    
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if(!settings.systemActive) return; // ڕێگری زیادە
+        const g = document.getElementById('uGroup').value;
+        const comp = document.getElementById('uComp').value.trim();
+        const name = document.getElementById('uName').value.trim();
+        const phone = document.getElementById('uPhone').value.trim();
+        
+        // Check for duplicate company name (case-insensitive, trimmed)
+        const isDuplicate = db.some(p => p.Comp.trim().toLowerCase() === comp.toLowerCase());
+        if(isDuplicate) {
+            alert(trans[currentLang].err_dup);
+            document.getElementById('uComp').focus();
+            document.getElementById('uComp').style.borderColor = '#8B0000';
+            setTimeout(() => {
+                document.getElementById('uComp').style.borderColor = '';
+            }, 3000);
+            return;
+        }
+        
+        const newEntry = { Name: name, Comp: comp, Phone: phone, Group: g };
+        db.push(newEntry);
+        localStorage.setItem('v34_db', JSON.stringify(db));
+        this.reset(); 
+        refresh();
+        
+        // Send WhatsApp message with registration details
+        // WhatsApp message sending disabled
+        // sendRegistrationWhatsAppMessage(name, comp, phone, g);
+        
+        // Set filter to the company's group
+        document.getElementById('publicFilter').value = g;
+        refreshPublicList();
+        
+        // Scroll to the table section and highlight the new company
+        setTimeout(() => {
+            document.getElementById('publicListSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Find and highlight the newly added company row
+            setTimeout(() => {
+                const compId = `comp-${comp.trim().replace(/\s+/g, '-').toLowerCase()}`;
+                const newRow = document.getElementById(compId);
+                if (newRow) {
+                    newRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    newRow.style.animation = 'pulse 1s ease-in-out 3';
+                }
+            }, 400);
+        }, 100);
+        
+        // Remove highlight after 10 seconds
+        setTimeout(() => {
+            const newRows = document.querySelectorAll('.new-registration');
+            newRows.forEach(row => row.classList.remove('new-registration'));
+        }, 10000);
+    });
+
+    function closeSuccess() { document.getElementById('successModal').style.display = 'none'; document.getElementById('publicFilter').value = "all"; refreshPublicList(); document.getElementById('publicListSection').scrollIntoView({ behavior: 'smooth' }); }
+    function showAdminTab(tabName) {
+        // Hide all tab contents
+        document.querySelectorAll('.admin-tab-content').forEach(tab => {
+            tab.style.display = 'none';
+        });
+        
+        // Remove active class from all buttons
+        document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.background = 'rgba(0,0,0,0.3)';
+            btn.style.borderColor = 'transparent';
+            btn.style.color = '#aaa';
+            btn.style.fontWeight = '600';
+        });
+        
+        // Show selected tab content
+        const tabId = 'adminTab' + tabName.charAt(0).toUpperCase() + tabName.slice(1);
+        const selectedTab = document.getElementById(tabId);
+        if (selectedTab) {
+            selectedTab.style.display = 'block';
+        }
+        
+        // Activate selected button
+        const buttons = document.querySelectorAll('.admin-tab-btn');
+        const tabIndex = tabName === 'settings' ? 0 : tabName === 'users' ? 1 : 2;
+        if (buttons[tabIndex]) {
+            buttons[tabIndex].classList.add('active');
+            buttons[tabIndex].style.background = 'rgba(212, 175, 55, 0.2)';
+            buttons[tabIndex].style.borderColor = 'rgba(212, 175, 55, 0.4)';
+            buttons[tabIndex].style.color = 'var(--sky-blue)';
+            buttons[tabIndex].style.fontWeight = '700';
+        }
+        
+        // Refresh data when switching tabs
+        if (tabName === 'registrations') {
+            // Initialize filter button states
+            if (document.getElementById('filterAll')) {
+                if (!paidFilter) {
+                    paidFilter = 'all';
+                }
+                setPaidFilter(paidFilter);
+            }
+            if (document.getElementById('filterGroupAll')) {
+                if (!groupFilter) {
+                    groupFilter = 'all';
+                }
+                setGroupFilter(groupFilter);
+            }
+        } else if (tabName === 'users') {
+            refreshUsersList();
+        }
+    }
+    
+    function showLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+    function hideLogin() { document.getElementById('loginModal').style.display = 'none'; }
+    function attemptLogin() {
+        const username = document.getElementById('admUser').value;
+        const password = document.getElementById('admPass').value;
+        
+        // Check against stored users
+        const user = users.find(u => u.username === username && u.password === password);
+        
+        if (user) {
+            currentUser = user;
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            
+            if (user.role === 'admin') {
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('accountantPanel').style.display = 'block';
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginTrigger').style.display = 'none';
+                // Update accountant view description for admin
+                const accountantDesc = document.getElementById('accountantViewDescription');
+                if (accountantDesc) {
+                    accountantDesc.textContent = 'Admin view of accountant section - Full access to all features.';
+                    accountantDesc.style.color = '#0080ff';
+                }
+                loadGroupSettings(); loadCompanies(); hideLogin();
+                refreshAdminList();
+                refreshUsersList();
+                // Initialize accountant filter states for admin
+                if (!accountantPaidFilter) accountantPaidFilter = 'all';
+                if (!accountantGroupFilter) accountantGroupFilter = 'all';
+                setAccountantPaidFilter(accountantPaidFilter);
+                setAccountantGroupFilter(accountantGroupFilter);
+            } else if (user.role === 'accountant') {
+                // Show admin panel for accountants (with full editing access to registrations)
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('accountantPanel').style.display = 'block';
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('loginTrigger').style.display = 'none';
+                // Update accountant view description
+                const accountantDesc = document.getElementById('accountantViewDescription');
+                if (accountantDesc) {
+                    accountantDesc.textContent = 'Accountant view - Full access to registration management.';
+                    accountantDesc.style.color = '#0080ff';
+                }
+                loadGroupSettings(); loadCompanies(); hideLogin();
+                refreshAdminList();
+                // Initialize accountant filter states
+                if (!accountantPaidFilter) accountantPaidFilter = 'all';
+                if (!accountantGroupFilter) accountantGroupFilter = 'all';
+                setAccountantPaidFilter(accountantPaidFilter);
+                setAccountantGroupFilter(accountantGroupFilter);
+                // Show Registrations tab by default for accountants
+                showAdminTab('registrations');
+            }
+        } else {
+            alert("Invalid username or password!");
+        }
+    }
+    function addRegistration() {
+        const name = document.getElementById('addName').value.trim();
+        const comp = document.getElementById('addComp').value.trim();
+        const phone = document.getElementById('addPhone').value.trim();
+        const group = document.getElementById('addGroup').value;
+        if (!name || !comp || !phone) return alert('Please fill all fields');
+        
+        // Check for duplicate company name (case-insensitive, trimmed)
+        const isDuplicate = db.some(p => p.Comp.trim().toLowerCase() === comp.toLowerCase());
+        if(isDuplicate) {
+            alert(trans[currentLang].err_dup);
+            document.getElementById('addComp').focus();
+            document.getElementById('addComp').style.borderColor = '#8B0000';
+            setTimeout(() => {
+                document.getElementById('addComp').style.borderColor = '';
+            }, 3000);
+            return;
+        }
+        
+        db.push({ Name: name, Comp: comp, Phone: phone, Group: group });
+        localStorage.setItem('v34_db', JSON.stringify(db));
+        document.getElementById('addName').value = '';
+        document.getElementById('addComp').value = '';
+        document.getElementById('addPhone').value = '';
+        refresh();
+        alert('Registration added!');
+    }
+    function exportExcel() {
+        // Prepare data with dates and times from group settings
+        const exportData = db.map(entry => {
+            const group = entry.Group;
+            const groupSettings = settings[group] || {};
+            const dateObj = groupSettings.date ? new Date(groupSettings.date) : null;
+            const dayName = dateObj && !isNaN(dateObj.getTime()) ? daysTranslation[currentLang][dateObj.getDay()] : '';
+            
+            return {
+                'Name': entry.Name || '',
+                'Company': entry.Comp || '',
+                'Phone': entry.Phone || '',
+                'Group': entry.Group || '',
+                'Day': dayName,
+                'Date': groupSettings.date || '',
+                'Time': groupSettings.t1 && groupSettings.t2 ? `${groupSettings.t1} ${trans[currentLang].to} ${groupSettings.t2}` : ''
+            };
+        });
+        
+        // Create worksheet
+        const ws = XLSX.utils.json_to_sheet(exportData);
+        
+        // Set column widths
+        const colWidths = [
+            { wch: 20 }, // Name
+            { wch: 25 }, // Company
+            { wch: 15 }, // Phone
+            { wch: 8 },  // Group
+            { wch: 12 }, // Day
+            { wch: 12 }, // Date
+            { wch: 20 }  // Time
+        ];
+        ws['!cols'] = colWidths;
+        
+        // Style header row
+        const headerRange = XLSX.utils.decode_range(ws['!ref']);
+        const headerStyle = {
+            font: { bold: true, color: { rgb: "FFFFFF" }, sz: 12 },
+            fill: { fgColor: { rgb: "1a3a4a" } },
+            alignment: { horizontal: "center", vertical: "center" },
+            border: {
+                top: { style: "thin", color: { rgb: "000000" } },
+                bottom: { style: "thin", color: { rgb: "000000" } },
+                left: { style: "thin", color: { rgb: "000000" } },
+                right: { style: "thin", color: { rgb: "000000" } }
+            }
+        };
+        
+        // Apply header styles and center alignment
+        for (let col = headerRange.s.c; col <= headerRange.e.c; col++) {
+            const cellAddress = XLSX.utils.encode_cell({ r: 0, c: col });
+            if (!ws[cellAddress]) continue;
+            ws[cellAddress].s = headerStyle;
+        }
+        
+        // Style data rows with alternating colors and center all text
+        // Phone column index is 2 (0-based: Name=0, Company=1, Phone=2)
+        const phoneColIndex = 2;
+        
+        for (let row = 1; row <= headerRange.e.r; row++) {
+            for (let col = headerRange.s.c; col <= headerRange.e.c; col++) {
+                const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                if (!ws[cellAddress]) continue;
+                
+                // Get the original data index
+                const dataIndex = row - 1;
+                const entry = db[dataIndex];
+                
+                // Center align all cells
+                const cellStyle = {
+                    alignment: { horizontal: "center", vertical: "center" },
+                    border: {
+                        top: { style: "thin", color: { rgb: "CCCCCC" } },
+                        bottom: { style: "thin", color: { rgb: "CCCCCC" } },
+                        left: { style: "thin", color: { rgb: "CCCCCC" } },
+                        right: { style: "thin", color: { rgb: "CCCCCC" } }
+                    },
+                    fill: {
+                        fgColor: { rgb: row % 2 === 0 ? "F5F5F5" : "FFFFFF" }
+                    }
+                };
+                
+                // Add WhatsApp hyperlink for phone numbers
+                if (col === phoneColIndex && entry && entry.Phone) {
+                    const phone = String(entry.Phone);
+                    const whatsappLink = getWhatsAppLink(phone);
+                    if (whatsappLink && whatsappLink !== '#') {
+                        // Create hyperlink using Excel HYPERLINK formula
+                        ws[cellAddress].f = `HYPERLINK("${whatsappLink}","${phone}")`;
+                        // Style phone links with blue color and underline
+                        cellStyle.font = { color: { rgb: "0066CC" }, underline: true };
+                    }
+                }
+                
+                ws[cellAddress].s = cellStyle;
+            }
+        }
+        
+        // Create workbook and add worksheet
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Registrations");
+        
+        // Generate filename with current date
+        const now = new Date();
+        const dateStr = now.toISOString().split('T')[0];
+        const filename = `Halal_Market_Report_${dateStr}.xlsx`;
+        
+        // Write file
+        XLSX.writeFile(wb, filename);
+    }
+
+    function markAsPaid(index) {
+        if (db[index]) {
+            db[index].Paid = true;
+            localStorage.setItem('v34_db', JSON.stringify(db));
+            refresh();
+            refreshAdminList();
+            refreshAccountantList(); // Also refresh accountant list
+            alert('Entry marked as paid!');
+        }
+    }
+
+    function clearAllRegistrations() {
+        if (confirm('Are you sure you want to delete all registrations? This action cannot be undone.')) {
+            db = [];
+            localStorage.setItem('v34_db', JSON.stringify(db));
+            refresh();
+            alert('All registrations have been deleted.');
+        }
+    }
+
+    function addUser() {
+        const username = document.getElementById('newUsername').value.trim();
+        const password = document.getElementById('newPassword').value.trim();
+        const role = document.getElementById('newUserRole').value;
+        
+        if (!username || !password) {
+            alert('Please enter username and password');
+            return;
+        }
+        
+        // Check if username already exists
+        if (users.some(u => u.username === username)) {
+            alert('Username already exists!');
+            return;
+        }
+        
+        // Add new user
+        users.push({ username, password, role });
+        localStorage.setItem('v34_users', JSON.stringify(users));
+        
+        // Clear inputs
+        document.getElementById('newUsername').value = '';
+        document.getElementById('newPassword').value = '';
+        
+        refreshUsersList();
+        alert('User added successfully!');
+    }
+    
+    function deleteUser(username) {
+        if (username === 'admin') {
+            alert('Cannot delete the default admin user!');
+            return;
+        }
+        if (confirm(`Are you sure you want to delete user "${username}"?`)) {
+            users = users.filter(u => u.username !== username);
+            localStorage.setItem('v34_users', JSON.stringify(users));
+            refreshUsersList();
+        }
+    }
+    
+    function refreshUsersList() {
+        const usersListDiv = document.getElementById('usersList');
+        if (!usersListDiv) return;
+        
+        usersListDiv.innerHTML = '';
+        users.forEach(user => {
+            const userDiv = document.createElement('div');
+            userDiv.style.cssText = 'display: flex; justify-content: space-between; align-items: center; padding: 10px; margin-bottom: 8px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);';
+            userDiv.innerHTML = `
+                <div>
+                    <strong style="color: var(--sky-blue);">${user.username}</strong>
+                    <span style="color: #aaa; margin-left: 10px; font-size: 12px;">(${user.role})</span>
+                </div>
+                ${user.username !== 'admin' ? `<button onclick="deleteUser('${user.username}')" style="background:#8B0000; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Delete</button>` : ''}
+            `;
+            usersListDiv.appendChild(userDiv);
+        });
+    }
+    
+    function setAccountantPaidFilter(filter) {
+        accountantPaidFilter = filter;
+        
+        // Update button styles
+        const allBtn = document.getElementById('accountantFilterAll');
+        const unpaidBtn = document.getElementById('accountantFilterUnpaid');
+        const paidBtn = document.getElementById('accountantFilterPaid');
+        
+        if (allBtn) {
+            allBtn.style.background = filter === 'all' ? 'rgba(0,89,179,0.6)' : 'rgba(0,89,179,0.4)';
+            allBtn.style.borderColor = filter === 'all' ? 'rgba(0,89,179,0.8)' : 'rgba(0,89,179,0.6)';
+        }
+        if (unpaidBtn) {
+            unpaidBtn.style.background = filter === 'unpaid' ? 'rgba(212,175,55,0.5)' : 'rgba(212,175,55,0.3)';
+            unpaidBtn.style.borderColor = filter === 'unpaid' ? 'rgba(212,175,55,0.7)' : 'rgba(212,175,55,0.5)';
+        }
+        if (paidBtn) {
+            paidBtn.style.background = filter === 'paid' ? 'rgba(39,174,96,0.5)' : 'rgba(39,174,96,0.3)';
+            paidBtn.style.borderColor = filter === 'paid' ? 'rgba(39,174,96,0.7)' : 'rgba(39,174,96,0.5)';
+        }
+        
+        refreshAccountantList();
+    }
+    
+    function setAccountantGroupFilter(filter) {
+        accountantGroupFilter = filter;
+        
+        // Update button styles for all group buttons
+        const groupButtons = ['All', 'A', 'B', 'C', 'D'];
+        groupButtons.forEach(group => {
+            const btn = document.getElementById(`accountantFilterGroup${group === 'All' ? 'All' : group}`);
+            if (btn) {
+                if (group === 'All') {
+                    btn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
+                    btn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
+                    btn.style.color = filter === 'all' ? '#000' : 'var(--primary-gold)';
+                } else {
+                    btn.style.background = filter === group ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
+                    btn.style.borderColor = filter === group ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
+                    btn.style.color = filter === group ? '#000' : 'var(--primary-gold)';
+                }
+            }
+        });
+        
+        refreshAccountantList();
+    }
+    
+    function refreshAccountantList() {
+        const accountantTbody = document.getElementById('accountantTableBody');
+        if (!accountantTbody) return;
+        
+        accountantTbody.innerHTML = '';
+        
+        // Filter based on paid status and group
+        let filteredDb = [...db];
+        
+        // Apply paid filter
+        if (accountantPaidFilter === 'paid') {
+            filteredDb = filteredDb.filter(p => p.Paid === true);
+        } else if (accountantPaidFilter === 'unpaid') {
+            filteredDb = filteredDb.filter(p => !p.Paid || p.Paid !== true);
+        }
+        
+        // Apply group filter
+        if (accountantGroupFilter !== 'all') {
+            filteredDb = filteredDb.filter(p => p.Group === accountantGroupFilter);
+        }
+        
+        // Sort: unpaid entries first, then paid entries at the bottom
+        const sortedDb = filteredDb.sort((a, b) => {
+            const aPaid = a.Paid === true ? 1 : 0;
+            const bPaid = b.Paid === true ? 1 : 0;
+            return aPaid - bPaid; // Unpaid (0) comes before paid (1)
+        });
+        
+        sortedDb.forEach((p, sortedIndex) => {
+            // Find original index in db for markAsPaid function
+            const originalIndex = db.findIndex((item, idx) => 
+                item.Name === p.Name && item.Comp === p.Comp && item.Phone === p.Phone && item.Group === p.Group
+            );
+            const actualIndex = originalIndex !== -1 ? originalIndex : sortedIndex;
+            
+            const s = settings[p.Group] || {};
+            const dateObj = new Date(s.date);
+            const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+            const dateStr = s.date || '';
+            const timeStr = s.t1 ? (s.t1 + (s.t2 ? ' ' + trans[currentLang].to + ' ' + s.t2 : '')) : '';
+            
+            const isPaid = p.Paid === true;
+            
+            // Red strikethrough style for paid entries (names and companies)
+            const nameStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
+            const companyStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
+            const strikeStyle = isPaid ? 'text-decoration:line-through; opacity:0.6;' : '';
+            
+            // Get WhatsApp link for phone (accountants can also click)
+            let phoneCell = p.Phone;
+            if (p.Phone) {
+                const whatsappLink = getWhatsAppLink(p.Phone);
+                phoneCell = `<a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="whatsapp-link" style="color: var(--sky-blue); text-decoration: none; font-weight: 600; cursor: pointer; display: inline-block;" title="Click to open WhatsApp">${p.Phone}</a>`;
+            }
+            
+            // Paid button (accountants can mark as paid)
+            const paidButton = isPaid 
+                ? '<span class="paid-badge">✓ PAID</span>'
+                : `<button onclick="markAsPaid(${actualIndex})" style="background:linear-gradient(135deg, rgba(212,175,55,0.4), rgba(212,175,55,0.3)); border:2px solid rgba(212,175,55,0.7); color:var(--primary-gold); padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:800; font-size:11px; transition:all 0.3s ease; box-shadow:0 2px 6px rgba(212,175,55,0.3); text-shadow:0 1px 2px rgba(0,0,0,0.3);">Paid</button>`;
+            
+            accountantTbody.innerHTML += `
+                <tr ${isPaid ? 'style="background:rgba(0,0,0,0.4);"' : ''}>
+                    <td style="font-weight:600; font-size:12px; color:#fff; text-shadow:0 0 8px rgba(255,255,255,0.4), 0 1px 4px rgba(0,0,0,0.5); letter-spacing:0.3px; background:rgba(255,255,255,0.05); padding:12px 8px; line-height:1.4; white-space:normal; word-wrap:break-word; ${nameStrikeStyle}">${p.Name || '-'}</td>
+                    <td style="color:var(--sky-blue-light); font-weight:600; font-size:11px; white-space:normal; word-wrap:break-word; line-height:1.4; ${companyStrikeStyle}">${p.Comp || '-'}</td>
+                    <td style="color:var(--sky-blue); font-size:11px; ${strikeStyle}">${phoneCell || '-'}</td>
+                    <td style="color:var(--primary-gold); font-weight:700; font-size:11px; ${strikeStyle}">${p.Group || '-'}</td>
+                    <td style="color:#aaa; font-size:11px; ${strikeStyle}">${dayName || '-'}</td>
+                    <td style="color:#ccc; font-size:11px; ${strikeStyle}">${dateStr || '-'}</td>
+                    <td style="color:#bbb; font-size:11px; direction:ltr; ${strikeStyle}">${timeStr || '-'}</td>
+                    <td style="padding:8px 4px;">${paidButton}</td>
+                </tr>
+            `;
+        });
+    }
+    
+    function logout() {
+        currentUser = null;
+        localStorage.removeItem('currentUser');
+        document.getElementById('adminPanel').style.display = 'none';
+        document.getElementById('accountantPanel').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('logoutBtn').style.display = 'none';
+        document.getElementById('loginTrigger').style.display = 'block';
+        refreshAdminList(); // Refresh to remove WhatsApp links
+        location.reload();
+    }
+
+    // Restrict phone input to English digits only and validate Iraqi format
+    function restrictPhoneInput() {
+        const phoneInputs = [document.getElementById('uPhone'), document.getElementById('addPhone')];
+        
+        phoneInputs.forEach(function(phoneInput) {
+            if (!phoneInput) return;
+            
+            // Remove existing listeners by cloning the element (if needed, we'll use a flag instead)
+            // For simplicity, we'll check if listener already exists using a data attribute
+            if (phoneInput.dataset.restricted === 'true') return;
+            phoneInput.dataset.restricted = 'true';
+            
+            // Set input attributes
+            phoneInput.setAttribute('pattern', '[0-9]*');
+            phoneInput.setAttribute('inputmode', 'numeric');
+            phoneInput.setAttribute('maxlength', '11');
+            
+            // Only allow digits (0-9)
+            phoneInput.addEventListener('input', function(e) {
+                // Remove any non-digit characters
+                this.value = this.value.replace(/[^\d]/g, '');
+            });
+            
+            // Prevent paste of non-numeric content
+            phoneInput.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const paste = (e.clipboardData || window.clipboardData).getData('text');
+                const digitsOnly = paste.replace(/[^\d]/g, '');
+                this.value = digitsOnly;
+            });
+            
+            // Validate on blur (when user leaves the field)
+            phoneInput.addEventListener('blur', function(e) {
+                const value = this.value.trim();
+                // Iraqi mobile numbers: should be 11 digits starting with 0, or 10 digits
+                if (value.length > 0) {
+                    if (value.length === 11 && value.startsWith('0')) {
+                        // Valid format: 07501234567
+                        this.setCustomValidity('');
+                    } else if (value.length === 10 && !value.startsWith('0')) {
+                        // Valid format: 7501234567 (without leading 0)
+                        this.setCustomValidity('');
+                    } else if (value.length < 10) {
+                        this.setCustomValidity('Phone number must be at least 10 digits');
+                    } else {
+                        this.setCustomValidity('Iraqi mobile number should start with 0 and be 11 digits, or be 10 digits');
+                    }
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+        });
+    }
+    
+    // Initialize phone input restrictions when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        restrictPhoneInput();
+    });
+    
+    // Also initialize after language change
+    const originalSetLang = setLang;
+    setLang = function(l) {
+        originalSetLang(l);
+        setTimeout(restrictPhoneInput, 100);
+    };
+    
+    setLang('ku');
+</script>
+</body>
+</html>

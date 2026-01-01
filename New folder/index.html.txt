@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Premium | Halal Market Portal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        :root { --gold: #d4af37; --bg: #050505; --card-bg: rgba(20, 20, 20, 0.98); --success: #27ae60; --admin-blue: #001a33; --danger: #e74c3c; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: white; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; background-image: radial-gradient(circle at top, #222 0%, #000 100%); padding: 15px; box-sizing: border-box; }
+        .container { width: 100%; max-width: 1000px; background: var(--card-bg); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 25px; padding: 25px; box-shadow: 0 30px 100px rgba(0,0,0,1); margin: 10px 0; display: flex; flex-direction: column; }
+        
+        .top-banner { text-align: center; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 20px; }
+        .top-banner h2 { color: var(--gold); margin: 5px 0; font-size: 20px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .lang-switch { display: flex; gap: 3px; background: #000; padding: 4px; border-radius: 10px; }
+        .lang-btn { background: none; border: none; color: #666; padding: 6px 14px; cursor: pointer; border-radius: 6px; font-weight: bold; }
+        .lang-btn.active { background: var(--gold) !important; color: black !important; }
+
+        .btn-nav { background: #111; border: 1px solid #333; color: var(--gold); padding: 8px 18px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+
+        #adminPanel { 
+            display: none; 
+            background: var(--admin-blue); 
+            padding: 25px; 
+            border-radius: 20px; 
+            border: 2px solid #0059b3; 
+            margin-bottom: 30px; 
+            box-shadow: 0 0 30px rgba(0, 89, 179, 0.2);
+        }
+        .admin-edit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; padding: 15px; border: 1px solid #0059b3; border-radius: 15px; background: rgba(0,0,0,0.3); }
+
+        h1 { text-align: center; color: var(--gold); font-size: 24px; margin: 10px 0; }
+        
+        /* ستایلی نوێ بۆ قفڵکردنی فۆرم کاتێک ناچالاکە */
+        .form-container { position: relative; }
+        .disabled-overlay { 
+            position: absolute; inset: 0; background: rgba(0,0,0,0.7); 
+            z-index: 100; display: none; justify-content: center; 
+            align-items: center; border-radius: 20px; 
+            font-size: 24px; font-weight: bold; color: var(--danger);
+            border: 2px dashed var(--danger);
+        }
+        
+        .form-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: #0a0a0a; padding: 20px; border-radius: 20px; border: 1px solid #222; margin-bottom: 30px; transition: 0.3s; }
+        input, select { width: 100%; padding: 15px; background: #000; border: 1px solid #333; color: white; border-radius: 12px; font-size: 16px; box-sizing: border-box; outline: none; }
+        input:focus { border-color: var(--gold); }
+        .full { grid-column: span 2; }
+        .btn-submit { grid-column: span 2; padding: 18px; background: var(--gold); color: black; border: none; border-radius: 15px; font-weight: 900; font-size: 18px; cursor: pointer; transition: 0.3s; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+        .stat-card { background: #000; border: 1px solid #222; border-radius: 20px; padding: 20px 10px; text-align: center; border-top: 4px solid var(--gold); position: relative; overflow: hidden; }
+        
+        .full-label { position: absolute; inset: 0; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; color: #ff4d4d; font-weight: 900; font-size: 18px; text-transform: uppercase; z-index: 5; text-align: center; padding: 5px; }
+
+        .stat-card b { display: block; color: var(--gold); font-size: 30px; margin-bottom: 5px; }
+        
+        .info-box { margin-top: 15px; border-top: 1px solid #222; padding-top: 15px; }
+        .day-label { color: var(--gold); font-size: 15px; font-weight: bold; margin-bottom: 4px; display: block; }
+        .date-label { color: #fff; font-size: 18px; font-weight: 900; display: block; }
+        .time-label { color: var(--gold); font-size: 13px; margin-top: 12px; font-weight: 900; background: rgba(212, 175, 55, 0.15); padding: 8px 4px; border-radius: 8px; display: block; }
+
+        .public-list-area { margin-top: 40px; border-top: 2px solid #222; padding-top: 20px; }
+        .controls { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .table-wrap { overflow-x: auto; border-radius: 15px; border: 1px solid #222; background: #080808; }
+        table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        th, td { padding: 15px; border-bottom: 1px solid #111; text-align: center; font-size: 14px; }
+        th { background: #111; color: var(--gold); }
+
+        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .footer-logo { width: 50px; height: auto; border-radius: 8px; filter: grayscale(100%); transition: 0.3s; }
+
+        #successModal, #loginModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content, .success-content { background: #111; padding: 35px; border-radius: 25px; border: 1px solid var(--gold); width: 100%; max-width: 350px; text-align: center; }
+
+        @media (max-width: 850px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .stats-grid { grid-template-columns: 1fr; } .form-box, .controls, .admin-edit-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body id="bodyTag">
+
+<div class="container">
+    <div class="top-banner">
+        <h2 id="b-title">پارەدانی بازاڕی ناوەند حلال و حلال مارکێت ١ و حلال مارکێت ٢</h2>
+    </div>
+
+    <div class="header">
+        <div class="lang-switch">
+            <button class="lang-btn" id="l-ku" onclick="setLang('ku')">کوردی</button>
+            <button class="lang-btn" id="l-ar" onclick="setLang('ar')">العربية</button>
+            <button class="lang-btn" id="l-en" onclick="setLang('en')">EN</button>
+        </div>
+        <div class="nav-btns">
+            <button class="btn-nav" id="loginTrigger" onclick="showLogin()">🔒 Admin</button>
+            <button class="btn-nav" id="logoutBtn" style="display:none; background:#c0392b; color:white;" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div id="adminPanel">
+        <div class="admin-edit-grid">
+            <div style="grid-column: 1 / -1;"><h3 style="color:#0080ff; margin:0;">💎 ڕێکخستنی پێشکەوتووی ئەدمین</h3></div>
+            
+            <div style="grid-column: 1 / -1; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; text-align: center;">
+                <label style="display: block; margin-bottom: 5px;">دۆخی سیستم:</label>
+                <button id="toggleSystemBtn" class="btn-nav" style="width: 100%; font-size: 18px;" onclick="toggleSystemStatus()"></button>
+            </div>
+
+            <div><label>گروپ</label><select id="setGroup" onchange="loadGroupSettings()"><option value="A">Group A</option><option value="B">Group B</option><option value="C">Group C</option><option value="D">Group D</option></select></div>
+            <div><label>نیشاندان</label><input type="checkbox" id="setVisible" style="width:20px; height:20px;"></div>
+            <div><label>بەروار</label><input type="date" id="setDate"></div>
+            <div><label>کات</label><div style="display:flex; gap:5px; align-items:center;"><input type="time" id="setTimeStart"> <span class="to-text">بۆ</span> <input type="time" id="setTimeEnd"></div></div>
+            <div><label>سنوور</label><input type="number" id="setLimit"></div>
+            <button class="btn-nav" style="background:#0059b3; color:white; grid-column: 1 / -1; height:45px;" onclick="updateSettings()">نوێکردنەوەی سێتینگ</button>
+        </div>
+        <button class="btn-nav" style="background:#1d6f42; color:white; width:100%; margin-bottom:20px;" onclick="exportExcel()">📥 Export Excel</button>
+        <div class="table-wrap"><table><thead style="background:#002b80;"><tr><th>ناو</th><th>کۆمپانیا</th><th>مۆبایل</th><th>گروپ</th><th>X</th></tr></thead><tbody id="adminTableBody"></tbody></table></div>
+    </div>
+
+    <div id="mainContent">
+        <h1 id="m-title">ناونووسین بۆ پارەدان</h1>
+
+        <div class="form-container">
+            <div id="formOverlay" class="disabled-overlay">سیستم ناچالاکە / النظام مغلق / System Disabled</div>
+            
+            <form id="regForm" class="form-box">
+                <input type="text" id="uName" class="full" required placeholder="ناوی تەواو">
+                <input type="text" id="uComp" class="full" required placeholder="ناوی کۆمپانیا">
+                <input type="tel" id="uPhone" required placeholder="ژمارەی مۆبایل">
+                <select id="uGroup"></select>
+                <button type="submit" class="btn-submit" id="btn-sub">تۆمارکردن</button>
+            </form>
+        </div>
+
+        <div class="stats-grid" id="statsArea"></div>
+
+        <div class="public-list-area" id="publicListSection">
+            <h3 id="l-list-title" style="color:var(--gold); margin-bottom:15px;">👥 دواین کەسە تۆمارکراوەکان</h3>
+            <div class="controls">
+                <input type="text" id="publicSearch" onkeyup="refreshPublicList()">
+                <select id="publicFilter" onchange="refreshPublicList()"></select>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="th-p-name">ناو</th>
+                            <th id="th-p-comp">کۆمپانیا</th>
+                            <th id="th-p-group">گروپ</th>
+                            <th id="th-p-day">ڕۆژ</th>
+                            <th id="th-p-date">بەروار</th>
+                            <th id="th-p-time">کات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publicTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <img src="logo.png" alt="Logo" class="footer-logo" onerror="this.style.display='none'">
+        <div class="footer-text" id="f-credit">پەرەی پێدراوە لەلایەن <span>محمد کامران</span></div>
+    </div>
+
+    <div id="successModal"><div class="success-content" style="border-color: var(--success);"><div style="font-size:60px; color:var(--success);">✔</div><h2 id="res-msg">سەرکەوتوو بوو!</h2><button class="btn-submit" onclick="closeSuccess()">باشە</button></div></div>
+    <div id="loginModal"><div class="modal-content"><h3 style="color:var(--gold);">Admin Login</h3><input type="text" id="admUser" placeholder="Username" style="margin-bottom:10px;"><input type="password" id="admPass" placeholder="Password" style="margin-bottom:15px;" onkeypress="if(event.key==='Enter')attemptLogin()"><button class="btn-submit" onclick="attemptLogin()">Login</button><button onclick="hideLogin()" style="background:none; border:none; color:#555; margin-top:10px; cursor:pointer;">Cancel</button></div></div>
+</div>
+
+<script>
+    const ADMIN_CREDENTIALS = { username: "admin", password: "777" };
+    let db = JSON.parse(localStorage.getItem('v34_db')) || [];
+    
+    // زیادکردنی systemActive بۆ سێتینگ
+    let settings = JSON.parse(localStorage.getItem('v34_settings')) || {
+        systemActive: true,
+        A: { date: "2025-12-28", t1: "09:00", t2: "11:00", limit: 40, visible: true },
+        B: { date: "2025-12-28", t1: "11:00", t2: "13:00", limit: 40, visible: true },
+        C: { date: "2025-12-29", t1: "09:00", t2: "11:00", limit: 40, visible: true },
+        D: { date: "2025-12-29", t1: "11:00", t2: "13:00", limit: 40, visible: true }
+    };
+
+    const daysTranslation = { ku: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "هەینی", "شەممە"], ar: ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"], en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] };
+    const trans = {
+        ku: { banner: "پارەدانی بازاڕی ناوەند حلال و حلال مارکێت ١ و حلال مارکێت ٢", title: "ناونووسین بۆ پارەدان", sub: "تۆمارکردن", comp: "ماوە", list: "👥 دواین کەسە تۆمارکراوەکان", n: "ناو", c: "کۆمپانیا", g: "گروپ", d: "ڕۆژ", dt: "بەروار", tm: "کات", to: "بۆ", search: "گەڕان...", filter: "هەموو", credit: "پەرەی پێدراوە لەلایەن <span>محمد کامران</span>", err_dup: "ئەم کۆمپانیایە پێشتر تۆمار کراوە!", full: "جێگا نەماوە", dir: "rtl" },
+        ar: { banner: "دفع سوق حلال المركزي و حلال ماركت ١ و حلال ماركت ٢", title: "التسجيل للدفع", sub: "تسجيل", comp: "متبقي", list: "👥 آخر المسجلين", n: "الاسم", c: "الشركة", g: "المجموعة", d: "اليوم", dt: "التاريخ", tm: "الوقت", to: "إلى", search: "ابحث...", filter: "الكل", credit: "تم التطوير بواسطة <span>محمد کامران</span>", err_dup: "مسجلة بالفعل!", full: "لا يوجد مكان", dir: "rtl" },
+        en: { banner: "Central Halal Market, Halal Market 1 & Halal Market 2 Payment", title: "Registration", sub: "Register", comp: "Left", list: "👥 Recently Registered", n: "Name", c: "Company", g: "Group", d: "Day", dt: "Date", tm: "Time", to: "to", search: "Search...", filter: "All", credit: "Developed by <span>Mohammed Kamaran</span>", err_dup: "Already registered!", full: "No Space Left", dir: "ltr" }
+    };
+
+    let currentLang = 'ku';
+    function setLang(l) {
+        currentLang = l;
+        const t = trans[l];
+        document.getElementById('bodyTag').dir = t.dir;
+        document.getElementById('b-title').innerText = t.banner;
+        document.getElementById('m-title').innerText = t.title;
+        document.getElementById('btn-sub').innerText = t.sub;
+        document.getElementById('l-list-title').innerText = t.list;
+        document.getElementById('th-p-name').innerText = t.n;
+        document.getElementById('th-p-comp').innerText = t.c;
+        document.getElementById('th-p-group').innerText = t.g;
+        document.getElementById('th-p-day').innerText = t.d;
+        document.getElementById('th-p-date').innerText = t.dt;
+        document.getElementById('th-p-time').innerText = t.tm;
+        document.querySelectorAll('.to-text').forEach(el => el.innerText = t.to);
+        document.getElementById('publicSearch').placeholder = t.search;
+        document.getElementById('f-credit').innerHTML = t.credit;
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('l-' + l).classList.add('active');
+        refresh();
+    }
+
+    function refresh() {
+        const statsArea = document.getElementById('statsArea');
+        const uGroupSelect = document.getElementById('uGroup');
+        const publicFilter = document.getElementById('publicFilter');
+        
+        // نوێکردنەوەی دۆخی بینینی فۆرم
+        const overlay = document.getElementById('formOverlay');
+        const form = document.getElementById('regForm');
+        const toggleBtn = document.getElementById('toggleSystemBtn');
+
+        if (settings.systemActive) {
+            overlay.style.display = 'none';
+            form.style.opacity = '1';
+            toggleBtn.innerText = "سیستم چالاکە (کلیک بکە بۆ ڕاگرتن)";
+            toggleBtn.style.background = "#27ae60";
+        } else {
+            overlay.style.display = 'flex';
+            form.style.opacity = '0.2';
+            toggleBtn.innerText = "سیستم ناچالاکە (کلیک بکە بۆ دەسپێکردن)";
+            toggleBtn.style.background = "#e74c3c";
+        }
+
+        statsArea.innerHTML = ''; uGroupSelect.innerHTML = '';
+        const currentFilterVal = publicFilter.value;
+        publicFilter.innerHTML = `<option value="all">${trans[currentLang].filter}</option>`;
+
+        ['A', 'B', 'C', 'D'].forEach(g => {
+            const s = settings[g];
+            if (s.visible) {
+                const count = s.limit - db.filter(p => p.Group === g).length;
+                const dateObj = new Date(s.date);
+                const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+                const isFull = count <= 0;
+
+                statsArea.innerHTML += `
+                    <div class="stat-card">
+                        ${isFull ? `<div class="full-label">${trans[currentLang].full}</div>` : ''}
+                        <b>${g}</b> <span>${count}</span> <span style="font-size:11px; color:#555;">${trans[currentLang].comp}</span>
+                        <div class="info-box">
+                            <span class="day-label">${dayName}</span>
+                            <div class="date-label">${s.date}</div>
+                            <div class="time-label">${s.t1} ${trans[currentLang].to} ${s.t2}</div>
+                        </div>
+                    </div>`;
+                
+                if (!isFull) {
+                    uGroupSelect.innerHTML += `<option value="${g}">Group ${g}</option>`;
+                }
+                publicFilter.innerHTML += `<option value="${g}">Group ${g}</option>`;
+            }
+        });
+        publicFilter.value = currentFilterVal;
+        refreshPublicList(); refreshAdminList();
+        localStorage.setItem('v34_db', JSON.stringify(db));
+        localStorage.setItem('v34_settings', JSON.stringify(settings));
+    }
+
+    // فەنکشنی گۆڕینی دۆخی سیستم
+    function toggleSystemStatus() {
+        settings.systemActive = !settings.systemActive;
+        refresh();
+    }
+
+    function refreshPublicList() {
+        const query = document.getElementById('publicSearch').value.toLowerCase();
+        const filter = document.getElementById('publicFilter').value;
+        const tbody = document.getElementById('publicTableBody');
+        tbody.innerHTML = '';
+        [...db].reverse().forEach(p => {
+            if (filter === "all" || p.Group === filter) {
+                const isMatch = query !== "" && (p.Name.toLowerCase().includes(query) || p.Comp.toLowerCase().includes(query));
+                const s = settings[p.Group];
+                const dateObj = new Date(s.date);
+                const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+                tbody.innerHTML += `<tr class="${isMatch ? 'highlight-row' : ''}"><td>${p.Name}</td><td>${p.Comp}</td><td style="color:var(--gold); font-weight:bold;">Group ${p.Group}</td><td>${dayName}</td><td>${s.date}</td><td dir="ltr">${s.t1} - ${s.t2}</td></tr>`;
+            }
+        });
+    }
+
+    function refreshAdminList() {
+        const adminTbody = document.getElementById('adminTableBody'); adminTbody.innerHTML = '';
+        db.forEach((p, i) => { adminTbody.innerHTML += `<tr><td>${p.Name}</td><td>${p.Comp}</td><td>${p.Phone}</td><td>${p.Group}</td><td><button onclick="del(${i})" style="color:red; background:none; border:none; cursor:pointer;">X</button></td></tr>`; });
+    }
+
+    function loadGroupSettings() {
+        const g = document.getElementById('setGroup').value; const s = settings[g];
+        document.getElementById('setVisible').checked = s.visible;
+        document.getElementById('setDate').value = s.date;
+        document.getElementById('setLimit').value = s.limit;
+        document.getElementById('setTimeStart').value = s.t1;
+        document.getElementById('setTimeEnd').value = s.t2;
+    }
+
+    function updateSettings() {
+        const g = document.getElementById('setGroup').value;
+        settings[g].visible = document.getElementById('setVisible').checked;
+        settings[g].date = document.getElementById('setDate').value;
+        settings[g].limit = document.getElementById('setLimit').value;
+        settings[g].t1 = document.getElementById('setTimeStart').value;
+        settings[g].t2 = document.getElementById('setTimeEnd').value;
+        refresh(); alert("سێتینگ نوێکرایەوە!");
+    }
+
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if(!settings.systemActive) return; // ڕێگری زیادە
+        const g = document.getElementById('uGroup').value;
+        const comp = document.getElementById('uComp').value;
+        if(db.some(p => p.Comp.toLowerCase() === comp.toLowerCase())) return alert(trans[currentLang].err_dup);
+        db.push({ Name: document.getElementById('uName').value, Comp: comp, Phone: document.getElementById('uPhone').value, Group: g });
+        document.getElementById('successModal').style.display = 'flex';
+        this.reset(); refresh();
+    });
+
+    function closeSuccess() { document.getElementById('successModal').style.display = 'none'; document.getElementById('publicFilter').value = "all"; refreshPublicList(); document.getElementById('publicListSection').scrollIntoView({ behavior: 'smooth' }); }
+    function showLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+    function hideLogin() { document.getElementById('loginModal').style.display = 'none'; }
+    function attemptLogin() {
+        if(document.getElementById('admUser').value === ADMIN_CREDENTIALS.username && document.getElementById('admPass').value === ADMIN_CREDENTIALS.password) {
+            document.getElementById('adminPanel').style.display = 'block';
+            document.getElementById('logoutBtn').style.display = 'block';
+            document.getElementById('loginTrigger').style.display = 'none';
+            loadGroupSettings(); hideLogin();
+        } else { alert("Error!"); }
+    }
+    function logout() { location.reload(); }
+    function del(i) { if(confirm("ئایا دڵنیای؟")) { db.splice(i, 1); refresh(); } }
+    function exportExcel() { const ws = XLSX.utils.json_to_sheet(db); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Data"); XLSX.writeFile(wb, "Report.xlsx"); }
+
+    setLang('ku');
+</script>
+</body>
+</html>

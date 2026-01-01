@@ -1,0 +1,14 @@
+{
+  "name": "whatsapp-auto-sender",
+  "version": "1.0.0",
+  "description": "Automatic WhatsApp message sender from +9647505543003",
+  "main": "whatsapp-sender.js",
+  "scripts": {
+    "start": "node whatsapp-sender.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0"
+  }
+}
+

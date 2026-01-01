@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Premium | Halal Market Portal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        :root { --gold: #d4af37; --bg: #050505; --card-bg: rgba(20, 20, 20, 0.98); --success: #27ae60; --admin-blue: #001a33; --danger: #e74c3c; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: white; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; background-image: radial-gradient(circle at top, #222 0%, #000 100%); padding: 15px; box-sizing: border-box; }
+        .container { width: 100%; max-width: 1000px; background: var(--card-bg); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 25px; padding: 25px; box-shadow: 0 30px 100px rgba(0,0,0,1); margin: 10px 0; display: flex; flex-direction: column; }
+        
+        .top-banner { text-align: center; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 20px; }
+        .top-banner h2 { color: var(--gold); margin: 5px 0; font-size: 20px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .btn-nav { background: #111; border: 1px solid #333; color: var(--gold); padding: 8px 18px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+
+        #adminPanel { display: none; background: var(--admin-blue); padding: 25px; border-radius: 20px; border: 2px solid #0059b3; margin-bottom: 30px; }
+        .admin-edit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; padding: 15px; border: 1px solid #0059b3; border-radius: 15px; background: rgba(0,0,0,0.3); }
+
+        .form-container { position: relative; }
+        .disabled-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.85); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; border-radius: 20px; font-size: 20px; font-weight: bold; color: white; border: 2px solid var(--danger); text-align: center; }
+        
+        .form-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: #0a0a0a; padding: 20px; border-radius: 20px; border: 1px solid #222; margin-bottom: 30px; }
+        input, select { width: 100%; padding: 15px; background: #000; border: 1px solid #333; color: white; border-radius: 12px; font-size: 16px; outline: none; box-sizing: border-box; }
+        .full { grid-column: span 2; }
+        .btn-submit { grid-column: span 2; padding: 18px; background: var(--gold); color: black; border: none; border-radius: 15px; font-weight: 900; font-size: 18px; cursor: pointer; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+        .stat-card { background: #000; border: 1px solid #222; border-radius: 20px; padding: 15px 10px; text-align: center; border-top: 4px solid var(--gold); }
+        .stat-card b { display: block; color: var(--gold); font-size: 28px; }
+        .stat-card span { font-size: 13px; color: #888; }
+
+        .public-list-area { margin-top: 20px; border-top: 1px solid #222; padding-top: 20px; }
+        .table-wrap { overflow-x: auto; border-radius: 15px; border: 1px solid #222; background: #080808; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 12px; border-bottom: 1px solid #111; text-align: center; font-size: 14px; }
+        th { background: #111; color: var(--gold); }
+
+        .footer { margin-top: 50px; padding: 30px 0; text-align: center; }
+        .dev-badge { background: rgba(212, 175, 55, 0.05); padding: 12px 25px; border-radius: 50px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .dev-name { color: var(--gold); font-weight: 900; }
+
+        #successModal, #loginModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center; }
+        .modal-content { background: #111; padding: 35px; border-radius: 25px; border: 1px solid var(--gold); text-align: center; width: 320px; }
+
+        @media (max-width: 850px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-banner">
+        <h2>پارەدانی بازاڕی ناوەند حلال</h2>
+    </div>
+
+    <div class="header">
+        <button class="btn-nav" onclick="showLogin()">🔒 Admin</button>
+        <button class="btn-nav" id="logoutBtn" style="display:none; background:var(--danger); color:white;" onclick="location.reload()">Logout</button>
+    </div>
+
+    <div id="adminPanel">
+        <div class="admin-edit-grid" id="adminSettings">
+            <div style="grid-column: 1 / -1; text-align: center;">
+                <button id="toggleBtn" class="btn-nav" style="width:100%;" onclick="toggleSystem()">دۆخی سیستم</button>
+                <div style="margin-top:10px; display:flex; gap:10px;">
+                    <input type="datetime-local" id="autoOpen" placeholder="Auto Open">
+                    <input type="datetime-local" id="autoClose" placeholder="Auto Close">
+                </div>
+            </div>
+            <div><label>گروپ</label><select id="setG"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></div>
+            <div><label>بەروار</label><input type="date" id="setD"></div>
+            <div><label>کات</label><input type="time" id="setT1"> <input type="time" id="setT2"></div>
+            <div><label>سنوور</label><input type="number" id="setL"></div>
+            <button class="btn-submit" onclick="saveSets()">Save Settings</button>
+        </div>
+        <button class="btn-nav" style="width:100%; background:#1d6f42; color:white;" onclick="exportExcel()">📥 Export Excel</button>
+        <div class="table-wrap" style="margin-top:15px;"><table id="adminTable"></table></div>
+    </div>
+
+    <div id="mainContent">
+        <h1 style="text-align:center; color:var(--gold);">ناونووسین بۆ پارەدان</h1>
+        
+        <div class="form-container">
+            <div id="formOverlay" class="disabled-overlay">
+                <span>سیستم ناچالاکە</span>
+                <small id="timerMsg" style="color:var(--gold); margin-top:10px;"></small>
+            </div>
+            <form id="regForm" class="form-box">
+                <input type="text" id="uName" class="full" required placeholder="ناوی تەواو">
+                <input type="text" id="uComp" class="full" required placeholder="ناوی کۆمپانیا">
+                <input type="tel" id="uPhone" required placeholder="ژمارەی مۆبایل">
+                <select id="uGroup"></select>
+                <button type="submit" class="btn-submit">تۆمارکردن</button>
+            </form>
+        </div>
+
+        <div class="stats-grid" id="statsArea"></div>
+
+        <div class="public-list-area" id="publicSection">
+            <h3 style="color:var(--gold);">👥 دواین کەسە تۆمارکراوەکان</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>کۆمپانیا</th><th>گروپ</th><th>ڕۆژ و بەروار</th><th>کات</th></tr>
+                    </thead>
+                    <tbody id="publicList"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="dev-badge">
+            <span class="dev-text">پەرەی پێدراوە لەلایەن</span>
+            <span class="dev-name">محمد کامران</span>
+        </div>
+    </div>
+
+    <div id="loginModal"><div class="modal-content"><input type="password" id="pass" placeholder="Password"><br><br><button class="btn-submit" onclick="checkLog()">Login</button></div></div>
+    <div id="successModal"><div class="modal-content"><h2>✔ سەرکەوتوو بوو!</h2><button class="btn-submit" onclick="closeOk()">باشە</button></div></div>
+</div>
+
+<script>
+    let db = JSON.parse(localStorage.getItem('h_db')) || [];
+    let sets = JSON.parse(localStorage.getItem('h_sets')) || {
+        active: true, open: "", close: "",
+        A: { d: "2025-01-01", t1: "09:00", t2: "11:00", l: 40 },
+        B: { d: "2025-01-01", t1: "11:00", t2: "13:00", l: 40 },
+        C: { d: "2025-01-02", t1: "09:00", t2: "11:00", l: 40 },
+        D: { d: "2025-01-02", t1: "11:00", t2: "13:00", l: 40 }
+    };
+
+    function refresh() {
+        const now = new Date().getTime();
+        if (sets.open && now >= new Date(sets.open).getTime()) { sets.active = true; sets.open = ""; }
+        if (sets.close && now >= new Date(sets.close).getTime()) { sets.active = false; sets.close = ""; }
+
+        const overlay = document.getElementById('formOverlay');
+        overlay.style.display = sets.active ? 'none' : 'flex';
+        document.getElementById('timerMsg').innerText = sets.open ? "دەکرێتەوە لە: " + sets.open.replace('T',' ') : "";
+        document.getElementById('toggleBtn').style.background = sets.active ? "#27ae60" : "#e74c3c";
+
+        const statsArea = document.getElementById('statsArea');
+        const groupSel = document.getElementById('uGroup');
+        const publicList = document.getElementById('publicList');
+        statsArea.innerHTML = ''; groupSel.innerHTML = ''; publicList.innerHTML = '';
+
+        ['A','B','C','D'].forEach(g => {
+            const count = sets[g].l - db.filter(x => x.Group === g).length;
+            statsArea.innerHTML += `<div class="stat-card"><b>${g}</b><span>${count} ماوە</span><br><small>${sets[g].d}</small><br><small>${sets[g].t1}-${sets[g].t2}</small></div>`;
+            if (count > 0) groupSel.innerHTML += `<option value="${g}">Group ${g}</option>`;
+        });
+
+        [...db].reverse().forEach(x => {
+            publicList.innerHTML += `<tr><td>${x.Comp}</td><td>Group ${x.Group}</td><td>${sets[x.Group].d}</td><td>${sets[x.Group].t1} بۆ ${sets[x.Group].t2}</td></tr>`;
+        });
+
+        const adminTable = document.getElementById('adminTable');
+        adminTable.innerHTML = `<tr><th>ناو</th><th>کۆمپانیا</th><th>گروپ</th><th>X</th></tr>`;
+        db.forEach((x, i) => {
+            adminTable.innerHTML += `<tr><td>${x.Name}</td><td>${x.Comp}</td><td>${x.Group}</td><td><button onclick="del(${i})">X</button></td></tr>`;
+        });
+
+        localStorage.setItem('h_db', JSON.stringify(db));
+        localStorage.setItem('h_sets', JSON.stringify(sets));
+    }
+
+    function saveSets() {
+        const g = document.getElementById('setG').value;
+        sets[g] = { d: document.getElementById('setD').value, t1: document.getElementById('setT1').value, t2: document.getElementById('setT2').value, l: document.getElementById('setL').value };
+        sets.open = document.getElementById('autoOpen').value;
+        sets.close = document.getElementById('autoClose').value;
+        refresh(); alert("پاشەکەوت کرا!");
+    }
+
+    document.getElementById('regForm').onsubmit = (e) => {
+        e.preventDefault();
+        db.push({ Name: document.getElementById('uName').value, Comp: document.getElementById('uComp').value, Phone: document.getElementById('uPhone').value, Group: document.getElementById('uGroup').value });
+        document.getElementById('successModal').style.display = 'flex';
+        e.target.reset(); refresh();
+    };
+
+    function closeOk() {
+        document.getElementById('successModal').style.display = 'none';
+        document.getElementById('publicSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleSystem() { sets.active = !sets.active; refresh(); }
+    function showLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+    function checkLog() { if (document.getElementById('pass').value === "777") { document.getElementById('adminPanel').style.display = 'block'; document.getElementById('loginModal').style.display = 'none'; document.getElementById('logoutBtn').style.display = 'block'; refresh(); } }
+    function del(i) { db.splice(i, 1); refresh(); }
+    function exportExcel() { const ws = XLSX.utils.json_to_sheet(db); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Data"); XLSX.writeFile(wb, "Halal_Market.xlsx"); }
+    
+    setInterval(refresh, 1000);
+    refresh();
+</script>
+
+</body>
+</html>
