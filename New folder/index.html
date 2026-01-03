@@ -2586,6 +2586,25 @@
             padding-top: 20px; 
             line-height: 1.6; 
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .footer-credit img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        .footer-credit img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 3px 8px rgba(212, 175, 55, 0.5));
         }
         
         .footer-credit span {
@@ -4343,7 +4362,10 @@
                 </div>
             </div>
         </div>
-        <div class="footer-credit">Developed by Mohammed Kamaran</div>
+        <div class="footer-credit" id="f-credit" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+            <img src="7.png" alt="Mohammed Kamaran Logo" id="footer-logo-img" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));" onerror="this.style.display='none'">
+            <span>Developed by <span style="font-weight: 700; color: var(--sky-blue); text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);">Mohammed Kamaran</span></span>
+        </div>
     </div>
 
     <div id="successModal"><div class="success-content" style="border-color: var(--success);"><div style="font-size:60px; color:var(--success);">✔</div><h2 id="res-msg">سەرکەوتوو بوو!</h2><button class="btn-submit" onclick="closeSuccess()">باشە</button></div></div>
