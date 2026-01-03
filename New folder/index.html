@@ -657,6 +657,35 @@
         
         /* Mobile optimizations for admin button */
         @media (max-width: 500px) {
+            /* Make dates and times much more readable on small mobile */
+            .admin-table tbody td:nth-child(6),
+            .admin-table tbody td:nth-child(7),
+            .admin-table tbody td:nth-child(8),
+            #accountantPanel .admin-table tbody td:nth-child(6),
+            #accountantPanel .admin-table tbody td:nth-child(7),
+            #accountantPanel .admin-table tbody td:nth-child(8) {
+                font-size: 15px !important;
+                font-weight: 700 !important;
+                padding: 16px 12px !important;
+                color: var(--sky-blue-light) !important;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+                letter-spacing: 0.5px !important;
+                line-height: 1.4 !important;
+                background: rgba(212, 175, 55, 0.1) !important;
+                border-radius: 6px !important;
+            }
+            
+            .admin-table thead th:nth-child(6),
+            .admin-table thead th:nth-child(7),
+            .admin-table thead th:nth-child(8),
+            #accountantPanel .admin-table thead th:nth-child(6),
+            #accountantPanel .admin-table thead th:nth-child(7),
+            #accountantPanel .admin-table thead th:nth-child(8) {
+                font-size: 12px !important;
+                font-weight: 800 !important;
+                padding: 14px 10px !important;
+            }
+            
             .admin-btn, .logout-btn {
                 padding: 10px 16px;
                 gap: 6px;
@@ -1154,6 +1183,23 @@
                 font-size: 11px;
                 white-space: normal;
                 word-wrap: break-word;
+            }
+            
+            /* Make dates and times more readable on mobile */
+            .admin-table tbody td:nth-child(6),
+            .admin-table tbody td:nth-child(7),
+            .admin-table tbody td:nth-child(8),
+            #accountantPanel .admin-table tbody td:nth-child(6),
+            #accountantPanel .admin-table tbody td:nth-child(7),
+            #accountantPanel .admin-table tbody td:nth-child(8),
+            .date-time-cell {
+                font-size: 14px !important;
+                font-weight: 700 !important;
+                padding: 14px 10px !important;
+                color: var(--sky-blue-light) !important;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+                letter-spacing: 0.5px !important;
+                line-height: 1.5 !important;
             }
             
             .admin-table tbody td:nth-child(1) {
@@ -2058,6 +2104,35 @@
             width: 19%; 
             min-width: 140px;
         } /* Time */
+        
+        /* Make dates and times more readable on mobile for public table */
+        @media (max-width: 850px) {
+            table tbody td:nth-child(4),
+            table tbody td:nth-child(5),
+            table tbody td:nth-child(6) {
+                font-size: 14px !important;
+                font-weight: 700 !important;
+                padding: 14px 12px !important;
+                color: var(--sky-blue-light) !important;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+                letter-spacing: 0.5px !important;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            table tbody td:nth-child(4),
+            table tbody td:nth-child(5),
+            table tbody td:nth-child(6) {
+                font-size: 16px !important;
+                font-weight: 800 !important;
+                padding: 16px 14px !important;
+                color: var(--sky-blue-light) !important;
+                text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8) !important;
+                letter-spacing: 0.6px !important;
+                background: rgba(212, 175, 55, 0.12) !important;
+                border-radius: 8px !important;
+            }
+        }
         
         /* Ensure all cells align properly */
         td {
@@ -5020,9 +5095,9 @@
                     <td style="font-size:11px; ${companyStrikeStyle}">${companyCell}</td>
                     <td style="font-size:11px; ${strikeStyle}">${phoneCell || '-'}</td>
                     <td style="font-size:11px; ${strikeStyle}">${p.Group || '-'}</td>
-                    <td style="font-size:11px; ${strikeStyle}">${dayName || '-'}</td>
-                    <td style="font-size:11px; ${strikeStyle}">${dateStr || '-'}</td>
-                    <td style="font-size:11px; ${strikeStyle}">${timeStr || '-'}</td>
+                    <td class="date-time-cell" style="font-size:11px; font-weight:600; color:var(--sky-blue-light); ${strikeStyle}">${dayName || '-'}</td>
+                    <td class="date-time-cell" style="font-size:11px; font-weight:600; color:var(--sky-blue-light); ${strikeStyle}">${dateStr || '-'}</td>
+                    <td class="date-time-cell" style="font-size:11px; font-weight:600; color:var(--sky-blue-light); ${strikeStyle}">${timeStr || '-'}</td>
                     <td>${reviewButton}</td>
                     <td>${paidButton}</td>
                 </tr>`);
