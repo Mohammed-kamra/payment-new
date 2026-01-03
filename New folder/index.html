@@ -1688,12 +1688,30 @@
         
         @media (max-width: 500px) {
             .stats-grid {
-                gap: 6px !important;
-                margin-bottom: 14px !important;
+                gap: 5px !important;
+                margin-bottom: 12px !important;
             }
             
             .stat-card {
                 backdrop-filter: blur(6px) !important;
+                padding: 5px 4px !important;
+                min-height: 45px !important;
+            }
+            
+            .stat-card b {
+                font-size: 14px !important;
+            }
+            
+            .stat-card-label {
+                font-size: 8px !important;
+                padding: 2px 3px !important;
+            }
+            
+            .day-label,
+            .date-label,
+            .time-label {
+                font-size: 8px !important;
+                padding: 1px 3px !important;
             }
         }
         
@@ -2769,9 +2787,9 @@
             /* Ultra compact group boxes on mobile - Fast & Beautiful */
             .stats-grid { 
                 grid-template-columns: repeat(2, 1fr) !important; 
-                gap: 8px !important;
+                gap: 6px !important;
                 max-width: 100% !important;
-                margin-bottom: 16px !important;
+                margin-bottom: 12px !important;
             }
             
             .stats-grid.grid-1,
@@ -2780,31 +2798,45 @@
             .stats-grid.grid-4 {
                 grid-template-columns: repeat(2, 1fr) !important;
                 max-width: 100% !important;
-                gap: 8px !important;
+                gap: 6px !important;
             }
             
-            /* Ultra compact stat cards */
+            /* Ultra compact stat cards - smaller on mobile */
             .stat-card {
-                padding: 10px 8px !important;
-                border-radius: 10px !important;
-                min-height: 60px !important;
+                padding: 6px 5px !important;
+                border-radius: 8px !important;
+                min-height: 50px !important;
                 border-top: 2px solid var(--sky-blue);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
             }
             
             .stat-card b {
-                font-size: 20px !important;
+                font-size: 16px !important;
                 font-weight: 700;
                 line-height: 1.1;
-                margin: 4px 0;
+                margin: 2px 0;
             }
             
             .stat-card-label {
-                font-size: 11px !important;
-                padding: 4px 6px !important;
-                letter-spacing: 0.8px !important;
-                margin-bottom: 4px !important;
-                border-radius: 6px;
+                font-size: 9px !important;
+                padding: 3px 4px !important;
+                letter-spacing: 0.6px !important;
+                margin-bottom: 2px !important;
+                border-radius: 4px;
+            }
+            
+            /* Make date/time labels smaller on mobile */
+            .day-label,
+            .date-label,
+            .time-label {
+                font-size: 9px !important;
+                padding: 2px 4px !important;
+                margin: 2px 0 !important;
+            }
+            
+            .info-box {
+                margin-top: 6px !important;
+                padding-top: 6px !important;
             }
             
             /* Remove animations for performance */
