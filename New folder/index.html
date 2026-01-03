@@ -224,19 +224,35 @@
             }
         }
         
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+        
         body { 
             margin: 0; 
+            padding: 0;
             font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif; 
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
             background-attachment: fixed;
+            background-size: cover;
             color: var(--white); 
-            min-height: 100vh; 
+            min-height: 100vh;
+            width: 100vw;
             display: flex; 
             justify-content: center; 
             align-items: flex-start; 
-            padding: 15px; 
             position: relative;
             overflow-x: hidden;
+        }
+        
+        #mainContent {
+            width: 100%;
+            min-height: 100vh;
         }
         
         body::before {
@@ -255,18 +271,16 @@
         }
         
         .container { 
-            width: 100%; 
-            max-width: 1000px; 
+            width: 100%;
+            max-width: 100%;
+            min-height: 100vh;
             background: var(--card-bg);
             backdrop-filter: blur(20px) saturate(1.2);
-            border: 1px solid rgba(212, 175, 55, 0.3); 
-            border-radius: 25px; 
-            padding: 30px; 
-            box-shadow: 
-                0 30px 100px rgba(0,0,0,0.6),
-                0 0 0 1px rgba(212, 175, 55, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            margin: 10px 0; 
+            border: none;
+            border-radius: 0;
+            padding: 20px;
+            box-shadow: none;
+            margin: 0;
             display: flex; 
             flex-direction: column;
             position: relative;
@@ -276,11 +290,7 @@
         }
         
         .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 40px 120px rgba(0,0,0,0.7),
-                0 0 0 1px rgba(212, 175, 55, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: none;
         }
         
         .container::before {
@@ -668,12 +678,90 @@
         #adminPanel { 
             display: none; 
             background: var(--admin-blue); 
-            padding: 30px; 
-            border-radius: 20px; 
-            border: 2px solid rgba(0, 89, 179, 0.5); 
-            margin-bottom: 30px; 
-            box-shadow: 0 0 40px rgba(0, 89, 179, 0.3);
+            width: 100vw;
+            min-height: 100vh;
+            padding: 15px;
+            border-radius: 0;
+            border: none;
+            margin: 0;
+            box-shadow: none;
             animation: fadeInUp 0.4s ease-out;
+        }
+        
+        #accountantPanel {
+            width: 100vw;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        /* Responsive padding for admin and accountant panels */
+        @media (min-width: 480px) {
+            #adminPanel, #accountantPanel {
+                padding: 20px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            #adminPanel, #accountantPanel {
+                padding: 25px 30px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            #adminPanel, #accountantPanel {
+                padding: 30px 50px;
+            }
+        }
+        
+        @media (min-width: 1440px) {
+            #adminPanel, #accountantPanel {
+                padding: 40px 80px;
+            }
+        }
+        
+        @media (min-width: 1920px) {
+            #adminPanel, #accountantPanel {
+                padding: 50px 120px;
+            }
+        }
+        
+        /* Enhanced full-screen design elements */
+        .top-banner {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .header {
+            width: 100%;
+        }
+        
+        .form-container {
+            width: 100%;
+        }
+        
+        .stats-grid {
+            width: 100%;
+        }
+        
+        /* Beautiful gradient overlays for full screen */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Smooth transitions for all screen sizes */
+        * {
+            -webkit-tap-highlight-color: transparent;
         }
         
         .admin-tabs {
@@ -772,33 +860,41 @@
         }
         
         .admin-table thead th:nth-child(1) { 
-            width: 13%; 
+            width: 5%; 
+            font-weight: 700;
+        } /* Rank */
+        .admin-table thead th:nth-child(2) { 
+            width: 12%; 
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.4)) !important;
             color: #000 !important;
             font-weight: 900;
         } /* Name */
-        .admin-table thead th:nth-child(2) { width: 14%; } /* Company */
-        .admin-table thead th:nth-child(3) { width: 10%; } /* Phone */
-        .admin-table thead th:nth-child(4) { width: 7%; }  /* Group */
-        .admin-table thead th:nth-child(5) { width: 10%; } /* Day */
-        .admin-table thead th:nth-child(6) { width: 11%; } /* Date */
-        .admin-table thead th:nth-child(7) { width: 14%; } /* Time */
-        .admin-table thead th:nth-child(8) { width: 12%; }  /* Paid */
+        .admin-table thead th:nth-child(3) { width: 13%; } /* Company */
+        .admin-table thead th:nth-child(4) { width: 9%; } /* Phone */
+        .admin-table thead th:nth-child(5) { width: 6%; }  /* Group */
+        .admin-table thead th:nth-child(6) { width: 9%; } /* Day */
+        .admin-table thead th:nth-child(7) { width: 10%; } /* Date */
+        .admin-table thead th:nth-child(8) { width: 13%; } /* Time */
+        .admin-table thead th:nth-child(9) { width: 11%; }  /* Paid */
         
-        /* Accountant table - 7 columns (no Paid column) */
+        /* Accountant table - Same as admin table */
         #accountantPanel .admin-table thead th:nth-child(1) { 
-            width: 13%; 
+            width: 5%; 
+            font-weight: 700;
+        } /* Rank */
+        #accountantPanel .admin-table thead th:nth-child(2) { 
+            width: 12%; 
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.4)) !important;
             color: #000 !important;
             font-weight: 900;
         } /* Name */
-        #accountantPanel .admin-table thead th:nth-child(2) { width: 14%; } /* Company */
-        #accountantPanel .admin-table thead th:nth-child(3) { width: 10%; } /* Phone */
-        #accountantPanel .admin-table thead th:nth-child(4) { width: 7%; }  /* Group */
-        #accountantPanel .admin-table thead th:nth-child(5) { width: 10%; } /* Day */
-        #accountantPanel .admin-table thead th:nth-child(6) { width: 11%; } /* Date */
-        #accountantPanel .admin-table thead th:nth-child(7) { width: 14%; } /* Time */
-        #accountantPanel .admin-table thead th:nth-child(8) { width: 12%; }  /* Paid */
+        #accountantPanel .admin-table thead th:nth-child(3) { width: 13%; } /* Company */
+        #accountantPanel .admin-table thead th:nth-child(4) { width: 9%; } /* Phone */
+        #accountantPanel .admin-table thead th:nth-child(5) { width: 6%; }  /* Group */
+        #accountantPanel .admin-table thead th:nth-child(6) { width: 9%; } /* Day */
+        #accountantPanel .admin-table thead th:nth-child(7) { width: 10%; } /* Date */
+        #accountantPanel .admin-table thead th:nth-child(8) { width: 13%; } /* Time */
+        #accountantPanel .admin-table thead th:nth-child(9) { width: 11%; }  /* Paid */
         
         .admin-table tbody td {
             padding: 10px 6px;
@@ -883,6 +979,12 @@
         
         /* Accountant table cell styling - match admin table exactly */
         #accountantPanel .admin-table tbody td:nth-child(1) {
+            font-weight: 700;
+            color: var(--sky-blue);
+            text-align: center;
+        }
+        
+        #accountantPanel .admin-table tbody td:nth-child(2) {
             font-weight: 600;
             color: #fff;
             font-size: 12px;
@@ -895,7 +997,7 @@
             line-height: 1.4;
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(2) {
+        #accountantPanel .admin-table tbody td:nth-child(3) {
             color: var(--sky-blue-light);
             font-weight: 600;
             white-space: normal;
@@ -903,37 +1005,37 @@
             line-height: 1.4;
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(3) {
+        #accountantPanel .admin-table tbody td:nth-child(4) {
             color: var(--sky-blue);
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(4) {
+        #accountantPanel .admin-table tbody td:nth-child(5) {
             color: var(--primary-gold);
             font-weight: 700;
             font-size: 11px;
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(5) {
+        #accountantPanel .admin-table tbody td:nth-child(6) {
             color: #aaa;
             font-size: 11px;
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(6) {
+        #accountantPanel .admin-table tbody td:nth-child(7) {
             color: #ccc;
             font-size: 11px;
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(7) {
+        #accountantPanel .admin-table tbody td:nth-child(8) {
             color: #bbb;
             font-size: 11px;
             direction: ltr;
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(8) {
+        #accountantPanel .admin-table tbody td:nth-child(9) {
             padding: 8px 4px;
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(8) button {
+        #accountantPanel .admin-table tbody td:nth-child(9) button {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.3));
             border: 2px solid rgba(212, 175, 55, 0.7);
             color: var(--primary-gold);
@@ -949,13 +1051,13 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
         
-        #accountantPanel .admin-table tbody td:nth-child(8) button:hover {
+        #accountantPanel .admin-table tbody td:nth-child(9) button:hover {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.5));
             transform: scale(1.05);
             box-shadow: 0 4px 10px rgba(0,0,0,0.5), 0 0 15px rgba(212,175,55,0.6);
         }
         
-        #accountantPanel .admin-table tbody td .paid-badge {
+        #accountantPanel .admin-table tbody td:nth-child(9) span {
             background: linear-gradient(135deg, rgba(39,174,96,0.5), rgba(39,174,96,0.3));
             color: #fff;
             padding: 6px 12px;
@@ -968,15 +1070,21 @@
             text-shadow: 0 0 5px rgba(255,255,255,0.4);
         }
         
-        .admin-table tbody td:nth-child(8) {
+        .admin-table tbody td:nth-child(9) {
             padding: 8px 4px;
         }
         
-        .admin-table tbody td:nth-child(8) {
+        .admin-table tbody td:nth-child(1) {
+            font-weight: 700;
+            color: var(--sky-blue);
+            text-align: center;
+        }
+        
+        .admin-table tbody td:nth-child(9) {
             padding: 8px 4px;
         }
         
-        .admin-table tbody td:nth-child(8) button {
+        .admin-table tbody td:nth-child(9) button {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.3));
             border: 2px solid rgba(212, 175, 55, 0.7);
             color: var(--primary-gold);
@@ -992,7 +1100,7 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
         
-        .admin-table tbody td:nth-child(8) button:hover {
+        .admin-table tbody td:nth-child(9) button:hover {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.5));
             border-color: rgba(212, 175, 55, 0.9);
             color: var(--primary-gold);
@@ -1000,7 +1108,7 @@
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
         }
         
-        .admin-table tbody td:nth-child(8) span {
+        .admin-table tbody td:nth-child(9) span {
             display: inline-block;
         }
         
@@ -1053,15 +1161,20 @@
                 padding: 12px 8px;
             }
             
-            .admin-table tbody td:nth-child(8) {
+            .admin-table tbody td:nth-child(9) {
                 padding: 8px 6px;
             }
             
-            .admin-table tbody td:nth-child(8) button {
+            .admin-table tbody td:nth-child(9) button {
                 padding: 8px 12px;
                 font-size: 11px;
                 min-width: 50px;
                 min-height: 36px;
+            }
+            
+            .admin-table tbody td:nth-child(1) {
+                font-size: 10px;
+                font-weight: 700;
             }
             
             .admin-edit-grid {
@@ -3083,12 +3196,76 @@
                 font-weight: 600;
             }
             
-            .admin-table tbody td:nth-child(8) button {
+            .admin-table tbody td:nth-child(9) button {
                 padding: 10px 14px !important;
                 font-size: 13px !important;
                 min-width: 60px !important;
                 min-height: 44px !important;
                 border-radius: 8px;
+            }
+            
+            .admin-table tbody td:nth-child(1) {
+                font-size: 11px;
+                font-weight: 700;
+            }
+            
+            /* Compact statistics section on mobile */
+            #adminStatsSection {
+                padding: 8px !important;
+                margin-bottom: 10px !important;
+                border-radius: 8px !important;
+            }
+            
+            #adminStatsSection > div:first-child {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 6px !important;
+                margin-bottom: 8px !important;
+            }
+            
+            #adminStatsSection > div:first-child > div {
+                padding: 6px 4px !important;
+                border-radius: 5px !important;
+            }
+            
+            #adminStatsSection > div:first-child > div > div:first-child {
+                font-size: 8px !important;
+                margin-bottom: 2px !important;
+            }
+            
+            #adminStatsSection > div:first-child > div > div:last-child {
+                font-size: 14px !important;
+            }
+            
+            #adminStatsSection > div:last-child {
+                padding: 8px !important;
+            }
+            
+            #adminStatsSection > div:last-child > div:first-child {
+                font-size: 9px !important;
+                margin-bottom: 6px !important;
+            }
+            
+            #adminStatsSection > div:last-child > div:last-child {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 6px !important;
+            }
+            
+            #adminStatsSection > div:last-child > div:last-child > div {
+                padding: 8px 4px !important;
+            }
+            
+            #adminStatsSection > div:last-child > div:last-child > div > div:first-child {
+                font-size: 9px !important;
+                margin-bottom: 3px !important;
+            }
+            
+            #adminStatsSection > div:last-child > div:last-child > div > div:nth-child(2) {
+                font-size: 16px !important;
+            }
+            
+            #adminStatsSection > div:last-child > div:last-child > div > div:last-child {
+                font-size: 7px !important;
+                margin-top: 1px !important;
             }
             
             .filter-buttons {
@@ -3771,55 +3948,151 @@
         
         <div id="adminTabRegistrations" class="admin-tab-content" style="display: none;">
             <div style="margin-bottom: 20px;">
-                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
-                    <div style="display: flex; gap: 8px; flex: 1;">
-                        <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Paid Status:</label>
-                        <button class="btn-nav" id="filterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:2px solid rgba(0,89,179,0.8); color:#fff; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All</button>
-                        <button class="btn-nav" id="filterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Unpaid</button>
-                        <button class="btn-nav" id="filterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:2px solid rgba(39,174,96,0.5); color:#27ae60; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Paid</button>
-                    </div>
-                    <div style="display: flex; gap: 8px; flex: 1;">
-                        <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Group:</label>
-                        <button class="btn-nav" id="filterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:2px solid rgba(212,175,55,0.8); color:#000; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All Groups</button>
-                        <button class="btn-nav" id="filterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group A</button>
-                        <button class="btn-nav" id="filterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group B</button>
-                        <button class="btn-nav" id="filterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group C</button>
-                        <button class="btn-nav" id="filterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group D</button>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 10px;">
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
                     <button class="btn-nav" style="background:#1d6f42; color:white; flex: 1;" onclick="exportExcel()">📥 Export Excel</button>
                     <button class="btn-nav" style="background:#8B0000; color:white; flex: 1;" onclick="clearAllRegistrations()">🗑️ Clear All</button>
                 </div>
+                <div style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 10px; border: 1px solid rgba(212,175,55,0.3);">
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
+                        <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Paid Status:</label>
+                        <button class="btn-nav" id="filterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:1px solid rgba(0,89,179,0.8); color:#fff; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                        <button class="btn-nav" id="filterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Unpaid</button>
+                        <button class="btn-nav" id="filterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">Paid</button>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
+                        <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Review:</label>
+                        <button class="btn-nav" id="filterRevisedAll" onclick="setRevisedFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                        <button class="btn-nav" id="filterRevised" onclick="setRevisedFilter('revised')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Revised</button>
+                        <button class="btn-nav" id="filterNotRevised" onclick="setRevisedFilter('notRevised')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 90px; height: 36px;">Not Revised</button>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
+                        <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Group:</label>
+                        <button class="btn-nav" id="filterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 85px; height: 36px;">All Groups</button>
+                        <button class="btn-nav" id="filterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group A</button>
+                        <button class="btn-nav" id="filterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group B</button>
+                        <button class="btn-nav" id="filterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group C</button>
+                        <button class="btn-nav" id="filterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group D</button>
+                    </div>
+                </div>
             </div>
-            <div class="table-wrap admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Company</th><th>Phone</th><th>Group</th><th>Day</th><th>Date</th><th>Time</th><th>Paid</th></tr></thead><tbody id="adminTableBody"></tbody></table></div>
+            <div id="adminStatsSection" style="background: rgba(26, 26, 26, 0.6); padding: 10px; border-radius: 10px; margin-bottom: 12px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; text-align: center; margin-bottom: 12px;">
+                    <div style="background: rgba(212, 175, 55, 0.15); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                        <div style="font-size: 9px; color: var(--sky-blue-light); font-weight: 600; margin-bottom: 3px;">Total</div>
+                        <div id="statTotal" style="font-size: 16px; font-weight: 700; color: var(--sky-blue);">0</div>
+                    </div>
+                    <div style="background: rgba(39, 174, 96, 0.15); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(39, 174, 96, 0.3);">
+                        <div style="font-size: 9px; color: #27ae60; font-weight: 600; margin-bottom: 3px;">Paid</div>
+                        <div id="statPaid" style="font-size: 16px; font-weight: 700; color: #27ae60;">0</div>
+                    </div>
+                    <div style="background: rgba(212, 175, 55, 0.15); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                        <div style="font-size: 9px; color: var(--sky-blue-light); font-weight: 600; margin-bottom: 3px;">Unpaid</div>
+                        <div id="statUnpaid" style="font-size: 16px; font-weight: 700; color: var(--sky-blue);">0</div>
+                    </div>
+                </div>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; text-align: center;">
+                        <div id="groupBoxA" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                            <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group A</div>
+                            <div id="statGroupA" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                            <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                        </div>
+                        <div id="groupBoxB" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                            <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group B</div>
+                            <div id="statGroupB" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                            <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                        </div>
+                        <div id="groupBoxC" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                            <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group C</div>
+                            <div id="statGroupC" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                            <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                        </div>
+                        <div id="groupBoxD" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                            <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group D</div>
+                            <div id="statGroupD" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                            <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-wrap admin-table-wrap"><table class="admin-table"><thead><tr><th style="width: 5%;">Rank</th><th>Name</th><th>Company</th><th>Phone</th><th>Group</th><th>Day</th><th>Date</th><th>Time</th><th>Review</th><th>Paid</th></tr></thead><tbody id="adminTableBody"></tbody></table></div>
         </div>
     </div>
 
     <div id="accountantPanel" style="display:none;">
         <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid rgba(212, 175, 55, 0.3);">
             <h3 style="color:#0080ff; margin:0 0 10px 0;">📊 Accountant View</h3>
-            <p id="accountantViewDescription" style="color:#aaa; margin:0; font-size: 14px;">You can view the registration list only. No editing permissions.</p>
+            <p id="accountantViewDescription" style="color:#aaa; margin:0; font-size: 14px;">You have full access to view and manage registrations.</p>
         </div>
         <div style="margin-bottom: 20px;">
-            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
-                <div style="display: flex; gap: 8px; flex: 1;">
-                    <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Paid Status:</label>
-                    <button class="btn-nav" id="accountantFilterAll" onclick="setAccountantPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:2px solid rgba(0,89,179,0.8); color:#fff; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All</button>
-                    <button class="btn-nav" id="accountantFilterUnpaid" onclick="setAccountantPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Unpaid</button>
-                    <button class="btn-nav" id="accountantFilterPaid" onclick="setAccountantPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:2px solid rgba(39,174,96,0.5); color:#27ae60; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Paid</button>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button class="btn-nav" style="background:#1d6f42; color:white; flex: 1;" onclick="exportExcel()">📥 Export Excel</button>
+                <button class="btn-nav" style="background:#8B0000; color:white; flex: 1;" onclick="clearAllRegistrations()">🗑️ Clear All</button>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 10px; border: 1px solid rgba(212,175,55,0.3);">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
+                    <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Paid Status:</label>
+                    <button class="btn-nav" id="accountantFilterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:1px solid rgba(0,89,179,0.8); color:#fff; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                    <button class="btn-nav" id="accountantFilterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Unpaid</button>
+                    <button class="btn-nav" id="accountantFilterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">Paid</button>
                 </div>
-                <div style="display: flex; gap: 8px; flex: 1;">
-                    <label style="color:#fff; font-weight:700; padding:10px 5px; font-size:12px;">Group:</label>
-                    <button class="btn-nav" id="accountantFilterGroupAll" onclick="setAccountantGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:2px solid rgba(212,175,55,0.8); color:#000; padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">All Groups</button>
-                    <button class="btn-nav" id="accountantFilterGroupA" onclick="setAccountantGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group A</button>
-                    <button class="btn-nav" id="accountantFilterGroupB" onclick="setAccountantGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group B</button>
-                    <button class="btn-nav" id="accountantFilterGroupC" onclick="setAccountantGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group C</button>
-                    <button class="btn-nav" id="accountantFilterGroupD" onclick="setAccountantGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:2px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:10px 20px; font-weight:700; cursor:pointer; border-radius:8px; transition:all 0.3s ease;">Group D</button>
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
+                    <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Review:</label>
+                    <button class="btn-nav" id="accountantFilterRevisedAll" onclick="setRevisedFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                    <button class="btn-nav" id="accountantFilterRevised" onclick="setRevisedFilter('revised')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Revised</button>
+                    <button class="btn-nav" id="accountantFilterNotRevised" onclick="setRevisedFilter('notRevised')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 90px; height: 36px;">Not Revised</button>
+                </div>
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
+                    <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Group:</label>
+                    <button class="btn-nav" id="accountantFilterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 85px; height: 36px;">All Groups</button>
+                    <button class="btn-nav" id="accountantFilterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group A</button>
+                    <button class="btn-nav" id="accountantFilterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group B</button>
+                    <button class="btn-nav" id="accountantFilterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group C</button>
+                    <button class="btn-nav" id="accountantFilterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group D</button>
                 </div>
             </div>
         </div>
-        <div class="table-wrap admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Company</th><th>Phone</th><th>Group</th><th>Day</th><th>Date</th><th>Time</th><th>Paid</th></tr></thead><tbody id="accountantTableBody"></tbody></table></div>
+        <div id="accountantStatsSection" style="background: rgba(26, 26, 26, 0.6); padding: 10px; border-radius: 10px; margin-bottom: 12px; border: 1px solid rgba(212, 175, 55, 0.3);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; text-align: center; margin-bottom: 12px;">
+                <div style="background: rgba(212, 175, 55, 0.15); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                    <div style="font-size: 9px; color: var(--sky-blue-light); font-weight: 600; margin-bottom: 3px;">Total</div>
+                    <div id="accountantStatTotal" style="font-size: 16px; font-weight: 700; color: var(--sky-blue);">0</div>
+                </div>
+                <div style="background: rgba(39, 174, 96, 0.15); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(39, 174, 96, 0.3);">
+                    <div style="font-size: 9px; color: #27ae60; font-weight: 600; margin-bottom: 3px;">Paid</div>
+                    <div id="accountantStatPaid" style="font-size: 16px; font-weight: 700; color: #27ae60;">0</div>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                    <div style="font-size: 9px; color: var(--sky-blue-light); font-weight: 600; margin-bottom: 3px;">Unpaid</div>
+                    <div id="accountantStatUnpaid" style="font-size: 16px; font-weight: 700; color: var(--sky-blue);">0</div>
+                </div>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.3); padding: 8px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; text-align: center;">
+                    <div id="accountantGroupBoxA" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                        <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group A</div>
+                        <div id="accountantStatGroupA" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                        <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                    </div>
+                    <div id="accountantGroupBoxB" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                        <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group B</div>
+                        <div id="accountantStatGroupB" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                        <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                    </div>
+                    <div id="accountantGroupBoxC" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                        <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group C</div>
+                        <div id="accountantStatGroupC" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                        <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                    </div>
+                    <div id="accountantGroupBoxD" style="background: rgba(0, 0, 0, 0.3); padding: 8px 6px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.4); border-top: 3px solid var(--primary-gold);">
+                        <div style="font-size: 9px; color: var(--primary-gold); font-weight: 700; margin-bottom: 3px;">Group D</div>
+                        <div id="accountantStatGroupD" style="font-size: 14px; font-weight: 800; color: var(--primary-gold);">0</div>
+                        <div style="font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px;">companies</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-wrap admin-table-wrap"><table class="admin-table"><thead><tr><th style="width: 5%;">Rank</th><th>Name</th><th>Company</th><th>Phone</th><th>Group</th><th>Day</th><th>Date</th><th>Time</th><th>Review</th><th>Paid</th></tr></thead><tbody id="accountantTableBody"></tbody></table></div>
     </div>
 
     <div id="mainContent">
@@ -3842,7 +4115,7 @@
         <div class="public-list-area" id="publicListSection">
             <h3 id="l-list-title" style="color:#d4af37; margin-bottom:15px;">👥 دواین کەسە تۆمارکراوەکان</h3>
             <div class="controls">
-                <input type="text" id="publicSearch" onkeyup="refreshPublicList()">
+                <input type="text" id="publicSearch" onkeyup="debouncedRefreshPublicList()">
                 <select id="publicFilter" onchange="refreshPublicList()"></select>
             </div>
             <div class="table-wrap">
@@ -4180,23 +4453,59 @@
         }
     }
 
+    // Debounce function for search optimization
+    let searchDebounceTimer = null;
+    function debounceSearch(func, delay) {
+        return function(...args) {
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+    
     function refreshPublicList() {
-        const query = document.getElementById('publicSearch').value.toLowerCase();
-        const filter = document.getElementById('publicFilter').value;
-        const tbody = document.getElementById('publicTableBody');
-        tbody.innerHTML = '';
-        [...db].reverse().filter(p => settings[p.Group].visible).forEach((p, index) => {
-            if (filter === "all" || p.Group === filter) {
-                const isMatch = query !== "" && (p.Name.toLowerCase().includes(query) || p.Comp.toLowerCase().includes(query));
-                const s = settings[p.Group];
-                const dateObj = new Date(s.date);
-                const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
-                const isNew = index === 0 && db.length > 0 && p === db[db.length - 1]; // Assuming last added is new
-                const compId = `comp-${p.Comp.replace(/\s+/g, '-').toLowerCase()}`;
-                tbody.innerHTML += `<tr class="${isMatch ? 'highlight-row' : ''} ${isNew ? 'new-registration' : ''}" data-company="${p.Comp}" data-group="${p.Group}" id="${compId}"><td class="name-col">${p.Name}</td><td class="company-name">${p.Comp}</td><td class="group-badge">Group ${p.Group}</td><td>${dayName}</td><td>${s.date}</td><td dir="ltr">${s.t1} - ${s.t2}</td></tr>`;
+        requestAnimationFrame(() => {
+            const query = document.getElementById('publicSearch').value.toLowerCase();
+            const filter = document.getElementById('publicFilter').value;
+            const tbody = document.getElementById('publicTableBody');
+            
+            // Optimized filtering - single pass
+            const rowsHTML = [];
+            const lastEntry = db.length > 0 ? db[db.length - 1] : null;
+            
+            // Pre-cache group settings
+            const groupSettingsCache = {};
+            for (let g of ['A', 'B', 'C', 'D']) {
+                const s = settings[g] || {};
+                groupSettingsCache[g] = {
+                    settings: s,
+                    dateObj: s.date ? new Date(s.date) : null,
+                    dayName: s.date && !isNaN(new Date(s.date).getTime()) ? daysTranslation[currentLang][new Date(s.date).getDay()] : ""
+                };
             }
+            
+            // Process in reverse order (newest first) with optimized filtering
+            for (let i = db.length - 1; i >= 0; i--) {
+                const p = db[i];
+                if (!settings[p.Group] || !settings[p.Group].visible) continue;
+                if (filter !== "all" && p.Group !== filter) continue;
+                
+                const isMatch = query !== "" && (p.Name.toLowerCase().includes(query) || p.Comp.toLowerCase().includes(query));
+                const isNew = p === lastEntry;
+                const cache = groupSettingsCache[p.Group];
+                const s = cache.settings;
+                const dayName = cache.dayName;
+                const compId = `comp-${p.Comp.replace(/\s+/g, '-').toLowerCase()}`;
+                
+                rowsHTML.push(`<tr class="${isMatch ? 'highlight-row' : ''} ${isNew ? 'new-registration' : ''}" data-company="${p.Comp}" data-group="${p.Group}" id="${compId}"><td class="name-col">${p.Name}</td><td class="company-name">${p.Comp}</td><td class="group-badge">Group ${p.Group}</td><td>${dayName}</td><td>${s.date}</td><td dir="ltr">${s.t1} - ${s.t2}</td></tr>`);
+            }
+            
+            // Batch DOM update
+            tbody.innerHTML = rowsHTML.join('');
         });
     }
+    
+    // Debounced version for search input
+    const debouncedRefreshPublicList = debounceSearch(refreshPublicList, 150);
 
     function isAdminLoggedIn() {
         const logoutBtn = document.getElementById('logoutBtn');
@@ -4363,23 +4672,127 @@
     
     let paidFilter = 'all'; // 'all', 'paid', or 'unpaid'
     let groupFilter = 'all'; // 'all', 'A', 'B', 'C', or 'D'
+    let revisedFilter = 'all'; // 'all', 'revised', or 'notRevised'
+    
+    function setRevisedFilter(filter) {
+        revisedFilter = filter;
+        
+        // Update admin button styles
+        const allBtn = document.getElementById('filterRevisedAll');
+        const revisedBtn = document.getElementById('filterRevised');
+        const notRevisedBtn = document.getElementById('filterNotRevised');
+        
+        if (allBtn) {
+            allBtn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+            allBtn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+            allBtn.style.color = filter === 'all' ? '#000' : 'rgba(255,255,255,0.5)';
+        }
+        if (revisedBtn) {
+            revisedBtn.style.background = filter === 'revised' ? 'rgba(39,174,96,0.6)' : 'rgba(0,0,0,0.6)';
+            revisedBtn.style.borderColor = filter === 'revised' ? 'rgba(39,174,96,0.8)' : 'rgba(255,255,255,0.2)';
+            revisedBtn.style.color = filter === 'revised' ? '#fff' : 'rgba(255,255,255,0.5)';
+        }
+        if (notRevisedBtn) {
+            notRevisedBtn.style.background = filter === 'notRevised' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+            notRevisedBtn.style.borderColor = filter === 'notRevised' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+            notRevisedBtn.style.color = filter === 'notRevised' ? '#000' : 'rgba(255,255,255,0.5)';
+        }
+        
+        // Update accountant button styles
+        const accountantAllBtn = document.getElementById('accountantFilterRevisedAll');
+        const accountantRevisedBtn = document.getElementById('accountantFilterRevised');
+        const accountantNotRevisedBtn = document.getElementById('accountantFilterNotRevised');
+        
+        if (accountantAllBtn) {
+            accountantAllBtn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+            accountantAllBtn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+            accountantAllBtn.style.color = filter === 'all' ? '#000' : 'rgba(255,255,255,0.5)';
+        }
+        if (accountantRevisedBtn) {
+            accountantRevisedBtn.style.background = filter === 'revised' ? 'rgba(39,174,96,0.6)' : 'rgba(0,0,0,0.6)';
+            accountantRevisedBtn.style.borderColor = filter === 'revised' ? 'rgba(39,174,96,0.8)' : 'rgba(255,255,255,0.2)';
+            accountantRevisedBtn.style.color = filter === 'revised' ? '#fff' : 'rgba(255,255,255,0.5)';
+        }
+        if (accountantNotRevisedBtn) {
+            accountantNotRevisedBtn.style.background = filter === 'notRevised' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+            accountantNotRevisedBtn.style.borderColor = filter === 'notRevised' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+            accountantNotRevisedBtn.style.color = filter === 'notRevised' ? '#000' : 'rgba(255,255,255,0.5)';
+        }
+        
+        refreshAdminList();
+    }
     
     function setGroupFilter(filter) {
         groupFilter = filter;
         
-        // Update button styles for all group buttons
+        // Update admin button styles for all group buttons - inactive buttons get black background
         const groupButtons = ['All', 'A', 'B', 'C', 'D'];
         groupButtons.forEach(group => {
             const btn = document.getElementById(`filterGroup${group === 'All' ? 'All' : group}`);
             if (btn) {
                 if (group === 'All') {
-                    btn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
-                    btn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
-                    btn.style.color = filter === 'all' ? '#000' : 'var(--primary-gold)';
+                    btn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+                    btn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+                    btn.style.color = filter === 'all' ? '#000' : 'rgba(255,255,255,0.5)';
                 } else {
-                    btn.style.background = filter === group ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
-                    btn.style.borderColor = filter === group ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
-                    btn.style.color = filter === group ? '#000' : 'var(--primary-gold)';
+                    btn.style.background = filter === group ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+                    btn.style.borderColor = filter === group ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+                    btn.style.color = filter === group ? '#000' : 'rgba(255,255,255,0.5)';
+                }
+            }
+        });
+        
+        // Update accountant button styles (they're connected) - inactive buttons get black background
+        groupButtons.forEach(group => {
+            const btn = document.getElementById(`accountantFilterGroup${group === 'All' ? 'All' : group}`);
+            if (btn) {
+                if (group === 'All') {
+                    btn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+                    btn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+                    btn.style.color = filter === 'all' ? '#000' : 'rgba(255,255,255,0.5)';
+                } else {
+                    btn.style.background = filter === group ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+                    btn.style.borderColor = filter === group ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+                    btn.style.color = filter === group ? '#000' : 'rgba(255,255,255,0.5)';
+                }
+            }
+        });
+        
+        // Show/hide group boxes based on filter - show only selected group, hide others
+        const groups = ['A', 'B', 'C', 'D'];
+        groups.forEach(group => {
+            const isSelected = filter === group;
+            const adminBox = document.getElementById(`groupBox${group}`);
+            const accountantBox = document.getElementById(`accountantGroupBox${group}`);
+            
+            if (adminBox) {
+                if (filter === 'all') {
+                    // Show all groups when "All Groups" is selected
+                    adminBox.style.display = 'block';
+                    adminBox.style.background = 'rgba(0, 0, 0, 0.3)';
+                    adminBox.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+                } else {
+                    // Show only selected group, hide others
+                    adminBox.style.display = isSelected ? 'block' : 'none';
+                    if (isSelected) {
+                        adminBox.style.background = 'rgba(212, 175, 55, 0.4)';
+                        adminBox.style.borderColor = 'rgba(212, 175, 55, 0.7)';
+                    }
+                }
+            }
+            if (accountantBox) {
+                if (filter === 'all') {
+                    // Show all groups when "All Groups" is selected
+                    accountantBox.style.display = 'block';
+                    accountantBox.style.background = 'rgba(0, 0, 0, 0.3)';
+                    accountantBox.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+                } else {
+                    // Show only selected group, hide others
+                    accountantBox.style.display = isSelected ? 'block' : 'none';
+                    if (isSelected) {
+                        accountantBox.style.background = 'rgba(212, 175, 55, 0.4)';
+                        accountantBox.style.borderColor = 'rgba(212, 175, 55, 0.7)';
+                    }
                 }
             }
         });
@@ -4390,22 +4803,46 @@
     function setPaidFilter(filter) {
         paidFilter = filter;
         
-        // Update button styles
+        // Update admin button styles - inactive buttons get black background
         const allBtn = document.getElementById('filterAll');
         const unpaidBtn = document.getElementById('filterUnpaid');
         const paidBtn = document.getElementById('filterPaid');
         
         if (allBtn) {
-            allBtn.style.background = filter === 'all' ? 'rgba(0,89,179,0.6)' : 'rgba(0,89,179,0.4)';
-            allBtn.style.borderColor = filter === 'all' ? 'rgba(0,89,179,0.8)' : 'rgba(0,89,179,0.6)';
+            allBtn.style.background = filter === 'all' ? 'rgba(0,89,179,0.6)' : 'rgba(0,0,0,0.6)';
+            allBtn.style.borderColor = filter === 'all' ? 'rgba(0,89,179,0.8)' : 'rgba(255,255,255,0.2)';
+            allBtn.style.color = filter === 'all' ? '#fff' : 'rgba(255,255,255,0.5)';
         }
         if (unpaidBtn) {
-            unpaidBtn.style.background = filter === 'unpaid' ? 'rgba(212,175,55,0.5)' : 'rgba(212,175,55,0.3)';
-            unpaidBtn.style.borderColor = filter === 'unpaid' ? 'rgba(212,175,55,0.7)' : 'rgba(212,175,55,0.5)';
+            unpaidBtn.style.background = filter === 'unpaid' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+            unpaidBtn.style.borderColor = filter === 'unpaid' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+            unpaidBtn.style.color = filter === 'unpaid' ? '#000' : 'rgba(255,255,255,0.5)';
         }
         if (paidBtn) {
-            paidBtn.style.background = filter === 'paid' ? 'rgba(39,174,96,0.5)' : 'rgba(39,174,96,0.3)';
-            paidBtn.style.borderColor = filter === 'paid' ? 'rgba(39,174,96,0.7)' : 'rgba(39,174,96,0.5)';
+            paidBtn.style.background = filter === 'paid' ? 'rgba(39,174,96,0.6)' : 'rgba(0,0,0,0.6)';
+            paidBtn.style.borderColor = filter === 'paid' ? 'rgba(39,174,96,0.8)' : 'rgba(255,255,255,0.2)';
+            paidBtn.style.color = filter === 'paid' ? '#fff' : 'rgba(255,255,255,0.5)';
+        }
+        
+        // Update accountant button styles (they're connected) - inactive buttons get black background
+        const accountantAllBtn = document.getElementById('accountantFilterAll');
+        const accountantUnpaidBtn = document.getElementById('accountantFilterUnpaid');
+        const accountantPaidBtn = document.getElementById('accountantFilterPaid');
+        
+        if (accountantAllBtn) {
+            accountantAllBtn.style.background = filter === 'all' ? 'rgba(0,89,179,0.6)' : 'rgba(0,0,0,0.6)';
+            accountantAllBtn.style.borderColor = filter === 'all' ? 'rgba(0,89,179,0.8)' : 'rgba(255,255,255,0.2)';
+            accountantAllBtn.style.color = filter === 'all' ? '#fff' : 'rgba(255,255,255,0.5)';
+        }
+        if (accountantUnpaidBtn) {
+            accountantUnpaidBtn.style.background = filter === 'unpaid' ? 'rgba(212,175,55,0.6)' : 'rgba(0,0,0,0.6)';
+            accountantUnpaidBtn.style.borderColor = filter === 'unpaid' ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.2)';
+            accountantUnpaidBtn.style.color = filter === 'unpaid' ? '#000' : 'rgba(255,255,255,0.5)';
+        }
+        if (accountantPaidBtn) {
+            accountantPaidBtn.style.background = filter === 'paid' ? 'rgba(39,174,96,0.6)' : 'rgba(0,0,0,0.6)';
+            accountantPaidBtn.style.borderColor = filter === 'paid' ? 'rgba(39,174,96,0.8)' : 'rgba(255,255,255,0.2)';
+            accountantPaidBtn.style.color = filter === 'paid' ? '#fff' : 'rgba(255,255,255,0.5)';
         }
         
         refreshAdminList();
@@ -4414,79 +4851,190 @@
     function refreshAdminList() {
         const adminTbody = document.getElementById('adminTableBody'); 
         if (adminTbody) {
-            adminTbody.innerHTML = '';
-            const isAdmin = isAdminLoggedIn();
+            // Use requestAnimationFrame for smooth rendering
+            requestAnimationFrame(() => {
+                adminTbody.innerHTML = '';
+                const isAdmin = isAdminLoggedIn();
+                
+                // Optimized filtering - combine all filters in one pass
+                let filteredDb = db.filter(p => {
+                    // Paid filter
+                    if (paidFilter === 'paid' && p.Paid !== true) return false;
+                    if (paidFilter === 'unpaid' && (p.Paid === true)) return false;
+                    
+                    // Group filter
+                    if (groupFilter !== 'all' && p.Group !== groupFilter) return false;
+                    
+                    // Revised filter
+                    if (revisedFilter === 'revised' && p.Revised !== true) return false;
+                    if (revisedFilter === 'notRevised' && (p.Revised === true)) return false;
+                    
+                    return true;
+                });
             
-            // Filter based on paid status and group
-            let filteredDb = [...db];
+            // Calculate statistics based on group filter
+            let statsDb = [...db]; // Use all data for statistics
             
-            // Apply paid filter
-            if (paidFilter === 'paid') {
-                filteredDb = filteredDb.filter(p => p.Paid === true);
-            } else if (paidFilter === 'unpaid') {
-                filteredDb = filteredDb.filter(p => !p.Paid || p.Paid !== true);
-            }
-            
-            // Apply group filter
+            // If a specific group is selected, show stats for that group only
             if (groupFilter !== 'all') {
-                filteredDb = filteredDb.filter(p => p.Group === groupFilter);
+                statsDb = statsDb.filter(p => p.Group === groupFilter);
             }
+            
+            // Calculate statistics for the selected group (or all if "All Groups" is selected)
+            // Optimized statistics calculation - single pass
+            const totalCompanies = statsDb.length;
+            let paidCount = 0;
+            let unpaidCount = 0;
+            for (let i = 0; i < statsDb.length; i++) {
+                if (statsDb[i].Paid === true) paidCount++;
+                else unpaidCount++;
+            }
+            
+            // Group counts - show counts for each group
+            let groupACount, groupBCount, groupCCount, groupDCount;
+            
+            if (groupFilter === 'A') {
+                // Show Group A only - paid and unpaid
+                groupACount = statsDb.length;
+                groupBCount = 0;
+                groupCCount = 0;
+                groupDCount = 0;
+            } else if (groupFilter === 'B') {
+                // Show Group B only - paid and unpaid
+                groupACount = 0;
+                groupBCount = statsDb.length;
+                groupCCount = 0;
+                groupDCount = 0;
+            } else if (groupFilter === 'C') {
+                // Show Group C only - paid and unpaid
+                groupACount = 0;
+                groupBCount = 0;
+                groupCCount = statsDb.length;
+                groupDCount = 0;
+            } else if (groupFilter === 'D') {
+                // Show Group D only - paid and unpaid
+                groupACount = 0;
+                groupBCount = 0;
+                groupCCount = 0;
+                groupDCount = statsDb.length;
+            } else {
+                // Show all groups (when "All Groups" is selected)
+                groupACount = db.filter(p => p.Group === 'A').length;
+                groupBCount = db.filter(p => p.Group === 'B').length;
+                groupCCount = db.filter(p => p.Group === 'C').length;
+                groupDCount = db.filter(p => p.Group === 'D').length;
+            }
+            
+            // Update statistics display (admin)
+            const statTotalEl = document.getElementById('statTotal');
+            if (statTotalEl) {
+                statTotalEl.textContent = totalCompanies;
+                document.getElementById('statPaid').textContent = paidCount;
+                document.getElementById('statUnpaid').textContent = unpaidCount;
+                document.getElementById('statGroupA').textContent = groupACount;
+                document.getElementById('statGroupB').textContent = groupBCount;
+                document.getElementById('statGroupC').textContent = groupCCount;
+                document.getElementById('statGroupD').textContent = groupDCount;
+            }
+            
+            // Update statistics display (accountant - same values)
+            const accountantStatTotalEl = document.getElementById('accountantStatTotal');
+            if (accountantStatTotalEl) {
+                accountantStatTotalEl.textContent = totalCompanies;
+                document.getElementById('accountantStatPaid').textContent = paidCount;
+                document.getElementById('accountantStatUnpaid').textContent = unpaidCount;
+                document.getElementById('accountantStatGroupA').textContent = groupACount;
+                document.getElementById('accountantStatGroupB').textContent = groupBCount;
+                document.getElementById('accountantStatGroupC').textContent = groupCCount;
+                document.getElementById('accountantStatGroupD').textContent = groupDCount;
+            }
+            
+            // Create index map for O(1) lookup instead of O(n) findIndex
+            const indexMap = new Map();
+            db.forEach((item, idx) => {
+                const key = `${item.Name}|${item.Comp}|${item.Phone}|${item.Group}`;
+                indexMap.set(key, idx);
+            });
             
             // Sort: unpaid entries first, then paid entries at the bottom
-            const sortedDb = filteredDb.sort((a, b) => {
+            filteredDb.sort((a, b) => {
                 const aPaid = a.Paid === true ? 1 : 0;
                 const bPaid = b.Paid === true ? 1 : 0;
                 return aPaid - bPaid; // Unpaid (0) comes before paid (1)
             });
             
-            sortedDb.forEach((p, sortedIndex) => {
-                // Find original index in db for markAsPaid function
-                const originalIndex = db.findIndex((item, idx) => 
-                    item.Name === p.Name && item.Comp === p.Comp && item.Phone === p.Phone && item.Group === p.Group
-                );
-                const actualIndex = originalIndex !== -1 ? originalIndex : sortedIndex;
+            // Use DocumentFragment and batch string building for better performance
+            const fragment = document.createDocumentFragment();
+            const rowsHTML = [];
+            
+            // Pre-cache group settings to avoid repeated lookups
+            const groupSettingsCache = {};
+            for (let g of ['A', 'B', 'C', 'D']) {
+                groupSettingsCache[g] = settings[g] || {};
+            }
+            
+            for (let sortedIndex = 0; sortedIndex < filteredDb.length; sortedIndex++) {
+                const p = filteredDb[sortedIndex];
+                const rank = sortedIndex + 1;
+                
+                // Fast index lookup using Map
+                const key = `${p.Name}|${p.Comp}|${p.Phone}|${p.Group}`;
+                const actualIndex = indexMap.get(key) !== undefined ? indexMap.get(key) : sortedIndex;
                 
                 let phoneCell = p.Phone;
                 if (isAdmin && p.Phone) {
                     const whatsappLink = getWhatsAppLink(p.Phone);
-                    // Create clickable WhatsApp link
                     phoneCell = `<a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="whatsapp-link" style="color: var(--sky-blue); text-decoration: none; font-weight: 600; cursor: pointer; display: inline-block;" title="Click to open WhatsApp">${p.Phone}</a>`;
                 }
-                // Get group settings for date, time, and day
-                const s = settings[p.Group] || {};
-                const dateObj = new Date(s.date);
-                const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
+                
+                // Get group settings from cache
+                const s = groupSettingsCache[p.Group] || {};
+                const dateObj = s.date ? new Date(s.date) : null;
+                const dayName = dateObj && !isNaN(dateObj.getTime()) ? daysTranslation[currentLang][dateObj.getDay()] : "";
                 const dateStr = s.date || '';
                 const timeStr = s.t1 ? (s.t1 + (s.t2 ? ' ' + trans[currentLang].to + ' ' + s.t2 : '')) : '';
                 
                 const isPaid = p.Paid === true;
+                const isRevised = p.Revised === true;
+                
                 const paidButton = isPaid 
                     ? '<span style="background:linear-gradient(135deg, rgba(39,174,96,0.5), rgba(39,174,96,0.4)); color:#fff; padding:8px 14px; border-radius:8px; font-size:10px; font-weight:800; display:inline-block; box-shadow:0 2px 8px rgba(39,174,96,0.4); text-shadow:0 1px 2px rgba(0,0,0,0.3); letter-spacing:0.5px; border:1px solid rgba(39,174,96,0.6);">✓ PAID</span>'
                     : `<button onclick="markAsPaid(${actualIndex})" style="background:linear-gradient(135deg, rgba(212,175,55,0.4), rgba(212,175,55,0.3)); border:2px solid rgba(212,175,55,0.7); color:var(--primary-gold); padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:800; font-size:11px; transition:all 0.3s ease; box-shadow:0 2px 6px rgba(212,175,55,0.3); text-shadow:0 1px 2px rgba(0,0,0,0.3);">Paid</button>`;
                 
-                // Red strikethrough style for paid entries (names and companies)
+                const reviewButton = isRevised 
+                    ? '<span style="background:linear-gradient(135deg, rgba(39,174,96,0.5), rgba(39,174,96,0.4)); color:#fff; padding:8px 14px; border-radius:8px; font-size:10px; font-weight:800; display:inline-block; box-shadow:0 2px 8px rgba(39,174,96,0.4); text-shadow:0 1px 2px rgba(0,0,0,0.3); letter-spacing:0.5px; border:1px solid rgba(39,174,96,0.6);">✓ REVISED</span>'
+                    : `<button onclick="moveToReview(${actualIndex})" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:#fff; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:600; font-size:11px; transition:all 0.2s ease;">Review</button>`;
+                
                 const nameStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
                 const companyStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
                 const strikeStyle = isPaid ? 'text-decoration:line-through; opacity:0.6;' : '';
                 
-                adminTbody.innerHTML += `<tr ${isPaid ? 'style="background:rgba(0,0,0,0.4);"' : ''}>
+                const companyName = p.Comp || '-';
+                const companyCell = companyName !== '-' 
+                    ? `<span onclick="copyCompanyName('${companyName.replace(/'/g, "\\'")}', this)" style="cursor:pointer; color:var(--sky-blue); text-decoration:underline; text-decoration-color:rgba(212,175,55,0.5); transition:all 0.2s ease; ${companyStrikeStyle}" onmouseover="this.style.color='var(--sky-blue-light)'; this.style.textDecorationColor='var(--primary-gold)'" onmouseout="this.style.color='var(--sky-blue)'; this.style.textDecorationColor='rgba(212,175,55,0.5)'" title="Click to copy">${companyName}</span>`
+                    : `<span style="${companyStrikeStyle}">-</span>`;
+                
+                rowsHTML.push(`<tr ${isPaid ? 'style="background:rgba(0,0,0,0.4);"' : ''}>
+                    <td style="font-weight:700; font-size:11px; color:var(--sky-blue); text-align:center; ${strikeStyle}">${rank}</td>
                     <td style="font-weight:600; font-size:12px; color:#fff; text-shadow:0 0 8px rgba(255,255,255,0.4), 0 1px 4px rgba(0,0,0,0.5); letter-spacing:0.3px; background:rgba(255,255,255,0.05); padding:12px 8px; line-height:1.4; ${nameStrikeStyle}">${p.Name || '-'}</td>
-                    <td style="font-size:11px; ${companyStrikeStyle}">${p.Comp || '-'}</td>
+                    <td style="font-size:11px; ${companyStrikeStyle}">${companyCell}</td>
                     <td style="font-size:11px; ${strikeStyle}">${phoneCell || '-'}</td>
                     <td style="font-size:11px; ${strikeStyle}">${p.Group || '-'}</td>
                     <td style="font-size:11px; ${strikeStyle}">${dayName || '-'}</td>
                     <td style="font-size:11px; ${strikeStyle}">${dateStr || '-'}</td>
                     <td style="font-size:11px; ${strikeStyle}">${timeStr || '-'}</td>
+                    <td>${reviewButton}</td>
                     <td>${paidButton}</td>
-                </tr>`;
+                </tr>`);
+            }
+            
+            // Batch DOM update - single innerHTML assignment
+            adminTbody.innerHTML = rowsHTML.join('');
             });
         }
         
-        // Also refresh accountant list if accountant is logged in
-        const currentUser = getCurrentUser();
-        if (currentUser && currentUser.role === 'accountant') {
-            refreshAccountantList();
-        }
+        // Always refresh accountant list to keep it in sync with admin table
+        refreshAccountantList(); // Accountant table mirrors admin table - they're identical
     }
 
     function loadGroupSettings() {
@@ -4623,11 +5171,14 @@
                 loadGroupSettings(); loadCompanies();
                 refreshAdminList();
                 refreshUsersList();
-                // Initialize accountant filter states for admin
-                if (!accountantPaidFilter) accountantPaidFilter = 'all';
-                if (!accountantGroupFilter) accountantGroupFilter = 'all';
-                setAccountantPaidFilter(accountantPaidFilter);
-                setAccountantGroupFilter(accountantGroupFilter);
+                // Initialize filters (shared between admin and accountant)
+                if (!paidFilter) paidFilter = 'all';
+                if (!groupFilter) groupFilter = 'all';
+                setPaidFilter(paidFilter);
+                setGroupFilter(groupFilter);
+                // Update accountant button styles
+                setAccountantPaidFilter(paidFilter);
+                setAccountantGroupFilter(groupFilter);
             } else if (currentUser.role === 'accountant') {
                 document.getElementById('accountantPanel').style.display = 'block';
                 document.getElementById('adminPanel').style.display = 'none';
@@ -4640,11 +5191,14 @@
                     accountantDesc.textContent = 'You can view the registration list only. No editing permissions.';
                     accountantDesc.style.color = '#aaa';
                 }
-                // Initialize accountant filter states
-                if (!accountantPaidFilter) accountantPaidFilter = 'all';
-                if (!accountantGroupFilter) accountantGroupFilter = 'all';
-                setAccountantPaidFilter(accountantPaidFilter);
-                setAccountantGroupFilter(accountantGroupFilter);
+                // Initialize filters (shared between admin and accountant)
+                if (!paidFilter) paidFilter = 'all';
+                if (!groupFilter) groupFilter = 'all';
+                setPaidFilter(paidFilter);
+                setGroupFilter(groupFilter);
+                // Update accountant button styles
+                setAccountantPaidFilter(paidFilter);
+                setAccountantGroupFilter(groupFilter);
             }
         }
         
@@ -4822,11 +5376,14 @@
                 loadGroupSettings(); loadCompanies(); hideLogin();
                 refreshAdminList();
                 refreshUsersList();
-                // Initialize accountant filter states for admin
-                if (!accountantPaidFilter) accountantPaidFilter = 'all';
-                if (!accountantGroupFilter) accountantGroupFilter = 'all';
-                setAccountantPaidFilter(accountantPaidFilter);
-                setAccountantGroupFilter(accountantGroupFilter);
+                // Initialize filters (shared between admin and accountant)
+                if (!paidFilter) paidFilter = 'all';
+                if (!groupFilter) groupFilter = 'all';
+                setPaidFilter(paidFilter);
+                setGroupFilter(groupFilter);
+                // Update accountant button styles
+                setAccountantPaidFilter(paidFilter);
+                setAccountantGroupFilter(groupFilter);
             } else if (user.role === 'accountant') {
                 // Show admin panel for accountants (with full editing access to registrations)
                 document.getElementById('adminPanel').style.display = 'block';
@@ -4842,11 +5399,14 @@
                 }
                 loadGroupSettings(); loadCompanies(); hideLogin();
                 refreshAdminList();
-                // Initialize accountant filter states
-                if (!accountantPaidFilter) accountantPaidFilter = 'all';
-                if (!accountantGroupFilter) accountantGroupFilter = 'all';
-                setAccountantPaidFilter(accountantPaidFilter);
-                setAccountantGroupFilter(accountantGroupFilter);
+                // Initialize filters (shared between admin and accountant)
+                if (!paidFilter) paidFilter = 'all';
+                if (!groupFilter) groupFilter = 'all';
+                setPaidFilter(paidFilter);
+                setGroupFilter(groupFilter);
+                // Update accountant button styles
+                setAccountantPaidFilter(paidFilter);
+                setAccountantGroupFilter(groupFilter);
                 // Show Registrations tab by default for accountants
                 showAdminTab('registrations');
             }
@@ -4882,8 +5442,30 @@
         alert('Registration added!');
     }
     function exportExcel() {
+        // Apply the same filters as the table view
+        let filteredDb = [...db];
+        
+        // Apply paid filter
+        if (paidFilter === 'paid') {
+            filteredDb = filteredDb.filter(p => p.Paid === true);
+        } else if (paidFilter === 'unpaid') {
+            filteredDb = filteredDb.filter(p => !p.Paid || p.Paid !== true);
+        }
+        
+        // Apply group filter
+        if (groupFilter !== 'all') {
+            filteredDb = filteredDb.filter(p => p.Group === groupFilter);
+        }
+        
+        // Apply revised filter
+        if (revisedFilter === 'revised') {
+            filteredDb = filteredDb.filter(p => p.Revised === true);
+        } else if (revisedFilter === 'notRevised') {
+            filteredDb = filteredDb.filter(p => !p.Revised || p.Revised !== true);
+        }
+        
         // Prepare data with dates and times from group settings
-        const exportData = db.map(entry => {
+        const exportData = filteredDb.map(entry => {
             const group = entry.Group;
             const groupSettings = settings[group] || {};
             const dateObj = groupSettings.date ? new Date(groupSettings.date) : null;
@@ -4896,7 +5478,9 @@
                 'Group': entry.Group || '',
                 'Day': dayName,
                 'Date': groupSettings.date || '',
-                'Time': groupSettings.t1 && groupSettings.t2 ? `${groupSettings.t1} ${trans[currentLang].to} ${groupSettings.t2}` : ''
+                'Time': groupSettings.t1 && groupSettings.t2 ? `${groupSettings.t1} ${trans[currentLang].to} ${groupSettings.t2}` : '',
+                'Paid': entry.Paid === true ? 'Yes' : 'No',
+                'Revised': entry.Revised === true ? 'Yes' : 'No'
             };
         });
         
@@ -4911,7 +5495,9 @@
             { wch: 8 },  // Group
             { wch: 12 }, // Day
             { wch: 12 }, // Date
-            { wch: 20 }  // Time
+            { wch: 20 }, // Time
+            { wch: 8 },  // Paid
+            { wch: 10 }  // Revised
         ];
         ws['!cols'] = colWidths;
         
@@ -4945,9 +5531,9 @@
                 const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
                 if (!ws[cellAddress]) continue;
                 
-                // Get the original data index
+                // Get the original data index from filtered data
                 const dataIndex = row - 1;
-                const entry = db[dataIndex];
+                const entry = filteredDb[dataIndex];
                 
                 // Center align all cells
                 const cellStyle = {
@@ -4990,6 +5576,71 @@
         
         // Write file
         XLSX.writeFile(wb, filename);
+    }
+
+    function copyCompanyName(companyName, element) {
+        // Create a temporary textarea element
+        const textarea = document.createElement('textarea');
+        textarea.value = companyName;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        textarea.setSelectionRange(0, 99999); // For mobile devices
+        
+        try {
+            // Try modern clipboard API first
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(companyName).then(() => {
+                    showCopyFeedback(element);
+                }).catch(() => {
+                    // Fallback to execCommand
+                    document.execCommand('copy');
+                    showCopyFeedback(element);
+                });
+            } else {
+                // Fallback for older browsers
+                document.execCommand('copy');
+                showCopyFeedback(element);
+            }
+        } catch (err) {
+            // Final fallback
+            alert('Company name copied: ' + companyName);
+        }
+        
+        // Remove the temporary element
+        document.body.removeChild(textarea);
+    }
+    
+    function showCopyFeedback(element) {
+        if (element) {
+            const originalText = element.textContent;
+            element.textContent = '✓ Copied!';
+            element.style.color = '#27ae60';
+            element.style.textDecorationColor = '#27ae60';
+            setTimeout(() => {
+                element.textContent = originalText;
+                element.style.color = '';
+                element.style.textDecorationColor = '';
+            }, 1000);
+        }
+    }
+
+    function moveToReview(index) {
+        if (db[index]) {
+            // Remove the entry from its current position
+            const entry = db.splice(index, 1)[0];
+            // Mark as revised
+            entry.Revised = true;
+            // Add it to the bottom of the array
+            db.push(entry);
+            // Save to localStorage
+            localStorage.setItem('v34_db', JSON.stringify(db));
+            // Refresh the lists
+            refresh();
+            refreshAdminList();
+            refreshAccountantList();
+        }
     }
 
     function markAsPaid(index) {
@@ -5071,126 +5722,38 @@
         });
     }
     
-    function setAccountantPaidFilter(filter) {
-        accountantPaidFilter = filter;
-        
-        // Update button styles
-        const allBtn = document.getElementById('accountantFilterAll');
-        const unpaidBtn = document.getElementById('accountantFilterUnpaid');
-        const paidBtn = document.getElementById('accountantFilterPaid');
-        
-        if (allBtn) {
-            allBtn.style.background = filter === 'all' ? 'rgba(0,89,179,0.6)' : 'rgba(0,89,179,0.4)';
-            allBtn.style.borderColor = filter === 'all' ? 'rgba(0,89,179,0.8)' : 'rgba(0,89,179,0.6)';
-        }
-        if (unpaidBtn) {
-            unpaidBtn.style.background = filter === 'unpaid' ? 'rgba(212,175,55,0.5)' : 'rgba(212,175,55,0.3)';
-            unpaidBtn.style.borderColor = filter === 'unpaid' ? 'rgba(212,175,55,0.7)' : 'rgba(212,175,55,0.5)';
-        }
-        if (paidBtn) {
-            paidBtn.style.background = filter === 'paid' ? 'rgba(39,174,96,0.5)' : 'rgba(39,174,96,0.3)';
-            paidBtn.style.borderColor = filter === 'paid' ? 'rgba(39,174,96,0.7)' : 'rgba(39,174,96,0.5)';
-        }
-        
-        refreshAccountantList();
-    }
-    
-    function setAccountantGroupFilter(filter) {
-        accountantGroupFilter = filter;
-        
-        // Update button styles for all group buttons
-        const groupButtons = ['All', 'A', 'B', 'C', 'D'];
-        groupButtons.forEach(group => {
-            const btn = document.getElementById(`accountantFilterGroup${group === 'All' ? 'All' : group}`);
-            if (btn) {
-                if (group === 'All') {
-                    btn.style.background = filter === 'all' ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
-                    btn.style.borderColor = filter === 'all' ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
-                    btn.style.color = filter === 'all' ? '#000' : 'var(--primary-gold)';
-                } else {
-                    btn.style.background = filter === group ? 'rgba(212,175,55,0.6)' : 'rgba(212,175,55,0.3)';
-                    btn.style.borderColor = filter === group ? 'rgba(212,175,55,0.8)' : 'rgba(212,175,55,0.5)';
-                    btn.style.color = filter === group ? '#000' : 'var(--primary-gold)';
-                }
-            }
-        });
-        
-        refreshAccountantList();
-    }
+    // Accountant filters now use the same as admin - they're connected
     
     function refreshAccountantList() {
+        // Accountant table uses the same data and logic as admin table
+        // Just copy the admin table content to accountant table
         const accountantTbody = document.getElementById('accountantTableBody');
-        if (!accountantTbody) return;
-        
-        accountantTbody.innerHTML = '';
-        
-        // Filter based on paid status and group
-        let filteredDb = [...db];
-        
-        // Apply paid filter
-        if (accountantPaidFilter === 'paid') {
-            filteredDb = filteredDb.filter(p => p.Paid === true);
-        } else if (accountantPaidFilter === 'unpaid') {
-            filteredDb = filteredDb.filter(p => !p.Paid || p.Paid !== true);
-        }
-        
-        // Apply group filter
-        if (accountantGroupFilter !== 'all') {
-            filteredDb = filteredDb.filter(p => p.Group === accountantGroupFilter);
-        }
-        
-        // Sort: unpaid entries first, then paid entries at the bottom
-        const sortedDb = filteredDb.sort((a, b) => {
-            const aPaid = a.Paid === true ? 1 : 0;
-            const bPaid = b.Paid === true ? 1 : 0;
-            return aPaid - bPaid; // Unpaid (0) comes before paid (1)
-        });
-        
-        sortedDb.forEach((p, sortedIndex) => {
-            // Find original index in db for markAsPaid function
-            const originalIndex = db.findIndex((item, idx) => 
-                item.Name === p.Name && item.Comp === p.Comp && item.Phone === p.Phone && item.Group === p.Group
-            );
-            const actualIndex = originalIndex !== -1 ? originalIndex : sortedIndex;
-            
-            const s = settings[p.Group] || {};
-            const dateObj = new Date(s.date);
-            const dayName = isNaN(dateObj.getTime()) ? "" : daysTranslation[currentLang][dateObj.getDay()];
-            const dateStr = s.date || '';
-            const timeStr = s.t1 ? (s.t1 + (s.t2 ? ' ' + trans[currentLang].to + ' ' + s.t2 : '')) : '';
-            
-            const isPaid = p.Paid === true;
-            
-            // Red strikethrough style for paid entries (names and companies)
-            const nameStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
-            const companyStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
-            const strikeStyle = isPaid ? 'text-decoration:line-through; opacity:0.6;' : '';
-            
-            // Get WhatsApp link for phone (accountants can also click)
-            let phoneCell = p.Phone;
-            if (p.Phone) {
-                const whatsappLink = getWhatsAppLink(p.Phone);
-                phoneCell = `<a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="whatsapp-link" style="color: var(--sky-blue); text-decoration: none; font-weight: 600; cursor: pointer; display: inline-block;" title="Click to open WhatsApp">${p.Phone}</a>`;
+        if (accountantTbody) {
+            const adminTbody = document.getElementById('adminTableBody');
+            if (adminTbody) {
+                // Copy the table content from admin to accountant (they're identical)
+                accountantTbody.innerHTML = adminTbody.innerHTML;
             }
-            
-            // Paid button (accountants can mark as paid)
-            const paidButton = isPaid 
-                ? '<span class="paid-badge">✓ PAID</span>'
-                : `<button onclick="markAsPaid(${actualIndex})" style="background:linear-gradient(135deg, rgba(212,175,55,0.4), rgba(212,175,55,0.3)); border:2px solid rgba(212,175,55,0.7); color:var(--primary-gold); padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:800; font-size:11px; transition:all 0.3s ease; box-shadow:0 2px 6px rgba(212,175,55,0.3); text-shadow:0 1px 2px rgba(0,0,0,0.3);">Paid</button>`;
-            
-            accountantTbody.innerHTML += `
-                <tr ${isPaid ? 'style="background:rgba(0,0,0,0.4);"' : ''}>
-                    <td style="font-weight:600; font-size:12px; color:#fff; text-shadow:0 0 8px rgba(255,255,255,0.4), 0 1px 4px rgba(0,0,0,0.5); letter-spacing:0.3px; background:rgba(255,255,255,0.05); padding:12px 8px; line-height:1.4; white-space:normal; word-wrap:break-word; ${nameStrikeStyle}">${p.Name || '-'}</td>
-                    <td style="color:var(--sky-blue-light); font-weight:600; font-size:11px; white-space:normal; word-wrap:break-word; line-height:1.4; ${companyStrikeStyle}">${p.Comp || '-'}</td>
-                    <td style="color:var(--sky-blue); font-size:11px; ${strikeStyle}">${phoneCell || '-'}</td>
-                    <td style="color:var(--primary-gold); font-weight:700; font-size:11px; ${strikeStyle}">${p.Group || '-'}</td>
-                    <td style="color:#aaa; font-size:11px; ${strikeStyle}">${dayName || '-'}</td>
-                    <td style="color:#ccc; font-size:11px; ${strikeStyle}">${dateStr || '-'}</td>
-                    <td style="color:#bbb; font-size:11px; direction:ltr; ${strikeStyle}">${timeStr || '-'}</td>
-                    <td style="padding:8px 4px;">${paidButton}</td>
-                </tr>
-            `;
-        });
+        }
+        
+        // Update accountant statistics to match admin statistics
+        const statTotal = document.getElementById('statTotal')?.textContent || '0';
+        const statPaid = document.getElementById('statPaid')?.textContent || '0';
+        const statUnpaid = document.getElementById('statUnpaid')?.textContent || '0';
+        const statGroupA = document.getElementById('statGroupA')?.textContent || '0';
+        const statGroupB = document.getElementById('statGroupB')?.textContent || '0';
+        const statGroupC = document.getElementById('statGroupC')?.textContent || '0';
+        const statGroupD = document.getElementById('statGroupD')?.textContent || '0';
+        
+        if (document.getElementById('accountantStatTotal')) {
+            document.getElementById('accountantStatTotal').textContent = statTotal;
+            document.getElementById('accountantStatPaid').textContent = statPaid;
+            document.getElementById('accountantStatUnpaid').textContent = statUnpaid;
+            document.getElementById('accountantStatGroupA').textContent = statGroupA;
+            document.getElementById('accountantStatGroupB').textContent = statGroupB;
+            document.getElementById('accountantStatGroupC').textContent = statGroupC;
+            document.getElementById('accountantStatGroupD').textContent = statGroupD;
+        }
     }
     
     function logout() {
