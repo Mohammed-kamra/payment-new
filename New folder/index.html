@@ -36,195 +36,6 @@
             box-sizing: border-box;
         }
         
-        html { 
-            scroll-behavior: smooth; 
-        }
-        
-        * {
-            scroll-behavior: smooth;
-        }
-        
-        /* Smooth scroll reveal animation */
-        @media (prefers-reduced-motion: no-preference) {
-            .container,
-            .top-banner,
-            .header,
-            .form-container,
-            .stats-grid,
-            .public-list-area,
-            .footer {
-                will-change: transform, opacity;
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
-            }
-        }
-        
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        @keyframes glow {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(212, 175, 55, 0.9), 0 0 30px rgba(212, 175, 55, 0.5);
-            }
-        }
-        
-        @keyframes shimmer-cell {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-        
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        
-        @keyframes rotateIn {
-            from {
-                opacity: 0;
-                transform: rotate(-10deg) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: rotate(0deg) scale(1);
-            }
-        }
-        
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes smoothFloat {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-8px) rotate(1deg);
-            }
-            66% {
-                transform: translateY(-4px) rotate(-1deg);
-            }
-        }
-        
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
         
         html, body {
             margin: 0;
@@ -269,7 +80,7 @@
                 radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
-            animation: float 20s ease-in-out infinite;
+
         }
         
         .container { 
@@ -287,8 +98,8 @@
             flex-direction: column;
             position: relative;
             z-index: 1;
-            animation: fadeInScale 0.8s ease-out;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
         }
         
         .container:hover {
@@ -312,7 +123,7 @@
             background: linear-gradient(90deg, transparent, #d4af37, transparent);
             margin-bottom: 20px;
             border-radius: 2px;
-            animation: slideInLeft 0.8s ease-out 0.1s both;
+
             position: relative;
             overflow: hidden;
         }
@@ -325,7 +136,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-            animation: shimmer 2s ease-in-out infinite;
+
         }
         
         .logo-section {
@@ -334,7 +145,7 @@
             align-items: center;
             margin-bottom: 15px;
             padding: 10px 0;
-            animation: fadeInUp 0.8s ease-out 0.1s both;
+
             gap: 20px;
         }
         
@@ -344,7 +155,7 @@
             font-size: 20px;
             font-weight: 700;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            animation: glow 3s ease-in-out infinite;
+
             letter-spacing: 0.5px;
             flex: 1;
             text-align: center;
@@ -358,14 +169,14 @@
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
-            transition: transform 0.3s ease, filter 0.3s ease;
+
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             image-rendering: high-quality;
         }
         
         .logo-img:hover {
-            transform: scale(1.05);
+
             filter: drop-shadow(0 3px 6px rgba(212, 175, 55, 0.5));
         }
         
@@ -405,34 +216,13 @@
         }
         
         .logo-1 {
-            animation: fadeInLeft 0.8s ease-out 0.2s both;
+
         }
         
         .logo-2 {
-            animation: fadeInRight 0.8s ease-out 0.3s both;
+
         }
         
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
         
         .top-banner { 
             text-align: center; 
@@ -440,12 +230,12 @@
             padding-bottom: 25px; 
             margin-bottom: 25px;
             position: relative;
-            animation: slideInUp 0.8s ease-out 0.2s both;
-            transition: transform 0.3s ease;
+
+
         }
         
         .top-banner:hover {
-            transform: translateY(-3px);
+
         }
         
         .top-banner::after {
@@ -453,7 +243,7 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%);
+
             width: 100px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--sky-blue), transparent);
@@ -465,7 +255,7 @@
             font-size: 22px; 
             font-weight: 700;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            animation: glow 3s ease-in-out infinite;
+
             letter-spacing: 0.5px;
         }
 
@@ -481,12 +271,12 @@
             border-radius: 15px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(10px);
-            animation: slideInLeft 0.8s ease-out 0.3s both;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
         }
         
         .header:hover {
-            transform: translateX(5px);
+
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
         }
         
@@ -508,7 +298,7 @@
             border-radius: 8px; 
             font-weight: 600;
             font-size: 13px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             position: relative;
             overflow: hidden;
         }
@@ -521,7 +311,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
+
         }
         
         .lang-btn:hover::before {
@@ -530,7 +320,7 @@
         
         .lang-btn:hover {
             color: var(--sky-blue-light);
-            transform: translateY(-2px);
+
         }
         
         .lang-btn.active { 
@@ -549,7 +339,7 @@
             cursor: pointer; 
             font-weight: 600;
             font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(10px);
@@ -563,7 +353,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-            transition: left 0.5s;
+
         }
         
         .btn-nav:hover::before {
@@ -573,12 +363,12 @@
         .btn-nav:hover {
             background: rgba(212, 175, 55, 0.25);
             border-color: var(--sky-blue);
-            transform: translateY(-3px) scale(1.05);
+
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
         }
         
         .btn-nav:active {
-            transform: translateY(-1px) scale(1.02);
+
         }
         
         /* Enhanced Advanced Settings Buttons */
@@ -603,7 +393,7 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.2);
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+
         }
         
         #adminTabSettings .btn-nav:hover::after {
@@ -615,7 +405,7 @@
             background: linear-gradient(135deg, rgba(212,175,55,0.35), rgba(212,175,55,0.25));
             border-color: rgba(212,175,55,0.8);
             box-shadow: 0 6px 25px rgba(212,175,55,0.5);
-            transform: translateY(-3px) scale(1.03);
+
         }
         
         #adminTabSettings #toggleSystemBtn {
@@ -624,6 +414,45 @@
             color: white;
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Toggle Switch Styling - Enhanced Quality */
+        #setVisible:checked + span span {
+            left: calc(100% - 24.5px) !important;
+            background: linear-gradient(135deg, rgba(39,174,96,1), rgba(39,174,96,0.9)) !important;
+            box-shadow: 0 3px 12px rgba(39,174,96,0.7), inset 0 1px 4px rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.2) !important;
+        }
+        
+        #setVisible:checked + span {
+            border-color: rgba(39,174,96,0.9) !important;
+            background: linear-gradient(135deg, rgba(39,174,96,0.25), rgba(39,174,96,0.15)) !important;
+            box-shadow: inset 0 3px 10px rgba(0,0,0,0.3), 0 2px 6px rgba(39,174,96,0.3) !important;
+        }
+        
+        #setVisible + span {
+            position: relative;
+        }
+        
+        #setVisible + span span {
+            position: absolute;
+            height: 21px;
+            width: 21px;
+            left: 3.5px;
+            bottom: 3.5px;
+            background: linear-gradient(135deg, rgba(212,175,55,1), rgba(212,175,55,0.85));
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(212,175,55,0.6), inset 0 1px 4px rgba(255,255,255,0.25), inset 0 -1px 2px rgba(0,0,0,0.2);
+        }
+        
+        /* Enhanced hover effect for toggle */
+        label[for="setVisible"]:hover #toggleTrack {
+            border-color: rgba(212,175,55,0.9);
+            box-shadow: inset 0 3px 10px rgba(0,0,0,0.4), 0 3px 8px rgba(212,175,55,0.4);
+        }
+        
+        #setVisible:checked + span:hover {
+            border-color: rgba(39,174,96,1) !important;
+            box-shadow: inset 0 3px 10px rgba(0,0,0,0.3), 0 3px 10px rgba(39,174,96,0.4) !important;
         }
         
         /* Professional Admin Button Styling */
@@ -653,7 +482,7 @@
             border-radius: 12px;
             z-index: -1;
             opacity: 0;
-            transition: opacity 0.3s ease;
+
         }
         
         .admin-btn:hover::after {
@@ -663,12 +492,12 @@
         .admin-icon {
             font-size: 18px;
             display: inline-block;
-            animation: rotate 3s linear infinite;
+
             filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.6));
         }
         
         .admin-btn:hover .admin-icon {
-            animation: rotate 1s linear infinite;
+
             filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.9));
         }
         
@@ -679,14 +508,6 @@
             font-weight: 700;
         }
         
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
         
         .admin-btn:hover {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.2));
@@ -694,11 +515,11 @@
             box-shadow: 
                 0 8px 25px rgba(212, 175, 55, 0.5),
                 0 0 20px rgba(212, 175, 55, 0.3);
-            transform: translateY(-3px) scale(1.05);
+
         }
         
         .admin-btn:active {
-            transform: translateY(-1px) scale(1.02);
+
         }
         
         /* Professional Logout Button Styling */
@@ -716,11 +537,11 @@
         .logout-icon {
             font-size: 16px;
             display: inline-block;
-            transition: transform 0.3s ease;
+
         }
         
         .logout-btn:hover .logout-icon {
-            transform: translateX(-3px);
+
         }
         
         .logout-text {
@@ -733,11 +554,11 @@
         .logout-btn:hover {
             background: #A00000 !important;
             box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
-            transform: translateY(-3px) scale(1.05);
+
         }
         
         .logout-btn:active {
-            transform: translateY(-1px) scale(1.02);
+
         }
         
         /* Mobile optimizations for admin button */
@@ -806,7 +627,7 @@
             border: none;
             margin: 0;
             box-shadow: none;
-            animation: fadeInUp 0.4s ease-out;
+
         }
         
         #accountantPanel {
@@ -988,12 +809,12 @@
             /* Enhanced shadows and effects for 4K */
             .card:hover {
                 box-shadow: 0 25px 50px rgba(212, 175, 55, 0.3);
-                transform: translateY(-10px) scale(1.03);
+
             }
             
             button:hover, .btn-submit:hover, .btn-primary:hover {
                 box-shadow: 0 12px 35px rgba(212, 175, 55, 0.5);
-                transform: translateY(-4px) scale(1.05);
+
             }
             
             /* Stats grid scaling */
@@ -1088,8 +909,8 @@
             /* Enhanced hover effects for 4K */
             .admin-table tbody tr:hover, .accountant-table tbody tr:hover {
                 background: rgba(212, 175, 55, 0.08);
-                transform: scale(1.01);
-                transition: all 0.2s ease;
+
+
             }
             
             /* Better scrollbar for 4K */
@@ -1227,7 +1048,7 @@
             color: #aaa;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+
             font-size: 16px;
         }
         
@@ -1244,7 +1065,7 @@
         }
         
         .admin-tab-content {
-            animation: fadeInUp 0.4s ease-out;
+
         }
         
         @media (max-width: 850px) {
@@ -1363,7 +1184,7 @@
             background: rgba(255, 255, 255, 0.02);
             color: #fff;
             vertical-align: middle;
-            transition: all 0.2s ease;
+
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1371,7 +1192,7 @@
         
         .admin-table tbody tr,
         #accountantPanel .admin-table tbody tr {
-            transition: all 0.2s ease;
+
         }
         
         .admin-table tbody tr:hover,
@@ -1445,7 +1266,7 @@
             font-weight: 700;
             font-size: 11px;
             position: relative;
-            transition: all 0.3s ease;
+
         }
         
         /* Gold border for identified company cell */
@@ -1455,17 +1276,9 @@
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.2);
             background: rgba(212, 175, 55, 0.1) !important;
-            animation: goldPulse 2s ease-in-out infinite;
+
         }
         
-        @keyframes goldPulse {
-            0%, 100% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), inset 0 0 15px rgba(212, 175, 55, 0.3);
-            }
-        }
         
         .admin-table tbody td:nth-child(5),
         #accountantPanel .admin-table tbody td:nth-child(5) {
@@ -1510,7 +1323,7 @@
             cursor: pointer;
             font-weight: 800;
             font-size: 11px;
-            transition: all 0.3s ease;
+
             min-width: 60px;
             white-space: nowrap;
             box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
@@ -1519,7 +1332,7 @@
         
         #accountantPanel .admin-table tbody td:nth-child(9) button:hover {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.5));
-            transform: scale(1.05);
+
             box-shadow: 0 4px 10px rgba(0,0,0,0.5), 0 0 15px rgba(212,175,55,0.6);
         }
         
@@ -1558,7 +1371,7 @@
             cursor: pointer;
             font-weight: 800;
             font-size: 11px;
-            transition: all 0.3s ease;
+
             min-width: 60px;
             white-space: nowrap;
             box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
@@ -1570,7 +1383,7 @@
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.5));
             border-color: rgba(212, 175, 55, 0.9);
             color: var(--primary-gold);
-            transform: scale(1.08);
+
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
         }
         
@@ -1594,7 +1407,7 @@
             cursor: pointer;
             font-weight: 800;
             font-size: 11px;
-            transition: all 0.3s ease;
+
             min-width: 60px;
             white-space: nowrap;
             box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
@@ -1606,7 +1419,7 @@
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.5));
             border-color: rgba(212, 175, 55, 0.9);
             color: var(--primary-gold);
-            transform: scale(1.08);
+
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
         }
         
@@ -1754,17 +1567,17 @@
             margin: 15px 0 25px 0;
             font-weight: 700;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            animation: glow 3s ease-in-out infinite;
+
         }
         
         .form-container { 
             position: relative;
-            animation: slideInUp 0.8s ease-out 0.4s both;
-            transition: transform 0.3s ease;
+
+
         }
         
         .form-container:hover {
-            transform: translateY(-2px);
+
         }
         
         .disabled-overlay { 
@@ -1792,7 +1605,7 @@
             color: var(--sky-blue-light);
             border: 3px solid rgba(212, 175, 55, 0.4);
             text-align: center;
-            animation: fadeInScale 0.6s ease-out, systemClosedPulse 3s ease-in-out infinite;
+
             box-shadow: 
                 0 0 50px rgba(212, 175, 55, 0.4),
                 0 0 100px rgba(212, 175, 55, 0.2),
@@ -1814,7 +1627,7 @@
             background: 
                 radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
                 conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(212, 175, 55, 0.05) 90deg, transparent 180deg, rgba(212, 175, 55, 0.05) 270deg, transparent 360deg);
-            animation: rotate 25s linear infinite;
+
             opacity: 0.6;
         }
         
@@ -1834,35 +1647,10 @@
             display: block;
             margin-bottom: 15px;
             filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
-            animation: lockPulse 2s ease-in-out infinite;
+
             line-height: 1;
         }
         
-        @keyframes systemClosedPulse {
-            0%, 100% {
-                box-shadow: 
-                    0 0 40px rgba(212, 175, 55, 0.3),
-                    inset 0 0 60px rgba(0, 0, 0, 0.5);
-                border-color: rgba(212, 175, 55, 0.5);
-            }
-            50% {
-                box-shadow: 
-                    0 0 60px rgba(212, 175, 55, 0.6),
-                    inset 0 0 80px rgba(0, 0, 0, 0.7);
-                border-color: rgba(212, 175, 55, 0.8);
-            }
-        }
-        
-        @keyframes lockPulse {
-            0%, 100% {
-                transform: scale(1);
-                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
-            }
-            50% {
-                transform: scale(1.1);
-                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9));
-            }
-        }
         
         .disabled-overlay span {
             display: inline-block;
@@ -1874,7 +1662,7 @@
             font-weight: 900;
             text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
             letter-spacing: 2px;
-            animation: shimmer 2s ease-in-out infinite;
+
         }
         
         .form-box { 
@@ -1887,20 +1675,20 @@
             border-radius: 20px; 
             border: 1px solid rgba(212, 175, 55, 0.3); 
             margin-bottom: 30px; 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            animation: scaleIn 0.6s ease-out 0.5s both;
+
         }
         
         .form-box:hover {
             border-color: rgba(212, 175, 55, 0.5);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            transform: translateY(-3px) scale(1.01);
+
         }
         
         .form-box input,
         .form-box select {
-            animation: slideInRight 0.5s ease-out both;
+
         }
         
         .form-box input:nth-child(1) { animation-delay: 0.6s; }
@@ -1908,6 +1696,38 @@
         .form-box input:nth-child(3) { animation-delay: 0.7s; }
         .form-box select:nth-child(4) { animation-delay: 0.75s; }
         .form-box button { animation-delay: 0.8s; }
+        
+        /* Disable ALL form animations on mobile for zero lag */
+        @media (max-width: 850px) {
+            .form-box {
+
+
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+            
+            .form-box:hover {
+                transform: none !important;
+
+            }
+            
+            .form-box input,
+            .form-box select,
+            .form-box button {
+
+
+            }
+            
+            .form-box input:nth-child(1),
+            .form-box input:nth-child(2),
+            .form-box input:nth-child(3),
+            .form-box select:nth-child(4),
+            .form-box button {
+
+
+                animation-delay: 0s !important;
+            }
+        }
         
         input, textarea { 
             width: 100%; 
@@ -1919,8 +1739,23 @@
             font-size: 15px; 
             font-family: 'Inter', sans-serif;
             outline: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             backdrop-filter: blur(10px);
+        }
+        
+        /* Disable transitions on mobile for inputs */
+        @media (max-width: 850px) {
+            input, textarea {
+
+
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+            
+            input:focus, textarea:focus {
+
+                transform: none !important;
+            }
         }
         
         select { 
@@ -1933,7 +1768,7 @@
             font-size: 15px; 
             font-family: 'Inter', sans-serif;
             outline: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             backdrop-filter: blur(10px);
             cursor: pointer;
             appearance: none;
@@ -1942,6 +1777,15 @@
             background-position: right 18px center;
             background-size: 12px;
             padding-right: 45px;
+        }
+        
+        /* Disable all transitions and animations on mobile for performance */
+        @media (max-width: 850px) {
+            select {
+
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
         }
         
         /* Beautiful Company Select Styling - Optimized for Performance */
@@ -1956,18 +1800,17 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 3px rgba(212, 175, 55, 0.1) !important;
             padding: 18px 50px 18px 20px !important;
             min-height: 56px !important;
-            will-change: transform, border-color;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
+
+
+
+
+
         }
         
         #uComp:hover {
             border-color: rgba(212, 175, 55, 0.6) !important;
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4), inset 0 1px 3px rgba(212, 175, 55, 0.2) !important;
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(45, 45, 45, 0.95)) !important;
-            transform: translateY(-1px) translateZ(0) !important;
         }
         
         #uComp:focus {
@@ -1975,6 +1818,59 @@
             box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25), 0 6px 25px rgba(212, 175, 55, 0.5), inset 0 1px 3px rgba(212, 175, 55, 0.3) !important;
             background: linear-gradient(135deg, rgba(35, 35, 35, 0.95), rgba(50, 50, 50, 0.95)) !important;
             outline: none !important;
+        }
+        
+        /* CRITICAL: Disable ALL animations and transitions on mobile for zero lag */
+        @media (max-width: 850px) {
+            #uComp {
+                /* Remove ALL transitions - instant changes only */
+
+
+                /* Remove backdrop-filter - major performance killer */
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                /* Solid background - no gradients on mobile */
+                background: rgba(26, 26, 26, 0.98) !important;
+                /* Minimal shadow - single layer only */
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+                /* Remove text-shadow for performance */
+                text-shadow: none !important;
+                /* Optimize font rendering */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                /* Touch-friendly size */
+                min-height: 60px !important;
+                padding: 20px 50px 20px 20px !important;
+                font-size: 18px !important;
+                /* GPU acceleration without will-change overhead */
+
+
+
+            }
+            
+            #uComp:hover {
+                /* Instant hover - no transitions */
+
+                border-color: rgba(212, 175, 55, 0.6) !important;
+                box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
+                background: rgba(30, 30, 30, 0.98) !important;
+                transform: none !important;
+            }
+            
+            #uComp:focus {
+                /* Instant focus - no transitions */
+
+                border-color: var(--primary-gold) !important;
+                box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3), 0 2px 8px rgba(212, 175, 55, 0.3) !important;
+                background: rgba(35, 35, 35, 0.98) !important;
+                transform: none !important;
+            }
+            
+            #uComp:active {
+                /* Instant active state */
+
+                transform: none !important;
+            }
         }
         
         /* Style company select options */
@@ -2005,44 +1901,8 @@
             font-weight: 700 !important;
         }
         
-        /* Mobile Optimizations - High Performance, No Lag */
+        /* Simplify option styling on mobile - no gradients */
         @media (max-width: 850px) {
-            #uComp {
-                /* Simplify background for mobile - solid color instead of gradient */
-                background: rgba(26, 26, 26, 0.95) !important;
-                /* Reduce shadow complexity */
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
-                /* Remove text-shadow for performance */
-                text-shadow: none !important;
-                /* Optimize font rendering */
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                /* Ensure touch-friendly size */
-                min-height: 60px !important;
-                padding: 20px 50px 20px 20px !important;
-                font-size: 18px !important;
-                /* GPU acceleration */
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-                will-change: auto;
-            }
-            
-            #uComp:hover {
-                /* Simplified hover - no transform on mobile */
-                border-color: rgba(212, 175, 55, 0.6) !important;
-                box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3) !important;
-                background: rgba(30, 30, 30, 0.95) !important;
-                transform: none !important;
-            }
-            
-            #uComp:focus {
-                /* Simplified focus - reduced shadow layers */
-                border-color: var(--primary-gold) !important;
-                box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2), 0 3px 12px rgba(212, 175, 55, 0.4) !important;
-                background: rgba(35, 35, 35, 0.95) !important;
-            }
-            
-            /* Simplify option styling on mobile */
             #uComp option {
                 background: rgba(20, 20, 20, 0.98) !important;
                 padding: 14px 18px !important;
@@ -2070,7 +1930,7 @@
                 padding: 18px 48px 18px 18px !important;
                 font-size: 17px !important;
                 /* Disable will-change to save resources */
-                will-change: auto;
+
             }
             
             #uComp:hover,
@@ -2183,7 +2043,18 @@
             box-shadow: 
                 0 0 20px rgba(212, 175, 55, 0.4),
                 0 0 0 3px rgba(212, 175, 55, 0.15);
-            transform: translateY(-2px);
+
+        }
+        
+        /* Disable focus transforms and transitions on mobile for zero lag */
+        @media (max-width: 850px) {
+            input:focus, select:focus, textarea:focus {
+
+
+                transform: none !important;
+
+                box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3) !important;
+            }
         }
         
         .full { 
@@ -2200,7 +2071,7 @@
             font-weight: 700; 
             font-size: 18px; 
             cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             position: relative;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
@@ -2216,7 +2087,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
+
         }
         
         .btn-submit:hover::before {
@@ -2225,14 +2096,14 @@
         
         .btn-submit:hover {
             background: linear-gradient(135deg, var(--sky-blue-light), var(--sky-blue));
-            transform: translateY(-5px) scale(1.05);
+
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.7);
-            animation: bounce 0.6s ease;
+
         }
         
         .btn-submit:active {
-            transform: translateY(-2px) scale(1.02);
-            animation: none;
+
+
         }
 
         .stats-grid { 
@@ -2417,10 +2288,10 @@
             border-top: 3px solid var(--sky-blue);
             position: relative; 
             overflow: hidden;
-            transition: all 0.2s ease;
+
             cursor: pointer;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-            animation: none;
+
             width: 100%;
         }
         
@@ -2510,7 +2381,7 @@
             transform: none;
             border-color: rgba(212, 175, 55, 0.3);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-            animation: none;
+
         }
         
         .stat-card:active {
@@ -2547,7 +2418,7 @@
             z-index: 5; 
             text-align: center; 
             padding: 20px;
-            animation: pulse 2s ease-in-out infinite;
+
             border-radius: 20px;
             border: 3px solid rgba(212, 175, 55, 0.6);
             box-shadow: 
@@ -2567,7 +2438,7 @@
             display: block;
             margin-bottom: 5px;
             filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8));
-            animation: pulse 2s ease-in-out infinite;
+
         }
 
         .stat-card b { 
@@ -2579,11 +2450,11 @@
             margin-bottom: 8px;
             font-weight: 800;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-            transition: transform 0.3s ease;
+
         }
         
         .stat-card:hover b {
-            transform: scale(1.1);
+
         }
         
         .info-box { 
@@ -2642,16 +2513,16 @@
             margin-top: 40px; 
             border-top: 2px solid rgba(212, 175, 55, 0.3); 
             padding-top: 25px;
-            animation: slideInUp 0.8s ease-out 0.6s both;
-            transition: transform 0.3s ease;
+
+
         }
         
         .public-list-area:hover {
-            transform: translateY(-3px);
+
         }
         
         .public-list-area .table-wrap {
-            animation: fadeInScale 0.6s ease-out 0.8s both;
+
         }
         
         .controls { 
@@ -2698,7 +2569,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
             text-align: center; 
             font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             background: rgba(255, 255, 255, 0.02);
             position: relative;
             overflow: hidden;
@@ -2827,13 +2698,13 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
-            transition: left 0.5s;
+
             z-index: -1;
         }
         
         tr {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fadeInUp 0.5s ease-out both;
+
+
         }
         
         tr:nth-child(1) { animation-delay: 0.1s; }
@@ -2845,7 +2716,6 @@
         
         tr:hover td {
             background: rgba(212, 175, 55, 0.2);
-            transform: scale(1.02) translateX(3px);
             box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
         
@@ -2860,7 +2730,7 @@
         .new-registration { 
             background: linear-gradient(90deg, rgba(39, 174, 96, 0.2), rgba(39, 174, 96, 0.1)) !important;
             border-left: 4px solid #27ae60 !important;
-            animation: slideIn 0.5s ease-out;
+
         }
         
         .new-registration td { 
@@ -2873,12 +2743,12 @@
             padding-top: 30px; 
             border-top: 2px solid rgba(212, 175, 55, 0.5); 
             text-align: center;
-            animation: slideInUp 0.8s ease-out 0.7s both;
-            transition: transform 0.3s ease;
+
+
         }
         
         .footer:hover {
-            transform: translateY(-3px);
+
         }
         
         
@@ -2911,13 +2781,12 @@
             height: auto; 
             border-radius: 12px; 
             filter: grayscale(100%) brightness(0.9);
-            transition: all 0.4s ease;
+
             cursor: pointer;
         }
         
         .footer-logo:hover {
             filter: grayscale(0%) brightness(1.3);
-            transform: scale(1.1) rotate(5deg);
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
         }
         
@@ -2943,7 +2812,7 @@
             text-align: left;
             min-width: 280px;
             max-width: 320px;
-            transition: all 0.3s ease;
+
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: row;
@@ -2954,7 +2823,7 @@
         }
         
         .contact-card:hover {
-            transform: translateY(-2px);
+
             border-color: rgba(212, 175, 55, 0.6);
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
@@ -3000,7 +2869,7 @@
             background: rgba(212, 175, 55, 0.1);
             border-radius: 12px;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
+
             cursor: pointer;
             white-space: nowrap;
         }
@@ -3009,7 +2878,7 @@
             background: rgba(212, 175, 55, 0.2);
             border-color: rgba(212, 175, 55, 0.6);
             color: var(--sky-blue-light);
-            transform: scale(1.02);
+
             box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
         }
         
@@ -3067,7 +2936,7 @@
             letter-spacing: 1px;
             box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
             position: relative;
-            transition: all 0.3s ease;
+
             white-space: nowrap;
         }
         
@@ -3081,7 +2950,7 @@
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.25));
             border-color: rgba(212, 175, 55, 0.6);
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px) scale(1.05);
+
         }
         
         /* Table cell styling for company and group */
@@ -3126,7 +2995,7 @@
             box-shadow: 
                 0 0 20px rgba(212, 175, 55, 0.4),
                 0 0 0 3px rgba(212, 175, 55, 0.15);
-            transform: translateY(-2px);
+
         }
         
         select:hover {
@@ -3177,11 +3046,11 @@
             border-radius: 8px;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
-            transition: transform 0.3s ease, filter 0.3s ease;
+
         }
         
         .footer-credit img:hover {
-            transform: scale(1.1);
+
             filter: drop-shadow(0 3px 8px rgba(212, 175, 55, 0.5));
         }
         
@@ -3197,7 +3066,7 @@
             color: var(--sky-blue);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+
             border-bottom: 1px dotted rgba(212, 175, 55, 0.5);
         }
         
@@ -3218,7 +3087,7 @@
             justify-content: center; 
             align-items: center; 
             padding: 20px;
-            animation: fadeInUp 0.3s ease-out;
+
         }
         
         #loginModal { 
@@ -3232,7 +3101,7 @@
             align-items: flex-start; 
             padding: 20px;
             padding-top: 100px;
-            animation: fadeInUp 0.3s ease-out;
+
         }
         
         .modal-content, .success-content { 
@@ -3245,7 +3114,7 @@
             max-width: 380px; 
             text-align: center;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 175, 55, 0.4);
-            animation: fadeInUp 0.4s ease-out;
+
         }
         
         #loginModal .modal-content {
@@ -3270,7 +3139,7 @@
         .admin-title-icon {
             font-size: 28px;
             display: inline-block;
-            animation: rotate 4s linear infinite;
+
             filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
         }
         
@@ -3293,7 +3162,7 @@
             font-size: 15px;
             font-family: 'Inter', sans-serif;
             outline: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             backdrop-filter: blur(10px);
             margin-bottom: 15px;
             box-sizing: border-box;
@@ -3309,7 +3178,7 @@
             box-shadow: 
                 0 0 20px rgba(212, 175, 55, 0.4),
                 0 0 0 3px rgba(212, 175, 55, 0.15);
-            transform: translateY(-2px);
+
         }
         
         #loginModal .modal-content .btn-submit {
@@ -3327,7 +3196,7 @@
             font-size: 14px;
             padding: 8px 16px;
             border-radius: 8px;
-            transition: all 0.3s ease;
+
         }
         
         #loginModal .modal-content .cancel-btn:hover {
@@ -3395,7 +3264,7 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: pulse 2s ease-in-out infinite;
+
         }
         
         /* Mobile Responsive - Beautiful & Easy to Read */
@@ -3405,6 +3274,41 @@
                 font-size: 17px;
                 line-height: 1.6;
                 -webkit-font-smoothing: antialiased;
+            }
+            
+            /* Company List - Tablet/Mobile Optimization */
+            #companiesList {
+                padding: 12px !important;
+                max-height: 450px !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+            
+            .company-item {
+                padding: 16px 14px !important;
+                min-height: 68px !important;
+                border-radius: 12px !important;
+            }
+            
+            .company-item > div > div:first-child {
+                width: 42px !important;
+                height: 42px !important;
+                font-size: 16px !important;
+            }
+            
+            .company-item span[style*="font-size: 15px"] {
+                font-size: 16px !important;
+            }
+            
+            .company-remove-btn {
+                min-width: 85px !important;
+                min-height: 50px !important;
+                padding: 12px 18px !important;
+                font-size: 14px !important;
+            }
+            
+            #totalCompanyCount {
+                font-size: 15px !important;
+                padding: 9px 18px !important;
                 -moz-osx-font-smoothing: grayscale;
             }
             
@@ -3469,8 +3373,8 @@
             /* Remove animations for performance */
             .stat-card,
             .stat-card * {
-                animation: none !important;
-                transition: all 0.15s ease !important;
+
+
             }
             
             .stat-card:hover {
@@ -3478,7 +3382,7 @@
             }
             
             .stat-card:active {
-                transform: scale(0.97) !important;
+
             }
             
             .full-label {
@@ -3594,7 +3498,7 @@
                 color: #fff;
                 -webkit-appearance: none;
                 appearance: none;
-                transition: all 0.3s ease;
+
                 font-weight: 500;
                 letter-spacing: 0.2px;
             }
@@ -3604,7 +3508,7 @@
                 outline: none;
                 box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25), 0 4px 12px rgba(212, 175, 55, 0.2);
                 background: rgba(35, 35, 35, 0.95);
-                transform: translateY(-1px);
+
             }
             
             input::placeholder, textarea::placeholder {
@@ -3631,7 +3535,7 @@
                 letter-spacing: 0.5px;
                 text-transform: uppercase;
                 box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
-                transition: all 0.3s ease;
+
             }
             
             .btn-submit {
@@ -3640,7 +3544,7 @@
             }
             
             .btn-submit:active {
-                transform: translateY(1px);
+
                 box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
             }
             
@@ -3675,7 +3579,7 @@
                 border-radius: 16px;
                 padding: 20px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                transition: transform 0.2s ease;
+
             }
         }
         
@@ -3742,7 +3646,7 @@
             }
             
             .stat-card:active {
-                transform: scale(0.96) !important;
+
             }
             
             .full-label {
@@ -3761,6 +3665,170 @@
                 gap: 20px;
                 padding: 22px 18px !important;
                 border-radius: 18px;
+            }
+            
+            /* Advanced Company List - Mobile Optimized */
+            #companiesList {
+                padding: 10px !important;
+                max-height: 350px !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(212,175,55,0.5) rgba(0,0,0,0.2);
+            }
+            
+            #companiesList::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            #companiesList::-webkit-scrollbar-track {
+                background: rgba(0,0,0,0.2);
+                border-radius: 10px;
+            }
+            
+            #companiesList::-webkit-scrollbar-thumb {
+                background: rgba(212,175,55,0.5);
+                border-radius: 10px;
+            }
+            
+            #companiesList::-webkit-scrollbar-thumb:hover {
+                background: rgba(212,175,55,0.7);
+            }
+            
+            .company-item {
+                padding: 12px 14px !important;
+                margin-bottom: 8px !important;
+                border-radius: 10px !important;
+                min-height: 60px !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 10px !important;
+            }
+            
+            .company-item > div {
+                gap: 12px !important;
+                min-width: 0 !important;
+            }
+            
+            .company-item > div > div:first-child {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 14px !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .company-item span[style*="font-size: 15px"] {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                word-break: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+            
+            .company-remove-btn {
+                min-width: 70px !important;
+                min-height: 44px !important;
+                padding: 10px 14px !important;
+                font-size: 12px !important;
+                -webkit-tap-highlight-color: rgba(220,38,38,0.3);
+                touch-action: manipulation;
+            }
+            
+            #totalCompanyCount {
+                font-size: 13px !important;
+                padding: 7px 14px !important;
+            }
+            
+            
+            .company-item {
+
+
+            }
+            
+            /* Optimize for mobile performance */
+            .company-item:active {
+
+
+            }
+            
+            /* Better focus states for accessibility */
+            .company-remove-btn:focus-visible {
+                outline: 3px solid rgba(220,38,38,0.5);
+                outline-offset: 2px;
+            }
+            
+            /* Improve text readability on mobile */
+            .company-item span {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-rendering: optimizeLegibility;
+            }
+            
+            /* Advanced Company List - Mobile Optimized (Small Screens) */
+            #companiesList {
+                padding: 8px !important;
+                max-height: 400px !important;
+                border-radius: 10px !important;
+            }
+            
+            .company-item {
+                padding: 14px 12px !important;
+                margin-bottom: 10px !important;
+                border-radius: 10px !important;
+                min-height: 64px !important;
+                gap: 10px !important;
+                flex-wrap: nowrap !important;
+            }
+            
+            .company-item > div {
+                gap: 10px !important;
+                flex: 1 !important;
+                min-width: 0 !important;
+            }
+            
+            .company-item > div > div:first-child {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 15px !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .company-item span[style*="font-size: 15px"],
+            .company-item span[style*="font-size: 14px"] {
+                font-size: 15px !important;
+                line-height: 1.5 !important;
+                word-break: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+            
+            .company-remove-btn {
+                min-width: 75px !important;
+                min-height: 48px !important;
+                padding: 12px 16px !important;
+                font-size: 13px !important;
+                margin-left: 10px !important;
+                border-radius: 8px !important;
+                -webkit-tap-highlight-color: rgba(220,38,38,0.3) !important;
+                touch-action: manipulation !important;
+            }
+            
+            #totalCompanyCount {
+                font-size: 14px !important;
+                padding: 8px 16px !important;
+                border-radius: 8px !important;
+            }
+            
+            /* Disable hover effects on mobile - use active instead */
+            .company-item:hover {
+                transform: none !important;
+            }
+            
+            .company-remove-btn:hover {
+                transform: none !important;
+            }
+            
+            .company-remove-btn:active {
+
+                background: linear-gradient(135deg, rgba(239,68,68,0.9), rgba(220,38,38,0.7)) !important;
             }
             
             .container { 
@@ -3814,7 +3882,7 @@
             }
             
             input:focus, select:focus, textarea:focus {
-                transform: translateY(-1px);
+
                 border-color: var(--sky-blue);
                 box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25), 0 4px 14px rgba(212, 175, 55, 0.2);
                 background: rgba(35, 35, 35, 1);
@@ -4156,7 +4224,7 @@
             
             .stat-card:hover {
                 transform: none;
-                animation: none;
+
             }
         }
         
@@ -4293,7 +4361,7 @@
                 min-height: 60px !important;
                 background: linear-gradient(135deg, rgba(26, 26, 26, 0.85), rgba(20, 20, 20, 0.9)) !important;
                 border: 1px solid rgba(212, 175, 55, 0.25) !important;
-                transition: all 0.15s ease !important;
+
                 border-radius: 10px !important;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
             }
@@ -4311,12 +4379,12 @@
             }
             
             .stat-card:active {
-                transform: scale(0.97) !important;
+
             }
             
             /* Performance optimization */
             .stat-card * {
-                will-change: auto !important;
+
             }
             
             /* Beautiful navigation */
@@ -4373,7 +4441,7 @@
             .card:active,
             .stat-card:active,
             .btn-nav:active {
-                transform: scale(0.97);
+
                 opacity: 0.9;
             }
             
@@ -4387,7 +4455,7 @@
                 max-width: 85px;
                 max-height: 65px;
                 filter: drop-shadow(0 3px 10px rgba(212, 175, 55, 0.4));
-                transition: transform 0.3s ease;
+
             }
             
             /* Beautiful section spacing */
@@ -4408,7 +4476,7 @@
             
             /* Beautiful transitions */
             * {
-                transition: all 0.2s ease;
+
             }
             
             /* Better scrolling */
@@ -4508,8 +4576,8 @@
             
             /* Optimize animations for mobile - reduce heavy effects */
             * {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
+
+
             }
             
             /* Reduce animation duration for faster feel */
@@ -4529,7 +4597,7 @@
             .stats-grid,
             .public-list-area,
             .footer {
-                will-change: auto;
+
             }
             
             /* Optimize backdrop filters on mobile */
@@ -4591,7 +4659,7 @@
             
             .stat-card:hover {
                 transform: none;
-                animation: none;
+
             }
             
             tr:hover td {
@@ -4627,8 +4695,8 @@
             .admin-table-wrap,
             #accountantPanel .admin-table-wrap,
             .table-wrap {
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
+
+
             }
         }
         
@@ -4652,8 +4720,8 @@
             .admin-table-wrap,
             #accountantPanel .admin-table-wrap,
             .table-wrap {
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
+
+
             }
         }
         
@@ -4674,9 +4742,7 @@
 <div class="container">
     <div class="top-line"></div>
     <div class="logo-section">
-        <img src="1.png" alt="Logo 1" class="logo-img logo-1" onerror="this.style.display='none'">
         <h2 id="b-title" class="banner-title-inline">پارەدانی بازاڕی ناوەند حلال و حلال مارکێت ١ و حلال مارکێت ٢</h2>
-        <img src="2.png" alt="Logo 2" class="logo-img logo-2" onerror="this.style.display='none'">
     </div>
 
     <div class="header">
@@ -4701,13 +4767,13 @@
 
     <div id="adminPanel">
         <div class="admin-tabs" style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid rgba(212, 175, 55, 0.3);">
-            <button class="admin-tab-btn active" onclick="showAdminTab('settings')" style="flex: 1; padding: 15px; background: rgba(212, 175, 55, 0.2); border: 2px solid rgba(212, 175, 55, 0.4); border-bottom: none; border-radius: 10px 10px 0 0; color: var(--sky-blue); font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+            <button class="admin-tab-btn active" onclick="showAdminTab('settings')" style="flex: 1; padding: 15px; background: rgba(212, 175, 55, 0.2); border: 2px solid rgba(212, 175, 55, 0.4); border-bottom: none; border-radius: 10px 10px 0 0; color: var(--sky-blue); font-weight: 700; cursor: pointer;">
                 ⚙️ Settings
             </button>
-            <button class="admin-tab-btn" onclick="showAdminTab('users')" style="flex: 1; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-bottom: none; border-radius: 10px 10px 0 0; color: #aaa; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            <button class="admin-tab-btn" onclick="showAdminTab('users')" style="flex: 1; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-bottom: none; border-radius: 10px 10px 0 0; color: #aaa; font-weight: 600; cursor: pointer;">
                 👥 Users
             </button>
-            <button class="admin-tab-btn" onclick="showAdminTab('registrations')" style="flex: 1; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-bottom: none; border-radius: 10px 10px 0 0; color: #aaa; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            <button class="admin-tab-btn" onclick="showAdminTab('registrations')" style="flex: 1; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-bottom: none; border-radius: 10px 10px 0 0; color: #aaa; font-weight: 600; cursor: pointer;">
                 📋 Registrations
             </button>
         </div>
@@ -4718,28 +4784,89 @@
                 
                 <div style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(26,26,26,0.4)); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid rgba(212,175,55,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
                     <label style="display: block; margin-bottom: 12px; color: var(--sky-blue-light); font-weight: 700; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;">دۆخی سیستم:</label>
-                    <button id="toggleSystemBtn" class="btn-nav" style="width: 100%; font-size: 18px; font-weight: 700; padding: 16px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.15)); border: 2px solid rgba(212,175,55,0.5); color: white; box-shadow: 0 4px 15px rgba(212,175,55,0.3); transition: all 0.3s ease;" onclick="toggleSystemStatus()"></button>
+                    <button id="toggleSystemBtn" class="btn-nav" style="width: 100%; font-size: 18px; font-weight: 700; padding: 16px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.15)); border: 2px solid rgba(212,175,55,0.5); color: white; box-shadow: 0 4px 15px rgba(212,175,55,0.3);" onclick="toggleSystemStatus()"></button>
                 </div>
                 
-                <button class="btn-nav" style="background: linear-gradient(135deg, #8B0000, #a0522d); color: white; grid-column: 1 / -1; padding: 16px 24px; font-size: 16px; font-weight: 700; border-radius: 12px; border: 2px solid rgba(139,0,0,0.6); box-shadow: 0 4px 15px rgba(139,0,0,0.4); transition: all 0.3s ease; letter-spacing: 0.5px; text-transform: uppercase;" onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 6px 20px rgba(139,0,0,0.6)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(139,0,0,0.4)';" onclick="startDisableTimer()">⏰ Start Activation Timer</button>
+                <button class="btn-nav" style="background: linear-gradient(135deg, #8B0000, #a0522d); color: white; grid-column: 1 / -1; padding: 16px 24px; font-size: 16px; font-weight: 700; border-radius: 12px; border: 2px solid rgba(139,0,0,0.6); box-shadow: 0 4px 15px rgba(139,0,0,0.4); letter-spacing: 0.5px; text-transform: uppercase;" onclick="startDisableTimer()">⏰ Start Activation Timer</button>
 
                 <div><label>گروپ</label><select id="setGroup" onchange="loadGroupSettings()"><option value="A">Group A</option><option value="B">Group B</option><option value="C">Group C</option><option value="D">Group D</option></select></div>
-                <div><label>نیشاندان</label><input type="checkbox" id="setVisible" style="width:20px; height:20px;"></div>
+                
+                <!-- Enhanced Show/Display Section -->
+                <div style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.08)); padding: 24px; border-radius: 16px; border: 2px solid rgba(212,175,55,0.4); box-shadow: 0 6px 24px rgba(212,175,55,0.25), inset 0 1px 0 rgba(255,255,255,0.1); margin: 12px 0; backdrop-filter: blur(10px);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <label style="display: block; color: var(--primary-gold); font-weight: 800; font-size: 19px; margin-bottom: 10px; text-shadow: 0 0 12px rgba(212,175,55,0.6), 0 2px 4px rgba(0,0,0,0.3); letter-spacing: 0.5px; line-height: 1.3;">👁️ نیشاندان / Show Display</label>
+                            <p style="color: rgba(255,255,255,0.85); font-size: 13.5px; margin: 0; line-height: 1.6; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Toggle visibility of this group in the registration form</p>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 18px;">
+                            <label for="setVisible" style="position: relative; display: inline-block; width: 52px; height: 28px; margin: 0; cursor: pointer; flex-shrink: 0;" onclick="setTimeout(updateToggleSwitch, 5);">
+                                <input type="checkbox" id="setVisible" style="opacity: 0; width: 0; height: 0; position: absolute;">
+                                <span id="toggleTrack" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); border: 2.5px solid rgba(212,175,55,0.7); border-radius: 28px; box-shadow: inset 0 3px 10px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.2);">
+                                    <span id="toggleKnob" style="position: absolute; height: 21px; width: 21px; left: 3.5px; bottom: 3.5px; background: linear-gradient(135deg, rgba(212,175,55,1), rgba(212,175,55,0.85)); border-radius: 50%; box-shadow: 0 3px 10px rgba(212,175,55,0.6), inset 0 1px 4px rgba(255,255,255,0.25), inset 0 -1px 2px rgba(0,0,0,0.2);"></span>
+                                </span>
+                            </label>
+                            <div id="visibleStatus" style="color: var(--primary-gold); font-weight: 700; font-size: 13.5px; padding: 10px 18px; background: linear-gradient(135deg, rgba(212,175,55,0.25), rgba(212,175,55,0.15)); border-radius: 10px; border: 1.5px solid rgba(212,175,55,0.5); min-width: 85px; text-align: center; box-shadow: 0 2px 8px rgba(212,175,55,0.2), inset 0 1px 2px rgba(255,255,255,0.1); text-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.3px;">Hidden</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div><label>بەروار</label><input type="date" id="setDate"></div>
                 <div><label>کات</label><div style="display:flex; gap:5px; align-items:center;"><input type="time" id="setTimeStart"> <span class="to-text">بۆ</span> <input type="time" id="setTimeEnd"></div></div>
                 <div><label>سنوور</label><input type="number" id="setLimit"></div>
                 <div><label>Activate at (time)</label><input type="time" id="activateAtTime"></div>
                 <div><label>Activate for (minutes)</label><input type="number" id="disableMinutes" min="1"></div>
-                <div style="grid-column: 1 / -1;">
-                    <label style="display: block; margin-bottom: 10px; color: var(--sky-blue-light); font-weight: 700; font-size: 14px;">Company List</label>
-                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                        <input type="text" id="newCompanyInput" placeholder="Enter company name..." style="flex: 1; background:#000; border:1px solid #333; color:white; padding:12px; border-radius:8px; font-size:14px;" onkeypress="if(event.key==='Enter') addCompany()">
-                        <button class="btn-nav" onclick="addCompany()" style="background: linear-gradient(135deg, rgba(39,174,96,0.6), rgba(39,174,96,0.4)); color: white; padding: 12px 24px; border-radius: 8px; border: 2px solid rgba(39,174,96,0.8); font-weight: 700; cursor: pointer; transition: all 0.3s ease;">➕ Add</button>
+                <div style="grid-column: 1 / -1; margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(212,175,55,0.3);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <label style="display: block; color: var(--sky-blue-light); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px;">📋 Company List Management</label>
                     </div>
+                    
+                    <!-- Bulk Import Section - Moved to Top -->
+                    <div style="margin-bottom: 20px; background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.08)); border: 2px solid rgba(212,175,55,0.5); border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(212,175,55,0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label style="color: var(--primary-gold); font-weight: 700; font-size: 16px; text-shadow: 0 0 10px rgba(212,175,55,0.5);">📋 Quick Bulk Import - Add All Companies at Once</label>
+                            <div id="companyCountDisplay" style="color: var(--primary-gold); font-size: 14px; font-weight: 700; background: rgba(212,175,55,0.2); padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(212,175,55,0.4);">0 companies ready</div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; margin-bottom: 12px; border: 1px solid rgba(212,175,55,0.3);">
+                            <div style="color: rgba(255,255,255,0.9); font-size: 13px; line-height: 1.6;">
+                                <strong style="color: var(--primary-gold);">✨ Easy Steps:</strong><br>
+                                1️⃣ Paste your company names (any format: space, comma, tab, newline, or mixed)<br>
+                                2️⃣ Names will be automatically separated (spaces between names = separate companies)<br>
+                                3️⃣ Click "✅ Add All to List" button below
+                            </div>
+                        </div>
+                        <div style="position: relative;">
+                            <textarea id="bulkCompanyInput" placeholder="📋 Paste ALL your company names here (Ctrl+V)&#10;&#10;✅ Supports ANY format:&#10;• Space separated: Company A Company B Company C&#10;• Comma separated: Company A, Company B, Company C&#10;• Tab separated: Company A	Company B	Company C (from Excel)&#10;• Semicolon separated: Company A; Company B; Company C&#10;• Already on separate lines: Just paste as-is&#10;• Mixed formats: All will be automatically separated!&#10;&#10;💡 Tip: You can also drag & drop Excel data here" style="width: 100%; min-height: 280px; max-height: 500px; background: rgba(0,0,0,0.5); border: 2px dashed rgba(212,175,55,0.5); color: white; padding: 18px; border-radius: 10px; font-size: 15px; font-family: 'Inter', sans-serif; resize: vertical; line-height: 1.9; white-space: pre-wrap;" onfocus="this.style.borderColor='rgba(212,175,55,0.9)'; this.style.borderStyle='solid'; this.style.boxShadow='0 0 15px rgba(212,175,55,0.5)'; this.style.background='rgba(0,0,0,0.6)'" onblur="this.style.borderColor='rgba(212,175,55,0.5)'; this.style.borderStyle='dashed'; this.style.boxShadow='none'; this.style.background='rgba(0,0,0,0.5)'" ondrop="handleExcelDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" onpaste="handleExcelPaste(event)" oninput="updateCompanyCount()"></textarea>
+                            <div id="dragOverlay" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(212,175,55,0.25); border: 3px dashed rgba(212,175,55,0.9); border-radius: 10px; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 10;">
+                                <div style="color: var(--primary-gold); font-weight: 700; font-size: 22px; text-shadow: 0 0 15px rgba(212,175,55,0.9);">📥 Drop Excel Data Here</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                            <button class="btn-nav" onclick="loadDefaultCompanies()" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, rgba(0,89,179,0.7), rgba(0,43,128,0.5)); color: white; padding: 14px 20px; border-radius: 8px; border: 2px solid rgba(0,89,179,0.9); font-weight: 700; cursor: pointer; font-size: 13px; box-shadow: 0 2px 8px rgba(0,89,179,0.3);">📋 Load Default List</button>
+                            <button class="btn-nav" onclick="separatePastedCompanies()" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, rgba(39,174,96,0.7), rgba(39,174,96,0.5)); color: white; padding: 14px 20px; border-radius: 8px; border: 2px solid rgba(39,174,96,0.9); font-weight: 700; cursor: pointer; font-size: 13px; box-shadow: 0 2px 8px rgba(39,174,96,0.3);">↩️ Re-Separate Names</button>
+                            <button class="btn-nav" onclick="bulkImportCompanies()" style="flex: 2.5; min-width: 250px; background: linear-gradient(135deg, rgba(212,175,55,0.8), rgba(212,175,55,0.6)); color: white; padding: 16px 28px; border-radius: 10px; border: 3px solid rgba(212,175,55,1); font-weight: 800; cursor: pointer; font-size: 16px; box-shadow: 0 4px 15px rgba(212,175,55,0.5); text-shadow: 0 2px 4px rgba(0,0,0,0.3);">✅ Add All to List</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Single Company Add -->
+                    <div style="margin-bottom: 20px; padding-top: 20px; border-top: 1px solid rgba(212,175,55,0.2);">
+                        <label style="display: block; margin-bottom: 10px; color: var(--sky-blue-light); font-weight: 600; font-size: 13px;">➕ Add Single Company</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="newCompanyInput" placeholder="Enter company name..." style="flex: 1; background:#000; border:1px solid #333; color:white; padding:12px; border-radius:8px; font-size:14px;" onkeypress="if(event.key==='Enter') addCompany()">
+                            <button class="btn-nav" onclick="addCompany()" style="background: linear-gradient(135deg, rgba(39,174,96,0.6), rgba(39,174,96,0.4)); color: white; padding: 12px 24px; border-radius: 8px; border: 2px solid rgba(39,174,96,0.8); font-weight: 700; cursor: pointer;">➕ Add</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Search -->
                     <div style="margin-bottom: 15px;">
-                        <input type="text" id="companySearchInput" placeholder="🔍 Search companies..." style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.4); color: white; padding: 12px 15px; border-radius: 8px; font-size: 14px; transition: all 0.3s ease;" oninput="filterCompanies()" onfocus="this.style.borderColor='rgba(212,175,55,0.7)'; this.style.boxShadow='0 0 10px rgba(212,175,55,0.3)'" onblur="this.style.borderColor='rgba(212,175,55,0.4)'; this.style.boxShadow='none'">
+                        <input type="text" id="companySearchInput" placeholder="🔍 Search companies..." style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.4); color: white; padding: 12px 15px; border-radius: 8px; font-size: 14px;" oninput="filterCompanies()" onfocus="this.style.borderColor='rgba(212,175,55,0.7)'; this.style.boxShadow='0 0 10px rgba(212,175,55,0.3)'" onblur="this.style.borderColor='rgba(212,175,55,0.4)'; this.style.boxShadow='none'">
                     </div>
-                    <div id="companiesList" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.3); border-radius: 10px; padding: 15px; min-height: 100px; max-height: 300px; overflow-y: auto;">
+                    
+                    <!-- Companies List -->
+                    <div style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <label style="color: var(--sky-blue-light); font-weight: 700; font-size: 15px; text-shadow: 0 0 8px rgba(212,175,55,0.3);">📋 Companies List</label>
+                        <div id="totalCompanyCount" style="color: var(--primary-gold); font-size: 14px; font-weight: 800; background: linear-gradient(135deg, rgba(212,175,55,0.25), rgba(212,175,55,0.15)); padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(212,175,55,0.5); box-shadow: 0 2px 8px rgba(212,175,55,0.2); text-shadow: 0 0 6px rgba(212,175,55,0.4);">Total: 0</div>
+                    </div>
+                    <div id="companiesList" style="background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(20,20,20,0.4)); border: 2px solid rgba(212,175,55,0.4); border-radius: 12px; padding: 12px; min-height: 120px; max-height: 400px; overflow-y: auto; overflow-x: hidden; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3), 0 4px 15px rgba(212,175,55,0.1);">
                         <!-- Companies will be displayed here -->
                     </div>
                     <textarea id="setCompanies" style="display: none;"></textarea>
@@ -4774,23 +4901,23 @@
                 <div style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 10px; border: 1px solid rgba(212,175,55,0.3);">
                     <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
                         <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Paid Status:</label>
-                        <button class="btn-nav" id="filterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:1px solid rgba(0,89,179,0.8); color:#fff; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
-                        <button class="btn-nav" id="filterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Unpaid</button>
-                        <button class="btn-nav" id="filterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">Paid</button>
+                        <button class="btn-nav" id="filterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:1px solid rgba(0,89,179,0.8); color:#fff; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                        <button class="btn-nav" id="filterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Unpaid</button>
+                        <button class="btn-nav" id="filterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 60px; height: 36px;">Paid</button>
                     </div>
                     <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
                         <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Review:</label>
-                        <button class="btn-nav" id="filterRevisedAll" onclick="setRevisedFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
-                        <button class="btn-nav" id="filterRevised" onclick="setRevisedFilter('revised')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Revised</button>
-                        <button class="btn-nav" id="filterNotRevised" onclick="setRevisedFilter('notRevised')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 90px; height: 36px;">Not Revised</button>
+                        <button class="btn-nav" id="filterRevisedAll" onclick="setRevisedFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                        <button class="btn-nav" id="filterRevised" onclick="setRevisedFilter('revised')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Revised</button>
+                        <button class="btn-nav" id="filterNotRevised" onclick="setRevisedFilter('notRevised')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 90px; height: 36px;">Not Revised</button>
                     </div>
                     <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
                         <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Group:</label>
-                        <button class="btn-nav" id="filterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 85px; height: 36px;">All Groups</button>
-                        <button class="btn-nav" id="filterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group A</button>
-                        <button class="btn-nav" id="filterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group B</button>
-                        <button class="btn-nav" id="filterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group C</button>
-                        <button class="btn-nav" id="filterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group D</button>
+                        <button class="btn-nav" id="filterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 85px; height: 36px;">All Groups</button>
+                        <button class="btn-nav" id="filterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group A</button>
+                        <button class="btn-nav" id="filterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group B</button>
+                        <button class="btn-nav" id="filterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group C</button>
+                        <button class="btn-nav" id="filterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group D</button>
                     </div>
                 </div>
             </div>
@@ -4855,23 +4982,23 @@
             <div style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 10px; border: 1px solid rgba(212,175,55,0.3);">
                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
                     <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Paid Status:</label>
-                    <button class="btn-nav" id="accountantFilterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:1px solid rgba(0,89,179,0.8); color:#fff; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
-                    <button class="btn-nav" id="accountantFilterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Unpaid</button>
-                    <button class="btn-nav" id="accountantFilterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">Paid</button>
+                    <button class="btn-nav" id="accountantFilterAll" onclick="setPaidFilter('all')" style="background:rgba(0,89,179,0.6); border:1px solid rgba(0,89,179,0.8); color:#fff; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                    <button class="btn-nav" id="accountantFilterUnpaid" onclick="setPaidFilter('unpaid')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Unpaid</button>
+                    <button class="btn-nav" id="accountantFilterPaid" onclick="setPaidFilter('paid')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 60px; height: 36px;">Paid</button>
                 </div>
                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
                     <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Review:</label>
-                    <button class="btn-nav" id="accountantFilterRevisedAll" onclick="setRevisedFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 60px; height: 36px;">All</button>
-                    <button class="btn-nav" id="accountantFilterRevised" onclick="setRevisedFilter('revised')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Revised</button>
-                    <button class="btn-nav" id="accountantFilterNotRevised" onclick="setRevisedFilter('notRevised')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 90px; height: 36px;">Not Revised</button>
+                    <button class="btn-nav" id="accountantFilterRevisedAll" onclick="setRevisedFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 60px; height: 36px;">All</button>
+                    <button class="btn-nav" id="accountantFilterRevised" onclick="setRevisedFilter('revised')" style="background:rgba(39,174,96,0.3); border:1px solid rgba(39,174,96,0.5); color:#27ae60; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Revised</button>
+                    <button class="btn-nav" id="accountantFilterNotRevised" onclick="setRevisedFilter('notRevised')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 90px; height: 36px;">Not Revised</button>
                 </div>
                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: nowrap;">
                     <label style="color:#fff; font-weight:700; padding:8px 4px; font-size:12px; min-width: 80px; height: 36px; display: flex; align-items: center;">Group:</label>
-                    <button class="btn-nav" id="accountantFilterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 85px; height: 36px;">All Groups</button>
-                    <button class="btn-nav" id="accountantFilterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group A</button>
-                    <button class="btn-nav" id="accountantFilterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group B</button>
-                    <button class="btn-nav" id="accountantFilterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group C</button>
-                    <button class="btn-nav" id="accountantFilterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; transition:all 0.3s ease; font-size:11px; min-width: 70px; height: 36px;">Group D</button>
+                    <button class="btn-nav" id="accountantFilterGroupAll" onclick="setGroupFilter('all')" style="background:rgba(212,175,55,0.6); border:1px solid rgba(212,175,55,0.8); color:#000; padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 85px; height: 36px;">All Groups</button>
+                    <button class="btn-nav" id="accountantFilterGroupA" onclick="setGroupFilter('A')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group A</button>
+                    <button class="btn-nav" id="accountantFilterGroupB" onclick="setGroupFilter('B')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group B</button>
+                    <button class="btn-nav" id="accountantFilterGroupC" onclick="setGroupFilter('C')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group C</button>
+                    <button class="btn-nav" id="accountantFilterGroupD" onclick="setGroupFilter('D')" style="background:rgba(212,175,55,0.3); border:1px solid rgba(212,175,55,0.5); color:var(--primary-gold); padding:8px 16px; font-weight:700; cursor:pointer; border-radius:6px; font-size:11px; min-width: 70px; height: 36px;">Group D</button>
                 </div>
             </div>
         </div>
@@ -4981,7 +5108,6 @@
             </div>
         </div>
         <div class="footer-credit" id="f-credit" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
-            <img src="7.png" alt="Mohammed Kamaran Logo" id="footer-logo-img" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));" onerror="this.style.display='none'">
             <span>Developed by <span style="font-weight: 700; color: var(--sky-blue); text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);">Mohammed Kamaran</span></span>
         </div>
     </div>
@@ -5003,28 +5129,507 @@
 
 <script>
     const ADMIN_CREDENTIALS = { username: "admin", password: "777" };
-    let db = JSON.parse(localStorage.getItem('v34_db')) || [];
+    // Database API Client
+    // Backend API Configuration
+    // Options: 'nodejs', 'php', 'netlify'
+    const BACKEND_TYPE = 'php'; // Change to 'nodejs' or 'netlify' as needed
+    const NODEJS_SERVER_URL = 'http://localhost:3000'; // Only used if BACKEND_TYPE is 'nodejs'
     
-    // Initialize users storage
-    if (!localStorage.getItem('v34_users')) {
-        localStorage.setItem('v34_users', JSON.stringify([
-            { username: "admin", password: "777", role: "admin" }
-        ]));
+    let API_BASE, API_EXT;
+    if (BACKEND_TYPE === 'nodejs') {
+        API_BASE = `${NODEJS_SERVER_URL}/api`;
+        API_EXT = '';
+    } else if (BACKEND_TYPE === 'php') {
+        API_BASE = '/api';
+        API_EXT = '.php';
+    } else { // netlify
+        API_BASE = '/.netlify/functions';
+        API_EXT = '';
     }
-    let users = JSON.parse(localStorage.getItem('v34_users')) || [
-        { username: "admin", password: "777", role: "admin" }
-    ];
-    let currentUser = null;
     
-    // زیادکردنی systemActive بۆ سێتینگ
-    let settings = JSON.parse(localStorage.getItem('v34_settings')) || {
+    const dbAPI = {
+        // Registrations - Always use backend for sync across devices
+        async getRegistrations() {
+            const response = await fetch(`${API_BASE}/registrations${API_EXT}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch registrations: ${response.statusText}`);
+            }
+            return await response.json();
+        },
+        
+        async addRegistration(registration) {
+            const response = await fetch(`${API_BASE}/registrations${API_EXT}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(registration)
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to add registration: ${response.statusText}`);
+            }
+            const result = await response.json();
+            // Refresh data after adding
+            setTimeout(() => refreshData(), 100);
+            return result;
+        },
+        
+        async updateRegistration(id, data) {
+            const response = await fetch(`${API_BASE}/registrations${API_EXT}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to update registration: ${response.statusText}`);
+            }
+            const result = await response.json();
+            // Refresh data after updating
+            setTimeout(() => refreshData(), 100);
+            return result;
+        },
+        
+        async deleteRegistrations(ids) {
+            const response = await fetch(`${API_BASE}/registrations${API_EXT}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ids })
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to delete registrations: ${response.statusText}`);
+            }
+            const result = await response.json();
+            // Refresh data after deleting
+            setTimeout(() => refreshData(), 100);
+            return result;
+        },
+        
+        // Settings - Always use backend for sync across devices
+        async getSettings() {
+            const response = await fetch(`${API_BASE}/settings${API_EXT}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch settings: ${response.statusText}`);
+            }
+            const result = await response.json();
+            return result.data || result;
+        },
+        
+        async saveSettings(settingsData) {
+            const response = await fetch(`${API_BASE}/settings${API_EXT}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(settingsData)
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to save settings: ${response.statusText}`);
+            }
+            const result = await response.json();
+            // Refresh settings after saving
+            setTimeout(() => refreshSettings(), 100);
+            return result;
+        },
+        
+        // Users - Always use backend for sync across devices
+        async getUser(username) {
+            const response = await fetch(`${API_BASE}/users${API_EXT}?username=${username}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch user: ${response.statusText}`);
+            }
+            return await response.json();
+        },
+        
+        async getUsers() {
+            const response = await fetch(`${API_BASE}/users${API_EXT}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch users: ${response.statusText}`);
+            }
+            return await response.json();
+        },
+        
+        async addUser(userData) {
+            const response = await fetch(`${API_BASE}/users${API_EXT}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData)
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to add user: ${response.statusText}`);
+            }
+            const result = await response.json();
+            // Refresh users after adding
+            setTimeout(() => refreshUsers(), 100);
+            return result;
+        },
+        
+        async updateUser(id, userData) {
+            const response = await fetch(`${API_BASE}/users${API_EXT}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData)
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to update user: ${response.statusText}`);
+            }
+            const result = await response.json();
+            setTimeout(() => refreshUsers(), 100);
+            return result;
+        },
+        
+        async deleteUser(id) {
+            const response = await fetch(`${API_BASE}/users${API_EXT}/${id}`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to delete user: ${response.statusText}`);
+            }
+            const result = await response.json();
+            setTimeout(() => refreshUsers(), 100);
+            return result;
+        }
+    };
+    
+    // Default companies list - always exists
+    const DEFAULT_COMPANIES = [
+        "احسان",
+        "ارض البادية",
+        "ارض الشرق",
+            "الاستدامة الرئدة",
+            "الاغذية السحرية",
+            "البركة القوة",
+            "الخواطر",
+            "الطباخ",
+            "الغذاء الوافر",
+            "القمح الاخضر",
+            "المتسوق",
+            "المفاخیر",
+            "المفترق الطرق",
+            "المنقل الساخن",
+            "النحل النشیط",
+            "الهتمى",
+            "الیاسمین",
+            "باتان",
+            "باغى زانياری",
+            "بانە گرووپ",
+            "ببیبتۆ",
+            "بحر الشرق",
+            "برێد هاوس",
+            "بریق الحیات",
+            "به‌راده‌ نوڕا",
+            "به‌رازیلیا",
+            "بودروون",
+            "بورهان",
+            "بێست كلين",
+            "بێست كۆمپانی",
+            "بی جی تی",
+            "بیت الفرح",
+            "بیوتفل فارم",
+            "پرستیج فوود",
+            "پشوو",
+            "پلینگ تەلەوی",
+            "په‌یڤ",
+            "پێرفێكت",
+            "تاك تاوه‌ر",
+            "تامدار",
+            "تامرۆژ",
+            "ته‌حین حلوانی",
+            "ته‌مووز",
+            "تواصل الامیال",
+            "تۆشیبا بابیلۆن",
+            "تی رۆد",
+            "جبل الروحة",
+            "حه‌سه‌ن باقى / حه‌سه‌ن باقى ئایس كرێم",
+            "حه‌یات",
+            "دابه‌شكاری علی",
+            "دار علیاء",
+            "داری مازی",
+            "داستی",
+            "دالیاس",
+            "دلبا / دلبا ئایس كرێم",
+            "ده‌شتی قه‌ره‌داغ",
+            "دیما",
+            "راسان",
+            "رامی فاڕم",
+            "ره‌نگاله‌",
+            "ره‌وا",
+            "روانگه‌ى ئالان",
+            "روتاش",
+            "روعه‌ الصیاد",
+            "رۆز كوين",
+            "رۆزی",
+            "رۆژمان",
+            "رۆس پاریس",
+            "رۆسێل",
+            "رۆنا پێت",
+            "رۆیال چاركۆل",
+            "رین ستۆر / الجزیره‌ / رین ستۆر فوودس",
+            "رینگ ماس",
+            "زامیا / زامیا گاردن / زامیا نیس وه‌ن",
+            "زه‌مه‌ن",
+            "زه‌نده‌ر",
+            "زۆم",
+            "زیو گرووپ",
+            "ساحل العراق",
+            "سامان",
+            "ساندرا",
+            "ستارت ئاپ",
+            "سروشتى به‌ريتانى",
+            "سكیل تۆیس",
+            "سماء الیاقوت",
+            "سمارت پاك",
+            "سناپ شووت",
+            "سندوس",
+            "سه‌فره‌",
+            "سورداش",
+            "سولتان",
+            "سویس رۆز",
+            "سێلين به‌هارات",
+            "سیرین",
+            "سیواس سمارت",
+            "شاهان مۆل",
+            "شایلی",
+            "شمس البابل",
+            "شنگال",
+            "شنه‌ی به‌هار",
+            "شه‌لماش",
+            "شه‌ماڵ سعید",
+            "شه‌ماڵ گرووپ",
+            "شه‌هریار",
+            "شه‌هیا",
+            "شوف",
+            "شوێنی باران",
+            "شوێنی باكۆ",
+            "شوێنی راز",
+            "شوێنی عبدالله",
+            "شوێنی نه‌به‌ز",
+            "شوێنی هه‌ڵگورد",
+            "شیرینی بوخاری",
+            "صۆفیا پاك",
+            "فاملی",
+            "فرح العالم",
+            "فرێش ئۆیل",
+            "فوود بۆكس",
+            "قلب الملوك / قلب الملوك كلین",
+            "قیمة ملیكة بغداد",
+            "كاروانچى",
+            "كاله‌ / كاله‌ پرۆ",
+            "كامه‌ران به‌هارات",
+            "كلینلینس رینگ",
+            "كه‌وێل / كه‌وێل كلین / كه‌وێل مانا",
+            "كوپ پاك",
+            "كووين",
+            "كۆ تاك",
+            "كۆگای به‌رزی",
+            "كۆگای محمد",
+            "كۆگایی میر",
+            "كۆمار",
+            "كیانۆ / كیانۆ فوودس",
+            "گۆلد ستار",
+            "گۆیا",
+            "لۆرد",
+            "لۆلۆ الساحل",
+            "ماجیك وه‌ی / ماجیك وه‌ی ئارد",
+            "ماراڵ",
+            "مارڤین",
+            "ماگ واش",
+            "مرجان",
+            "مرواری فارم",
+            "مزارع العطاء",
+            "مه‌لا ته‌حسين",
+            "مێخه‌ك",
+            "نادر",
+            "ناسان",
+            "ناسیار گرووپ",
+            "ناصڕ كار",
+            "نایس لايف / نایس لايف كینتۆن",
+            "نبع الرحمة",
+            "نركۆ",
+            "نصرت",
+            "نڤار",
+            "نمه‌ پله‌س",
+            "نه‌وار",
+            "نوتری هۆلند",
+            "نور الكفیل",
+            "نور فوود",
+            "نورهات",
+            "هاوكار كۆمپانی",
+            "های فوود پاك",
+            "هه‌رێم شۆپ",
+            "هه‌ستیاری ئه‌ڵماس",
+            "هه‌ڤه‌رسین",
+            "هه‌ڵگر كۆمپانی / هه‌ڵگر رۆژین",
+            "هه‌مبانه‌",
+            "هه‌نی لایف",
+            "هێنان",
+            "هیس كۆمپانى",
+            "هیوای دوارۆژ",
+            "وردة العراق",
+            "وه‌یڤ",
+            "ئارى مه‌ولود",
+            "ئاش و ڕەز",
+            "ئاك صۆفی",
+            "ئاكشن",
+            "ئالین",
+            "ئاوی روڤیان",
+            "ئه‌كیك سیر",
+            "ئه‌لبان سلێمانی",
+            "ئه‌ی ستار",
+            "ئولكر",
+            "ئۆلیڤ اربیل",
+            "ئۆنلی ئیڤۆ",
+            "ئێم دی ئای",
+            "ئێم سه‌نته‌ر"
+    ];
+    
+    // Initialize data from database
+    let db = [];
+    let users = [];
+    let settings = {
         systemActive: false,
-        companies: ["Company A", "Company B", "Company C"], // Default companies
+        companies: [...DEFAULT_COMPANIES], // Always use default companies
         A: { date: "2025-12-28", t1: "09:00", t2: "11:00", limit: 40, visible: true },
         B: { date: "2025-12-28", t1: "11:00", t2: "13:00", limit: 40, visible: true },
         C: { date: "2025-12-29", t1: "09:00", t2: "11:00", limit: 40, visible: true },
         D: { date: "2025-12-29", t1: "11:00", t2: "13:00", limit: 40, visible: true }
     };
+    let currentUser = null;
+    
+    // Function to ensure default companies are always set
+    function ensureDefaultCompanies(settingsObj) {
+        // Check if companies are missing, empty, or are the old placeholder companies
+        const isOldPlaceholder = settingsObj.companies && 
+            settingsObj.companies.length === 3 && 
+            settingsObj.companies.includes("Company A") && 
+            settingsObj.companies.includes("Company B") && 
+            settingsObj.companies.includes("Company C");
+        
+        if (!settingsObj.companies || settingsObj.companies.length === 0 || isOldPlaceholder) {
+            settingsObj.companies = [...DEFAULT_COMPANIES];
+        }
+        return settingsObj;
+    }
+    
+    // Data refresh functions for cross-device sync
+    async function refreshData() {
+        try {
+            const newDb = await dbAPI.getRegistrations();
+            if (JSON.stringify(db) !== JSON.stringify(newDb)) {
+                db = newDb;
+                refresh();
+                if (document.getElementById('adminPanel')?.style.display !== 'none') {
+                    refreshAdminList();
+                }
+                if (document.getElementById('accountantPanel')?.style.display !== 'none') {
+                    refreshAccountantList();
+                }
+            }
+        } catch (error) {
+            console.error('Error refreshing data:', error);
+        }
+    }
+    
+    async function refreshSettings() {
+        try {
+            const settingsData = await dbAPI.getSettings();
+            if (settingsData) {
+                settings = ensureDefaultCompanies(settingsData);
+                refresh();
+            }
+        } catch (error) {
+            console.error('Error refreshing settings:', error);
+        }
+    }
+    
+    async function refreshUsers() {
+        try {
+            users = await dbAPI.getUsers();
+            if (document.getElementById('usersList')) {
+                refreshUsersList();
+            }
+        } catch (error) {
+            console.error('Error refreshing users:', error);
+        }
+    }
+    
+    // Periodic sync - refresh data every 5 seconds to keep devices in sync
+    let syncInterval = null;
+    function startAutoSync() {
+        if (syncInterval) clearInterval(syncInterval);
+        syncInterval = setInterval(() => {
+            refreshData();
+            refreshSettings();
+        }, 5000); // Sync every 5 seconds
+    }
+    
+    function stopAutoSync() {
+        if (syncInterval) {
+            clearInterval(syncInterval);
+            syncInterval = null;
+        }
+    }
+    
+    // Ensure default admin user exists in database
+    async function ensureDefaultUser() {
+        try {
+            const existingUsers = await dbAPI.getUsers();
+            // Check if admin user exists
+            const adminExists = existingUsers.some(u => u.username === 'admin');
+            
+            if (!adminExists) {
+                // Create default admin user
+                await dbAPI.addUser({
+                    username: 'admin',
+                    password: '777',
+                    role: 'admin'
+                });
+                console.log('Default admin user created');
+            }
+        } catch (error) {
+            console.error('Error ensuring default user:', error);
+        }
+    }
+    
+    // Load initial data from database and start auto-sync
+    (async () => {
+        try {
+            db = await dbAPI.getRegistrations();
+            users = await dbAPI.getUsers();
+            
+            // Ensure default admin user exists
+            await ensureDefaultUser();
+            // Refresh users list after ensuring default user
+            users = await dbAPI.getUsers();
+            
+            const settingsData = await dbAPI.getSettings();
+            if (settingsData) {
+                settings = ensureDefaultCompanies(settingsData);
+                // Save back to database to ensure default companies are persisted
+                await dbAPI.saveSettings(settings);
+            } else {
+                // If no settings exist, ensure default companies are set
+                settings = ensureDefaultCompanies(settings);
+                await dbAPI.saveSettings(settings);
+            }
+            // Start auto-sync for cross-device synchronization
+            startAutoSync();
+        } catch (error) {
+            console.error('Error loading initial data:', error);
+            alert('⚠️ Unable to connect to server. Please check your connection and refresh the page.');
+            // Even on error, ensure default companies are set
+            settings = ensureDefaultCompanies(settings);
+        }
+    })();
+    
+    // Refresh data when page becomes visible (user switches back to tab)
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            refreshData();
+            refreshSettings();
+        }
+    });
+    
+    // Refresh data when window regains focus
+    window.addEventListener('focus', () => {
+        refreshData();
+        refreshSettings();
+    });
 
     let isTimerDisabled = localStorage.getItem('isTimerDisabled') === 'true';
     let disableEndTime = parseInt(localStorage.getItem('disableEndTime')) || null;
@@ -5081,7 +5686,7 @@
         // Check if timer should activate system
         if (activateAtTime && Date.now() >= activateAtTime && !settings.systemActive) {
             settings.systemActive = true;
-            localStorage.setItem('v34_settings', JSON.stringify(settings));
+            dbAPI.saveSettings(settings).catch(err => console.error('Error saving settings:', err));
         }
         
         // Check if timer has expired
@@ -5095,7 +5700,7 @@
             localStorage.removeItem('disableEndTime');
             localStorage.removeItem('activateAtTime');
             localStorage.removeItem('totalTimerMins');
-            localStorage.setItem('v34_settings', JSON.stringify(settings));
+            dbAPI.saveSettings(settings).catch(err => console.error('Error saving settings:', err));
         }
 
         const statsArea = document.getElementById('statsArea');
@@ -5242,8 +5847,9 @@
         if (currentUser && currentUser.role === 'accountant') {
             refreshAccountantList();
         }
-        localStorage.setItem('v34_db', JSON.stringify(db));
-        localStorage.setItem('v34_settings', JSON.stringify(settings));
+        // Save to database via API
+        dbAPI.saveSettings(settings).catch(err => console.error('Error saving settings:', err));
+        // Note: db is saved individually per operation, not here
         
         // Update selected group visual after refresh
         if (uGroupSelect && uGroupSelect.value) {
@@ -5835,11 +6441,11 @@
                 
                 const paidButton = isPaid 
                     ? '<span style="background:linear-gradient(135deg, rgba(39,174,96,0.5), rgba(39,174,96,0.4)); color:#fff; padding:8px 14px; border-radius:8px; font-size:10px; font-weight:800; display:inline-block; box-shadow:0 2px 8px rgba(39,174,96,0.4); text-shadow:0 1px 2px rgba(0,0,0,0.3); letter-spacing:0.5px; border:1px solid rgba(39,174,96,0.6);">✓ PAID</span>'
-                    : `<button onclick="markAsPaid(${actualIndex})" style="background:linear-gradient(135deg, rgba(212,175,55,0.4), rgba(212,175,55,0.3)); border:2px solid rgba(212,175,55,0.7); color:var(--primary-gold); padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:800; font-size:11px; transition:all 0.3s ease; box-shadow:0 2px 6px rgba(212,175,55,0.3); text-shadow:0 1px 2px rgba(0,0,0,0.3);">Paid</button>`;
+                    : `<button onclick="markAsPaid(${actualIndex})" style="background:linear-gradient(135deg, rgba(212,175,55,0.4), rgba(212,175,55,0.3)); border:2px solid rgba(212,175,55,0.7); color:var(--primary-gold); padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:800; font-size:11px; box-shadow:0 2px 6px rgba(212,175,55,0.3); text-shadow:0 1px 2px rgba(0,0,0,0.3);">Paid</button>`;
                 
                 const reviewButton = isRevised 
                     ? '<span style="background:linear-gradient(135deg, rgba(39,174,96,0.5), rgba(39,174,96,0.4)); color:#fff; padding:8px 14px; border-radius:8px; font-size:10px; font-weight:800; display:inline-block; box-shadow:0 2px 8px rgba(39,174,96,0.4); text-shadow:0 1px 2px rgba(0,0,0,0.3); letter-spacing:0.5px; border:1px solid rgba(39,174,96,0.6);">✓ REVISED</span>'
-                    : `<button onclick="moveToReview(${actualIndex})" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:#fff; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:600; font-size:11px; transition:all 0.2s ease;">Review</button>`;
+                    : `<button onclick="moveToReview(${actualIndex})" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:#fff; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:600; font-size:11px;">Review</button>`;
                 
                 const nameStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
                 const companyStrikeStyle = isPaid ? 'text-decoration:line-through; text-decoration-color:red; color:red; opacity:0.8;' : '';
@@ -5847,7 +6453,7 @@
                 
                 const companyName = p.Comp || '-';
                 const companyCell = companyName !== '-' 
-                    ? `<span onclick="copyCompanyName('${companyName.replace(/'/g, "\\'")}', this)" style="cursor:pointer; color:var(--sky-blue); text-decoration:underline; text-decoration-color:rgba(212,175,55,0.5); transition:all 0.2s ease; ${companyStrikeStyle}" onmouseover="this.style.color='var(--sky-blue-light)'; this.style.textDecorationColor='var(--primary-gold)'" onmouseout="this.style.color='var(--sky-blue)'; this.style.textDecorationColor='rgba(212,175,55,0.5)'" title="Click to copy">${companyName}</span>`
+                    ? `<span onclick="copyCompanyName('${companyName.replace(/'/g, "\\'")}', this)" style="cursor:pointer; color:var(--sky-blue); text-decoration:underline; text-decoration-color:rgba(212,175,55,0.5); ${companyStrikeStyle}" onmouseover="this.style.color='var(--sky-blue-light)'; this.style.textDecorationColor='var(--primary-gold)'" onmouseout="this.style.color='var(--sky-blue)'; this.style.textDecorationColor='rgba(212,175,55,0.5)'" title="Click to copy">${companyName}</span>`
                     : `<span style="${companyStrikeStyle}">-</span>`;
                 
                 rowsHTML.push(`<tr ${isPaid ? 'style="background:rgba(0,0,0,0.4);"' : ''} data-index="${actualIndex}">
@@ -5882,18 +6488,75 @@
 
     function loadGroupSettings() {
         const g = document.getElementById('setGroup').value; const s = settings[g];
-        document.getElementById('setVisible').checked = s.visible;
+        const setVisible = document.getElementById('setVisible');
+        const visibleStatus = document.getElementById('visibleStatus');
+        
+        if (setVisible) {
+            setVisible.checked = s.visible;
+            updateToggleSwitch();
+        }
         document.getElementById('setDate').value = s.date;
         document.getElementById('setLimit').value = s.limit;
         document.getElementById('setTimeStart').value = s.t1;
         document.getElementById('setTimeEnd').value = s.t2;
+    }
+    
+    function updateToggleSwitch() {
+        const checkbox = document.getElementById('setVisible');
+        const statusEl = document.getElementById('visibleStatus');
+        const toggleKnob = document.getElementById('toggleKnob');
+        const toggleTrack = document.getElementById('toggleTrack');
+        
+        if (!checkbox || !statusEl) return;
+        
+        const isChecked = checkbox.checked;
+        
+        // Update status text with enhanced styling
+        statusEl.textContent = isChecked ? 'Visible' : 'Hidden';
+        if (isChecked) {
+            statusEl.style.background = 'linear-gradient(135deg, rgba(39,174,96,0.3), rgba(39,174,96,0.2))';
+            statusEl.style.borderColor = 'rgba(39,174,96,0.6)';
+            statusEl.style.color = '#27ae60';
+            statusEl.style.boxShadow = '0 2px 8px rgba(39,174,96,0.25), inset 0 1px 2px rgba(255,255,255,0.1)';
+        } else {
+            statusEl.style.background = 'linear-gradient(135deg, rgba(212,175,55,0.25), rgba(212,175,55,0.15))';
+            statusEl.style.borderColor = 'rgba(212,175,55,0.5)';
+            statusEl.style.color = 'var(--primary-gold)';
+            statusEl.style.boxShadow = '0 2px 8px rgba(212,175,55,0.2), inset 0 1px 2px rgba(255,255,255,0.1)';
+        }
+        
+        // Update toggle switch position and colors with enhanced quality
+        if (toggleKnob && toggleTrack) {
+            if (isChecked) {
+                toggleKnob.style.left = 'calc(100% - 24.5px)';
+                toggleKnob.style.background = 'linear-gradient(135deg, rgba(39,174,96,1), rgba(39,174,96,0.9))';
+                toggleKnob.style.boxShadow = '0 3px 12px rgba(39,174,96,0.7), inset 0 1px 4px rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.2)';
+                toggleTrack.style.borderColor = 'rgba(39,174,96,0.9)';
+                toggleTrack.style.background = 'linear-gradient(135deg, rgba(39,174,96,0.25), rgba(39,174,96,0.15))';
+                toggleTrack.style.boxShadow = 'inset 0 3px 10px rgba(0,0,0,0.3), 0 2px 6px rgba(39,174,96,0.3)';
+            } else {
+                toggleKnob.style.left = '3.5px';
+                toggleKnob.style.background = 'linear-gradient(135deg, rgba(212,175,55,1), rgba(212,175,55,0.85))';
+                toggleKnob.style.boxShadow = '0 3px 10px rgba(212,175,55,0.6), inset 0 1px 4px rgba(255,255,255,0.25), inset 0 -1px 2px rgba(0,0,0,0.2)';
+                toggleTrack.style.borderColor = 'rgba(212,175,55,0.7)';
+                toggleTrack.style.background = 'rgba(0,0,0,0.5)';
+                toggleTrack.style.boxShadow = 'inset 0 3px 10px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.2)';
+            }
+        }
     }
 
     function loadCompanies() {
         const companiesList = document.getElementById('companiesList');
         const setCompanies = document.getElementById('setCompanies');
         const searchInput = document.getElementById('companySearchInput');
+        const totalCountDisplay = document.getElementById('totalCompanyCount');
         const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        
+        // Update total count display
+        if (totalCountDisplay) {
+            const totalCount = settings.companies ? settings.companies.length : 0;
+            totalCountDisplay.textContent = `Total: ${totalCount}`;
+        }
         
         if (companiesList) {
             companiesList.innerHTML = '';
@@ -5906,23 +6569,31 @@
                 });
                 
                 if (filteredCompanies.length > 0) {
-                    filteredCompanies.forEach((company) => {
+                    filteredCompanies.forEach((company, filteredIndex) => {
                         if (company.trim()) {
                             const originalIndex = settings.companies.indexOf(company);
+                            // Rank is the position in the full list (1-based)
+                            const rank = originalIndex + 1;
                             const companyItem = document.createElement('div');
                             companyItem.className = 'company-item';
-                            companyItem.style.cssText = 'display: flex; align-items: center; justify-content: space-between; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 12px 15px; margin-bottom: 8px; transition: all 0.3s ease;';
+                            companyItem.style.cssText = 'display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.08)); border: 2px solid rgba(212,175,55,0.35); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 2px rgba(212,175,55,0.1); position: relative; overflow: hidden;';
+                            
                             
                             // Highlight search term in company name
                             let displayName = company;
                             if (searchTerm) {
                                 const regex = new RegExp(`(${searchTerm})`, 'gi');
-                                displayName = company.replace(regex, '<mark style="background: rgba(212,175,55,0.4); color: var(--primary-gold); padding: 2px 4px; border-radius: 3px;">$1</mark>');
+                                displayName = company.replace(regex, '<mark style="background: linear-gradient(135deg, rgba(212,175,55,0.5), rgba(212,175,55,0.3)); color: var(--primary-gold); padding: 3px 6px; border-radius: 4px; font-weight: 700; text-shadow: 0 0 8px rgba(212,175,55,0.6);">$1</mark>');
                             }
                             
                             companyItem.innerHTML = `
-                                <span style="color: var(--sky-blue-light); font-weight: 600; font-size: 14px; flex: 1;">${displayName}</span>
-                                <button onclick="removeCompany(${originalIndex})" style="background: linear-gradient(135deg, rgba(139,0,0,0.6), rgba(139,0,0,0.4)); color: white; border: 1px solid rgba(139,0,0,0.8); border-radius: 6px; padding: 6px 12px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.3s ease; margin-left: 10px;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 2px 8px rgba(139,0,0,0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">🗑️ Remove</button>
+                                <div style="display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0;">
+                                    <div style="background: linear-gradient(135deg, rgba(212,175,55,0.9), rgba(212,175,55,0.7)); color: white; border: 2px solid rgba(212,175,55,1); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; box-shadow: 0 3px 12px rgba(212,175,55,0.5), inset 0 1px 3px rgba(255,255,255,0.2); flex-shrink: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.3); position: relative;">
+                                        <span>${rank}</span>
+                                    </div>
+                                    <span style="color: var(--sky-blue-light); font-weight: 600; font-size: 15px; line-height: 1.4; word-wrap: break-word; flex: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">${displayName}</span>
+                                </div>
+                                <button onclick="removeCompany(${originalIndex})" class="company-remove-btn" style="background: linear-gradient(135deg, rgba(220,38,38,0.8), rgba(185,28,28,0.6)); color: white; border: 2px solid rgba(220,38,38,0.9); border-radius: 8px; padding: 10px 16px; cursor: pointer; font-weight: 700; font-size: 13px; margin-left: 12px; box-shadow: 0 2px 8px rgba(220,38,38,0.3); min-width: 80px; min-height: 44px; flex-shrink: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">🗑️ Remove</button>
                             `;
                             companiesList.appendChild(companyItem);
                         }
@@ -5961,7 +6632,7 @@
             }
             
             settings.companies.push(companyName);
-            localStorage.setItem('v34_settings', JSON.stringify(settings));
+            dbAPI.saveSettings(settings).catch(err => console.error('Error saving settings:', err));
             
             // Clear input
             input.value = '';
@@ -5980,10 +6651,550 @@
         }
     }
     
+    // Handle Excel drag and drop
+    function handleDragOver(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.dataTransfer.dropEffect = 'copy';
+        
+        const overlay = document.getElementById('dragOverlay');
+        if (overlay) {
+            overlay.style.display = 'flex';
+        }
+        
+        const textarea = event.target;
+        if (textarea && textarea.id === 'bulkCompanyInput') {
+            textarea.style.borderColor = 'rgba(212,175,55,0.8)';
+            textarea.style.borderStyle = 'solid';
+            textarea.style.background = 'rgba(212,175,55,0.1)';
+        }
+    }
+    
+    function handleDragLeave(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const overlay = document.getElementById('dragOverlay');
+        if (overlay) {
+            overlay.style.display = 'none';
+        }
+        
+        const textarea = event.target;
+        if (textarea && textarea.id === 'bulkCompanyInput') {
+            textarea.style.borderColor = 'rgba(212,175,55,0.4)';
+            textarea.style.borderStyle = 'dashed';
+            textarea.style.background = 'rgba(0,0,0,0.4)';
+        }
+    }
+    
+    function handleExcelDrop(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const overlay = document.getElementById('dragOverlay');
+        if (overlay) {
+            overlay.style.display = 'none';
+        }
+        
+        const textarea = document.getElementById('bulkCompanyInput');
+        if (!textarea) return;
+        
+        textarea.style.borderColor = 'rgba(212,175,55,0.4)';
+        textarea.style.borderStyle = 'dashed';
+        textarea.style.background = 'rgba(0,0,0,0.4)';
+        
+        // Get dropped data
+        const data = event.dataTransfer.getData('text/plain') || event.dataTransfer.getData('text');
+        
+        if (data) {
+            // Use separateCompanyNames to handle space-separated names
+            // This will split space-separated text into separate lines
+            const separatedData = separateCompanyNames(data);
+            textarea.value = separatedData;
+            
+            // Update count display
+            updateCompanyCount();
+        }
+    }
+    
+    // Handle Excel paste (Ctrl+V) - Auto-separate line by line
+    function handleExcelPaste(event) {
+        // Prevent default paste
+        event.preventDefault();
+        
+        // Get pasted text from clipboard
+        const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+        
+        if (!pastedText || !pastedText.trim()) return;
+        
+        const textarea = event.target;
+        if (textarea && textarea.id === 'bulkCompanyInput') {
+            // Always use separateCompanyNames to handle space-separated names
+            // This will split space-separated text into separate lines
+            const separatedData = separateCompanyNames(pastedText);
+            textarea.value = separatedData;
+            
+            // Update count display
+            updateCompanyCount();
+        }
+    }
+    
+    // Update company count display
+    function updateCompanyCount() {
+        const textarea = document.getElementById('bulkCompanyInput');
+        const countDisplay = document.getElementById('companyCountDisplay');
+        
+        if (!textarea || !countDisplay) return;
+        
+        const text = textarea.value.trim();
+        if (!text) {
+            countDisplay.textContent = '0 companies ready';
+            countDisplay.style.color = 'rgba(255,255,255,0.5)';
+            countDisplay.style.background = 'rgba(212,175,55,0.1)';
+            countDisplay.style.borderColor = 'rgba(212,175,55,0.2)';
+            return;
+        }
+        
+        // Count companies (split by newlines)
+        const companies = text.split('\n').filter(line => line.trim()).length;
+        countDisplay.textContent = `✅ ${companies} company${companies !== 1 ? 'ies' : ''} ready to import`;
+        if (companies > 0) {
+            countDisplay.style.color = 'var(--primary-gold)';
+            countDisplay.style.background = 'rgba(212,175,55,0.25)';
+            countDisplay.style.borderColor = 'rgba(212,175,55,0.6)';
+            countDisplay.style.textShadow = '0 0 8px rgba(212,175,55,0.5)';
+        } else {
+            countDisplay.style.color = 'rgba(255,255,255,0.5)';
+            countDisplay.style.background = 'rgba(212,175,55,0.1)';
+            countDisplay.style.borderColor = 'rgba(212,175,55,0.2)';
+        }
+    }
+    
+    // Load default company list
+    function loadDefaultCompanies() {
+        const defaultCompanies = [
+            "احسان",
+            "ارض البادية",
+            "ارض الشرق",
+            "الاستدامة الرئدة",
+            "الاغذية السحرية",
+            "البركة القوة",
+            "الخواطر",
+            "الطباخ",
+            "الغذاء الوافر",
+            "القمح الاخضر",
+            "المتسوق",
+            "المفاخیر",
+            "المفترق الطرق",
+            "المنقل الساخن",
+            "النحل النشیط",
+            "الهتمى",
+            "الیاسمین",
+            "باتان",
+            "باغى زانياری",
+            "بانە گرووپ",
+            "ببیبتۆ",
+            "بحر الشرق",
+            "برێد هاوس",
+            "بریق الحیات",
+            "به‌راده‌ نوڕا",
+            "به‌رازیلیا",
+            "بودروون",
+            "بورهان",
+            "بێست كلين",
+            "بێست كۆمپانی",
+            "بی جی تی",
+            "بیت الفرح",
+            "بیوتفل فارم",
+            "پرستیج فوود",
+            "پشوو",
+            "پلینگ تەلەوی",
+            "په‌یڤ",
+            "پێرفێكت",
+            "تاك تاوه‌ر",
+            "تامدار",
+            "تامرۆژ",
+            "ته‌حین حلوانی",
+            "ته‌مووز",
+            "تواصل الامیال",
+            "تۆشیبا بابیلۆن",
+            "تی رۆد",
+            "جبل الروحة",
+            "حه‌سه‌ن باقى / حه‌سه‌ن باقى ئایس كرێم",
+            "حه‌یات",
+            "دابه‌شكاری علی",
+            "دار علیاء",
+            "داری مازی",
+            "داستی",
+            "دالیاس",
+            "دلبا / دلبا ئایس كرێم",
+            "ده‌شتی قه‌ره‌داغ",
+            "دیما",
+            "راسان",
+            "رامی فاڕم",
+            "ره‌نگاله‌",
+            "ره‌وا",
+            "روانگه‌ى ئالان",
+            "روتاش",
+            "روعه‌ الصیاد",
+            "رۆز كوين",
+            "رۆزی",
+            "رۆژمان",
+            "رۆس پاریس",
+            "رۆسێل",
+            "رۆنا پێت",
+            "رۆیال چاركۆل",
+            "رین ستۆر / الجزیره‌ / رین ستۆر فوودس",
+            "رینگ ماس",
+            "زامیا / زامیا گاردن / زامیا نیس وه‌ن",
+            "زه‌مه‌ن",
+            "زه‌نده‌ر",
+            "زۆم",
+            "زیو گرووپ",
+            "ساحل العراق",
+            "سامان",
+            "ساندرا",
+            "ستارت ئاپ",
+            "سروشتى به‌ريتانى",
+            "سكیل تۆیس",
+            "سماء الیاقوت",
+            "سمارت پاك",
+            "سناپ شووت",
+            "سندوس",
+            "سه‌فره‌",
+            "سورداش",
+            "سولتان",
+            "سویس رۆز",
+            "سێلين به‌هارات",
+            "سیرین",
+            "سیواس سمارت",
+            "شاهان مۆل",
+            "شایلی",
+            "شمس البابل",
+            "شنگال",
+            "شنه‌ی به‌هار",
+            "شه‌لماش",
+            "شه‌ماڵ سعید",
+            "شه‌ماڵ گرووپ",
+            "شه‌هریار",
+            "شه‌هیا",
+            "شوف",
+            "شوێنی باران",
+            "شوێنی باكۆ",
+            "شوێنی راز",
+            "شوێنی عبدالله",
+            "شوێنی نه‌به‌ز",
+            "شوێنی هه‌ڵگورد",
+            "شیرینی بوخاری",
+            "صۆفیا پاك",
+            "فاملی",
+            "فرح العالم",
+            "فرێش ئۆیل",
+            "فوود بۆكس",
+            "قلب الملوك / قلب الملوك كلین",
+            "قیمة ملیكة بغداد",
+            "كاروانچى",
+            "كاله‌ / كاله‌ پرۆ",
+            "كامه‌ران به‌هارات",
+            "كلینلینس رینگ",
+            "كه‌وێل / كه‌وێل كلین / كه‌وێل مانا",
+            "كوپ پاك",
+            "كووين",
+            "كۆ تاك",
+            "كۆگای به‌رزی",
+            "كۆگای محمد",
+            "كۆگایی میر",
+            "كۆمار",
+            "كیانۆ / كیانۆ فوودس",
+            "گۆلد ستار",
+            "گۆیا",
+            "لۆرد",
+            "لۆلۆ الساحل",
+            "ماجیك وه‌ی / ماجیك وه‌ی ئارد",
+            "ماراڵ",
+            "مارڤین",
+            "ماگ واش",
+            "مرجان",
+            "مرواری فارم",
+            "مزارع العطاء",
+            "مه‌لا ته‌حسين",
+            "مێخه‌ك",
+            "نادر",
+            "ناسان",
+            "ناسیار گرووپ",
+            "ناصڕ كار",
+            "نایس لايف / نایس لايف كینتۆن",
+            "نبع الرحمة",
+            "نركۆ",
+            "نصرت",
+            "نڤار",
+            "نمه‌ پله‌س",
+            "نه‌وار",
+            "نوتری هۆلند",
+            "نور الكفیل",
+            "نور فوود",
+            "نورهات",
+            "هاوكار كۆمپانی",
+            "های فوود پاك",
+            "هه‌رێم شۆپ",
+            "هه‌ستیاری ئه‌ڵماس",
+            "هه‌ڤه‌رسین",
+            "هه‌ڵگر كۆمپانی / هه‌ڵگر رۆژین",
+            "هه‌مبانه‌",
+            "هه‌نی لایف",
+            "هێنان",
+            "هیس كۆمپانى",
+            "هیوای دوارۆژ",
+            "وردة العراق",
+            "وه‌یڤ",
+            "ئارى مه‌ولود",
+            "ئاش و ڕەز",
+            "ئاك صۆفی",
+            "ئاكشن",
+            "ئالین",
+            "ئاوی روڤیان",
+            "ئه‌كیك سیر",
+            "ئه‌لبان سلێمانی",
+            "ئه‌ی ستار",
+            "ئولكر",
+            "ئۆلیڤ اربیل",
+            "ئۆنلی ئیڤۆ",
+            "ئێم دی ئای",
+            "ئێم سه‌نته‌ر"
+        ];
+        
+        const textarea = document.getElementById('bulkCompanyInput');
+        if (textarea) {
+            // Load into textarea (one per line)
+            textarea.value = defaultCompanies.join('\n');
+            
+            // Update count
+            updateCompanyCount();
+            
+            alert(`✅ Loaded ${defaultCompanies.length} default company names!\n\nClick "Import All Companies" to add them to your list.`);
+        }
+    }
+    
+    // Manual separation function (can be called by button)
+    function separatePastedCompanies() {
+        const textarea = document.getElementById('bulkCompanyInput');
+        if (!textarea) return;
+        
+        const currentText = textarea.value.trim();
+        if (!currentText) {
+            alert('Please paste or enter company names first.');
+            return;
+        }
+        
+        // Separate the text into individual lines
+        const separatedData = separateCompanyNames(currentText);
+        
+        // Update the textarea
+        textarea.value = separatedData;
+        
+        // Update count display
+        updateCompanyCount();
+        
+        // Show feedback
+        const count = separatedData.split('\n').filter(line => line.trim()).length;
+        if (count > 0) {
+            alert(`✅ Separated into ${count} company name(s), one per line!`);
+        }
+    }
+    
+    // Separate company names into individual lines
+    function separateCompanyNames(text) {
+        if (!text || !text.trim()) return '';
+        
+        let companies = [];
+        
+        // First, split by newlines (in case some are already separated)
+        const lines = text.split(/\r?\n/);
+        
+        lines.forEach(line => {
+            const trimmed = line.trim();
+            if (!trimmed) return;
+            
+            // Check if line contains separators (in order of priority)
+            if (trimmed.includes('\t')) {
+                // Tab-separated (Excel format) - split by tabs
+                const items = trimmed.split(/\t+/)
+                    .map(item => item.trim())
+                    .filter(item => item.length > 0);
+                companies.push(...items);
+            } else if (trimmed.includes(',')) {
+                // Comma-separated - split by commas
+                const items = trimmed.split(/,+/)
+                    .map(item => item.trim())
+                    .filter(item => item.length > 0);
+                companies.push(...items);
+            } else if (trimmed.includes(';')) {
+                // Semicolon-separated - split by semicolons
+                const items = trimmed.split(/;+/)
+                    .map(item => item.trim())
+                    .filter(item => item.length > 0);
+                companies.push(...items);
+            } else if (trimmed.match(/\s{2,}/)) {
+                // Multiple spaces (likely separated by multiple spaces)
+                const items = trimmed.split(/\s{2,}/)
+                    .map(item => item.trim())
+                    .filter(item => item.length > 0);
+                companies.push(...items);
+            } else if (trimmed.includes(' ')) {
+                // Single space-separated - split by single spaces
+                // This handles cases like "Company A Company B Company C"
+                const items = trimmed.split(/\s+/)
+                    .map(item => item.trim())
+                    .filter(item => item.length > 0);
+                companies.push(...items);
+            } else {
+                // Single company name (no separators found)
+                companies.push(trimmed);
+            }
+        });
+        
+        // Remove duplicates (case-insensitive) while preserving order
+        const uniqueCompanies = [];
+        const seen = new Set();
+        
+        companies.forEach(company => {
+            const lower = company.toLowerCase();
+            if (!seen.has(lower)) {
+                seen.add(lower);
+                uniqueCompanies.push(company);
+            }
+        });
+        
+        // Return as newline-separated string (one company per line)
+        return uniqueCompanies.join('\n');
+    }
+    
+    // Parse Excel data (handles tabs, newlines, and mixed formats)
+    function parseExcelData(data) {
+        if (!data || !data.trim()) return '';
+        
+        let lines = [];
+        
+        // Split by newlines first
+        const rows = data.split(/\r?\n/).filter(row => row.trim().length > 0);
+        
+        rows.forEach(row => {
+            // Check if row contains tabs (Excel column separator)
+            if (row.includes('\t')) {
+                // Split by tabs and take the first column (company name)
+                const columns = row.split('\t');
+                const companyName = columns[0].trim();
+                if (companyName) {
+                    lines.push(companyName);
+                }
+            } else {
+                // Regular line, might be comma-separated or single value
+                const trimmed = row.trim();
+                if (trimmed.includes(',')) {
+                    // Split by commas
+                    const items = trimmed.split(',').map(item => item.trim()).filter(item => item);
+                    lines.push(...items);
+                } else if (trimmed) {
+                    // Single value
+                    lines.push(trimmed);
+                }
+            }
+        });
+        
+        // Remove duplicates and empty values, then join with newlines
+        const uniqueLines = [...new Set(lines.map(line => line.trim()))].filter(line => line.length > 0);
+        return uniqueLines.join('\n');
+    }
+    
+    function bulkImportCompanies() {
+        const bulkInput = document.getElementById('bulkCompanyInput');
+        if (!bulkInput || !bulkInput.value.trim()) {
+            alert('Please enter company names to import.');
+            return;
+        }
+        
+        const inputText = bulkInput.value.trim();
+        
+        // Automatically separate company names using the smart separator
+        const separatedText = separateCompanyNames(inputText);
+        const companiesToAdd = separatedText.split('\n')
+            .map(c => c.trim())
+            .filter(c => c.length > 0);
+        
+        if (companiesToAdd.length === 0) {
+            alert('No valid company names found. Please enter at least one company name.');
+            return;
+        }
+        
+        // Filter out duplicates and existing companies
+        const existingCompanies = (settings.companies || []).map(c => c.toLowerCase());
+        const newCompanies = [];
+        const duplicates = [];
+        const alreadyExists = [];
+        
+        companiesToAdd.forEach(company => {
+            const lowerCompany = company.toLowerCase();
+            if (existingCompanies.includes(lowerCompany)) {
+                alreadyExists.push(company);
+            } else if (newCompanies.map(c => c.toLowerCase()).includes(lowerCompany)) {
+                duplicates.push(company);
+            } else {
+                newCompanies.push(company);
+            }
+        });
+        
+        // Add new companies
+        if (newCompanies.length > 0) {
+            if (!settings.companies) {
+                settings.companies = [];
+            }
+            settings.companies.push(...newCompanies);
+            dbAPI.saveSettings(settings).catch(err => console.error('Error saving settings:', err));
+            
+            // Clear bulk input
+            bulkInput.value = '';
+            
+            // Update count display
+            updateCompanyCount();
+            
+            // Reload companies list
+            loadCompanies();
+            
+            // Clear search if it was active
+            const searchInput = document.getElementById('companySearchInput');
+            if (searchInput) {
+                searchInput.value = '';
+            }
+            
+            // Refresh to update company dropdown
+            refresh();
+            
+            // Show success message with details
+            let message = `✅ Successfully imported ${newCompanies.length} company(ies)!`;
+            if (alreadyExists.length > 0) {
+                message += `\n⚠️ ${alreadyExists.length} company(ies) already exist and were skipped.`;
+            }
+            if (duplicates.length > 0) {
+                message += `\n⚠️ ${duplicates.length} duplicate(s) in your input were skipped.`;
+            }
+            alert(message);
+        } else {
+            // All companies already exist or are duplicates
+            let message = 'No new companies were added.';
+            if (alreadyExists.length > 0) {
+                message += `\n⚠️ ${alreadyExists.length} company(ies) already exist.`;
+            }
+            if (duplicates.length > 0) {
+                message += `\n⚠️ ${duplicates.length} duplicate(s) found in your input.`;
+            }
+            alert(message);
+        }
+    }
+    
     function removeCompany(index) {
         if (confirm(`Are you sure you want to remove "${settings.companies[index]}"?`)) {
             settings.companies.splice(index, 1);
-            localStorage.setItem('v34_settings', JSON.stringify(settings));
+            dbAPI.saveSettings(settings).catch(err => console.error('Error saving settings:', err));
             
             // Reload companies list (maintains search filter)
             loadCompanies();
@@ -6009,7 +7220,7 @@
         if (!settings.companies || settings.companies.length === 0) {
             settings.companies = [];
         }
-        localStorage.setItem('v34_settings', JSON.stringify(settings));
+        dbAPI.saveSettings(settings).catch(err => console.error('Error saving settings:', err));
         refresh();
     }
     
@@ -6171,7 +7382,20 @@
         const setCompanies = document.getElementById('setCompanies');
         
         if (setVisible) {
-            setVisible.addEventListener('change', debouncedUpdate);
+            // Update toggle on change
+            setVisible.addEventListener('change', function() {
+                updateToggleSwitch();
+                debouncedUpdate();
+            });
+            
+            // Also update on click (for better responsiveness)
+            setVisible.addEventListener('click', function() {
+                // Small delay to ensure checked state is updated
+                setTimeout(updateToggleSwitch, 10);
+            });
+            
+            // Initial update
+            updateToggleSwitch();
         }
         if (setDate) {
             setDate.addEventListener('change', debouncedUpdate);
@@ -6212,7 +7436,17 @@
         
         const newEntry = { Name: name, Comp: comp, Phone: phone, Group: g };
         db.push(newEntry);
-        localStorage.setItem('v34_db', JSON.stringify(db));
+        // Save to database via API
+        dbAPI.addRegistration({
+            name: name,
+            company: comp,
+            phone: phone,
+            group: g,
+            day: new Date().toLocaleDateString('ku'),
+            date: new Date().toISOString().split('T')[0],
+            time: new Date().toTimeString().split(' ')[0].substring(0, 5),
+            paid: false
+        }).catch(err => console.error('Error saving registration:', err));
         this.reset(); 
         refresh();
         
@@ -6268,8 +7502,9 @@
         if (selectedTab) {
             selectedTab.style.display = 'block';
             
-            // Reload companies list when settings tab is shown
+            // Reload companies list and settings when settings tab is shown
             if (tabName === 'settings') {
+                loadGroupSettings();
                 loadCompanies();
             }
         }
@@ -6307,18 +7542,25 @@
     
     function showLogin() { document.getElementById('loginModal').style.display = 'flex'; }
     function hideLogin() { document.getElementById('loginModal').style.display = 'none'; }
-    function attemptLogin() {
-        const username = document.getElementById('admUser').value;
+    async function attemptLogin() {
+        const username = document.getElementById('admUser').value.trim();
         const password = document.getElementById('admPass').value;
         
-        // Check against stored users
-        const user = users.find(u => u.username === username && u.password === password);
+        if (!username || !password) {
+            alert("Please enter both username and password!");
+            return;
+        }
         
-        if (user) {
-            currentUser = user;
-            localStorage.setItem('currentUser', JSON.stringify(user));
+        try {
+            // Fetch user from backend (includes password for verification)
+            const user = await dbAPI.getUser(username);
             
-            if (user.role === 'admin') {
+            // Verify password
+            if (user && user.password === password) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                
+                if (user.role === 'admin') {
                 document.getElementById('adminPanel').style.display = 'block';
                 document.getElementById('accountantPanel').style.display = 'block';
                 document.getElementById('mainContent').style.display = 'none';
@@ -6341,34 +7583,38 @@
                 // Update accountant button styles
                 setAccountantPaidFilter(paidFilter);
                 setAccountantGroupFilter(groupFilter);
-            } else if (user.role === 'accountant') {
-                // Show admin panel for accountants (with full editing access to registrations)
-                document.getElementById('adminPanel').style.display = 'block';
-                document.getElementById('accountantPanel').style.display = 'block';
-                document.getElementById('mainContent').style.display = 'none';
-                document.getElementById('logoutBtn').style.display = 'block';
-                document.getElementById('loginTrigger').style.display = 'none';
-                // Update accountant view description
-                const accountantDesc = document.getElementById('accountantViewDescription');
-                if (accountantDesc) {
-                    accountantDesc.textContent = 'Accountant view - Full access to registration management.';
-                    accountantDesc.style.color = '#0080ff';
+                } else if (user.role === 'accountant') {
+                    // Show admin panel for accountants (with full editing access to registrations)
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('accountantPanel').style.display = 'block';
+                    document.getElementById('mainContent').style.display = 'none';
+                    document.getElementById('logoutBtn').style.display = 'block';
+                    document.getElementById('loginTrigger').style.display = 'none';
+                    // Update accountant view description
+                    const accountantDesc = document.getElementById('accountantViewDescription');
+                    if (accountantDesc) {
+                        accountantDesc.textContent = 'Accountant view - Full access to registration management.';
+                        accountantDesc.style.color = '#0080ff';
+                    }
+                    loadGroupSettings(); loadCompanies(); hideLogin();
+                    refreshAdminList();
+                    // Initialize filters (shared between admin and accountant)
+                    if (!paidFilter) paidFilter = 'all';
+                    if (!groupFilter) groupFilter = 'all';
+                    setPaidFilter(paidFilter);
+                    setGroupFilter(groupFilter);
+                    // Update accountant button styles
+                    setAccountantPaidFilter(paidFilter);
+                    setAccountantGroupFilter(groupFilter);
+                    // Show Registrations tab by default for accountants
+                    showAdminTab('registrations');
                 }
-                loadGroupSettings(); loadCompanies(); hideLogin();
-                refreshAdminList();
-                // Initialize filters (shared between admin and accountant)
-                if (!paidFilter) paidFilter = 'all';
-                if (!groupFilter) groupFilter = 'all';
-                setPaidFilter(paidFilter);
-                setGroupFilter(groupFilter);
-                // Update accountant button styles
-                setAccountantPaidFilter(paidFilter);
-                setAccountantGroupFilter(groupFilter);
-                // Show Registrations tab by default for accountants
-                showAdminTab('registrations');
+            } else {
+                alert("Invalid username or password!");
             }
-        } else {
-            alert("Invalid username or password!");
+        } catch (error) {
+            console.error('Login error:', error);
+            alert("Login failed. Please check your connection and try again.");
         }
     }
     function addRegistration() {
@@ -6391,7 +7637,17 @@
         }
         
         db.push({ Name: name, Comp: comp, Phone: phone, Group: group });
-        localStorage.setItem('v34_db', JSON.stringify(db));
+        // Save to database via API
+        dbAPI.addRegistration({
+            name: name,
+            company: comp,
+            phone: phone,
+            group: group,
+            day: new Date().toLocaleDateString('ku'),
+            date: new Date().toISOString().split('T')[0],
+            time: new Date().toTimeString().split(' ')[0].substring(0, 5),
+            paid: false
+        }).catch(err => console.error('Error saving registration:', err));
         document.getElementById('addName').value = '';
         document.getElementById('addComp').value = '';
         document.getElementById('addPhone').value = '';
@@ -6607,8 +7863,10 @@
             entry.Revised = true;
             // Add it to the bottom of the array
             db.push(entry);
-            // Save to localStorage
-            localStorage.setItem('v34_db', JSON.stringify(db));
+            // Save to database via API
+            if (entry.id) {
+                dbAPI.updateRegistration(entry.id, { revised: true }).catch(err => console.error('Error updating registration:', err));
+            }
             // Refresh the lists
             refresh();
             refreshAdminList();
@@ -6616,10 +7874,13 @@
         }
     }
 
-    function markAsPaid(index) {
+    async function markAsPaid(index) {
         if (db[index]) {
             db[index].Paid = true;
-            localStorage.setItem('v34_db', JSON.stringify(db));
+            // Save to database via API
+            if (db[index].id) {
+                await dbAPI.updateRegistration(db[index].id, { paid: true }).catch(err => console.error('Error updating registration:', err));
+            }
             refresh();
             refreshAdminList();
             refreshAccountantList(); // Also refresh accountant list
@@ -6627,24 +7888,32 @@
         }
     }
 
-    function clearAllRegistrations() {
+    async function clearAllRegistrations() {
         if (confirm('Are you sure you want to delete all registrations? This action cannot be undone.')) {
+            // Delete all from database
+            const allIds = db.map(r => r.id).filter(id => id);
+            if (allIds.length > 0) {
+                await dbAPI.deleteRegistrations(allIds).catch(err => console.error('Error deleting registrations:', err));
+            }
             db = [];
-            localStorage.setItem('v34_db', JSON.stringify(db));
             refresh();
             alert('All registrations have been deleted.');
         }
     }
     
-    function clearPaidRegistrations() {
+    async function clearPaidRegistrations() {
         const paidCount = db.filter(p => p.Paid === true).length;
         if (paidCount === 0) {
             alert('No paid registrations found to delete.');
             return;
         }
         if (confirm(`Are you sure you want to delete ${paidCount} paid registration(s)? This action cannot be undone.`)) {
+            // Delete paid registrations from database
+            const paidIds = db.filter(p => p.Paid === true).map(r => r.id).filter(id => id);
+            if (paidIds.length > 0) {
+                await dbAPI.deleteRegistrations(paidIds).catch(err => console.error('Error deleting registrations:', err));
+            }
             db = db.filter(p => p.Paid !== true);
-            localStorage.setItem('v34_db', JSON.stringify(db));
             refresh();
             alert(`${paidCount} paid registration(s) have been deleted.`);
         }
@@ -6696,6 +7965,9 @@
             // Sort indices in descending order to avoid index shifting issues
             selectedIndices.sort((a, b) => b - a);
             
+            // Get IDs before deleting
+            const idsToDelete = selectedIndices.map(index => db[index]?.id).filter(id => id);
+            
             // Delete entries from highest index to lowest
             selectedIndices.forEach(index => {
                 if (db[index]) {
@@ -6703,13 +7975,17 @@
                 }
             });
             
-            localStorage.setItem('v34_db', JSON.stringify(db));
+            // Delete from database via API
+            if (idsToDelete.length > 0) {
+                dbAPI.deleteRegistrations(idsToDelete).catch(err => console.error('Error deleting registrations:', err));
+            }
+            
             refresh();
             alert(`${selectedCount} selected registration(s) have been deleted.`);
         }
     }
 
-    function addUser() {
+    async function addUser() {
         const username = document.getElementById('newUsername').value.trim();
         const password = document.getElementById('newPassword').value.trim();
         const role = document.getElementById('newUserRole').value;
@@ -6719,33 +7995,50 @@
             return;
         }
         
-        // Check if username already exists
-        if (users.some(u => u.username === username)) {
-            alert('Username already exists!');
-            return;
+        try {
+            // Check if username already exists
+            const existingUser = await dbAPI.getUser(username);
+            if (existingUser) {
+                alert('Username already exists!');
+                return;
+            }
+            
+            // Add new user via backend API
+            await dbAPI.addUser({ username, password, role });
+            
+            // Clear inputs
+            document.getElementById('newUsername').value = '';
+            document.getElementById('newPassword').value = '';
+            
+            // Refresh users list (will be done automatically by refreshUsers)
+            refreshUsersList();
+            alert('User added successfully!');
+        } catch (error) {
+            console.error('Error adding user:', error);
+            alert('Failed to add user. Please try again.');
         }
-        
-        // Add new user
-        users.push({ username, password, role });
-        localStorage.setItem('v34_users', JSON.stringify(users));
-        
-        // Clear inputs
-        document.getElementById('newUsername').value = '';
-        document.getElementById('newPassword').value = '';
-        
-        refreshUsersList();
-        alert('User added successfully!');
     }
     
-    function deleteUser(username) {
+    async function deleteUser(username) {
         if (username === 'admin') {
             alert('Cannot delete the default admin user!');
             return;
         }
         if (confirm(`Are you sure you want to delete user "${username}"?`)) {
-            users = users.filter(u => u.username !== username);
-            localStorage.setItem('v34_users', JSON.stringify(users));
-            refreshUsersList();
+            try {
+                // Find user ID
+                const user = users.find(u => u.username === username);
+                if (user && user.id) {
+                    await dbAPI.deleteUser(user.id);
+                    refreshUsersList();
+                    alert('User deleted successfully!');
+                } else {
+                    alert('User not found');
+                }
+            } catch (error) {
+                console.error('Error deleting user:', error);
+                alert('Failed to delete user. Please try again.');
+            }
         }
     }
     

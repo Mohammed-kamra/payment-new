@@ -1,14 +1,21 @@
 {
-  "name": "whatsapp-auto-sender",
+  "name": "halal-market-portal",
   "version": "1.0.0",
-  "description": "Automatic WhatsApp message sender from +9647505543003",
-  "main": "whatsapp-sender.js",
+  "description": "Elite Premium Halal Market Portal with Registration System",
+  "main": "server.js",
   "scripts": {
-    "start": "node whatsapp-sender.js"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "whatsapp": "node whatsapp-sender.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "axios": "^1.6.0"
+    "cors": "^2.8.5",
+    "axios": "^1.7.0",
+    "@neondatabase/serverless": "^0.9.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
 
